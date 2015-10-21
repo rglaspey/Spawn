@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn", "src\Six
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Tests", "src\SixtenLabs.Spawn.Tests\SixtenLabs.Spawn.Tests.csproj", "{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenGL Sample", "OpenGL Sample", "{316BBBAE-6053-497B-A53D-BD3A0F63595F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.OpenGL.Generator", "src\SixtenLabs.Spawn.OpenGL.Generator\SixtenLabs.Spawn.OpenGL.Generator.csproj", "{B31ADA57-8A95-4703-8594-0E47ECB4730E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.OpenGL.Target", "src\SixtenLabs.Spawn.OpenGL.Target\SixtenLabs.Spawn.OpenGL.Target.csproj", "{D47EDA9F-7470-4D43-8106-88352970EA86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,8 +37,28 @@ Global
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|x64.ActiveCfg = Release|x64
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|x64.Build.0 = Release|x64
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Debug|x64.Build.0 = Debug|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E}.Release|x64.Build.0 = Release|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Debug|x64.Build.0 = Debug|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Release|x64.ActiveCfg = Release|Any CPU
+		{D47EDA9F-7470-4D43-8106-88352970EA86}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B31ADA57-8A95-4703-8594-0E47ECB4730E} = {316BBBAE-6053-497B-A53D-BD3A0F63595F}
+		{D47EDA9F-7470-4D43-8106-88352970EA86} = {316BBBAE-6053-497B-A53D-BD3A0F63595F}
 	EndGlobalSection
 EndGlobal
