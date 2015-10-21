@@ -56,7 +56,7 @@ namespace SixtenLabs.Spawn.Test.Definitions
 		{
 			var subject = NewSubject("Name", "void");
 
-			subject.AddModifier(SyntaxKind.PublicKeyword);
+			subject.AddModifier(SyntaxKindX.PublicKeyword);
 
 			subject.ModifierDefinitions.Count.Should().Be(1);
 		}

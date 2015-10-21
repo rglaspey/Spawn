@@ -19,7 +19,7 @@ namespace SixtenLabs.Spawn
 
 		#region Public Methods
 
-		public void AddModifier(SyntaxKind modifier)
+		public void AddModifier(SyntaxKindX modifier)
 		{
 			ModifierDefinitions.Add(new ModifierDefinition(modifier));
 		}

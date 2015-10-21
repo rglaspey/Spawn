@@ -141,6 +141,7 @@
     <Compile Include="Definitions\RegionDefinition.cs" />
     <Compile Include="Definitions\StatementDefinition.cs" />
     <Compile Include="Definitions\StructDefinition.cs" />
+    <Compile Include="Definitions\SyntaxKindX.cs" />
     <Compile Include="Definitions\TypeDefinition.cs" />
     <Compile Include="Definitions\TypeMemberDefinition.cs" />
     <Compile Include="Definitions\UsingDirectiveDefinition.cs" />

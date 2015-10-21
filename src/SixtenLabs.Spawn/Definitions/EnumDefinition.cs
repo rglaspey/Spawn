@@ -20,7 +20,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="name"></param>
 		/// <param name="baseType"></param>
 		/// <param name="hasFlags"></param>
-    public EnumDefinition(string name, SyntaxKind baseType = SyntaxKind.IntKeyword, bool hasFlags = false)
+    public EnumDefinition(string name, SyntaxKindX baseType = SyntaxKindX.IntKeyword, bool hasFlags = false)
       : base(name)
     {
       BaseType = baseType;
@@ -63,7 +63,7 @@ namespace SixtenLabs.Spawn
 
     public bool HasFlags { get; }
 
-    public SyntaxKind BaseType { get; }
+    public SyntaxKindX BaseType { get; }
 
     #endregion
   }

@@ -19,7 +19,7 @@ namespace SixtenLabs.Spawn.Test.Definitions
 		{
 			var subject = NewSubject("Batman");
 
-			subject.AddModifier(SyntaxKind.PublicKeyword);
+			subject.AddModifier(SyntaxKindX.PublicKeyword);
 
 			subject.ModifierDefinitions.Count.Should().Be(1);
 		}

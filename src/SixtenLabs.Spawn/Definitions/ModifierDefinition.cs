@@ -38,7 +38,7 @@ namespace SixtenLabs.Spawn
 		/// Use this constructor to create a modifier definition
 		/// </summary>
 		/// <param name="modifier">The SyntaxKind to create a modifier for</param>
-		public ModifierDefinition(SyntaxKind modifier)
+		public ModifierDefinition(SyntaxKindX modifier)
       : base(modifier.ToString())
     {
 			Modifier = modifier;
@@ -48,7 +48,7 @@ namespace SixtenLabs.Spawn
 
 		#region Properties
 
-		public SyntaxKind Modifier { get; }
+		public SyntaxKindX Modifier { get; }
 
 		#endregion
 	}

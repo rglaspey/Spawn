@@ -191,7 +191,7 @@ namespace SixtenLabs.Spawn
 
       foreach(var modifier in modifierDefinitions)
       {
-        list.Add(SF.Token(modifier.Modifier));
+        list.Add(SF.Token(modifier.Modifier.ConvertToSyntaxKind()));
       }
 
       return SF.TokenList(list);

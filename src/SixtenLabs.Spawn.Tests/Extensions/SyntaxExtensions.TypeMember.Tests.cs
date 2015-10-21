@@ -23,7 +23,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 			var subject = NewSubject();
 
 			var definition = new PropertyDefinition("Name", "string");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 			definition.AddGetter();
 			definition.AddSetter();
 
@@ -38,7 +38,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 			var subject = NewSubject();
 
 			var definition = new PropertyDefinition("Name", "string");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 			definition.AddGetter();
 
 			var actual = SyntaxExtensions.AddProperty(definition);
@@ -52,7 +52,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 			var subject = NewSubject();
 
 			var definition = new PropertyDefinition("Name", "string");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 			definition.AddGetter(SyntaxKind.PrivateKeyword);
 
 			var actual = SyntaxExtensions.AddProperty(definition);
@@ -66,7 +66,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 			var subject = NewSubject();
 
 			var definition = new PropertyDefinition("Name", "string");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 			definition.AddGetter(SyntaxKind.None, "return name;");
 
 			var actual = SyntaxExtensions.AddProperty(definition);
@@ -82,7 +82,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 
 			var defaultValue = new LiteralDefinition("Bob", typeof(string));
 			var definition = new PropertyDefinition("Name", "string", defaultValue);
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 			definition.AddGetter();
 
 			var actual = SyntaxExtensions.AddProperty(definition);
@@ -100,8 +100,8 @@ namespace SixtenLabs.Spawn.Test.Extensions
       var subject = NewSubject();
 
       var fieldDefinition = new FieldDefinition("glActiveShaderProgram", "ActiveShaderProgram");
-      fieldDefinition.AddModifier(SyntaxKind.InternalKeyword);
-      fieldDefinition.AddModifier(SyntaxKind.StaticKeyword);
+      fieldDefinition.AddModifier(SyntaxKindX.InternalKeyword);
+      fieldDefinition.AddModifier(SyntaxKindX.StaticKeyword);
 
       var actual = SyntaxExtensions.AddField(fieldDefinition);
 
@@ -116,7 +116,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 
       var literalDefinition = new LiteralDefinition(value, value.GetType());
       var fieldDefinition = new FieldDefinition(fieldName, fieldType, literalDefinition);
-      fieldDefinition.AddModifier(SyntaxKind.PrivateKeyword);
+      fieldDefinition.AddModifier(SyntaxKindX.PrivateKeyword);
 
       var actual = SyntaxExtensions.AddField(fieldDefinition);
 

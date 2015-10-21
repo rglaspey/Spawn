@@ -22,9 +22,9 @@ namespace SixtenLabs.Spawn.Test.Extensions
 
 			var definition = new ClassDefinition("Delegates");
 
-			definition.AddModifier(SyntaxKind.InternalKeyword);
-			definition.AddModifier(SyntaxKind.StaticKeyword);
-			definition.AddModifier(SyntaxKind.PartialKeyword);
+			definition.AddModifier(SyntaxKindX.InternalKeyword);
+			definition.AddModifier(SyntaxKindX.StaticKeyword);
+			definition.AddModifier(SyntaxKindX.PartialKeyword);
 
 			var subject = NewSubject();
 			
@@ -44,9 +44,9 @@ namespace SixtenLabs.Spawn.Test.Extensions
 
       var definition = new ClassDefinition("Delegates");
 
-      definition.AddModifier(SyntaxKind.InternalKeyword);
-      definition.AddModifier(SyntaxKind.StaticKeyword);
-      definition.AddModifier(SyntaxKind.PartialKeyword);
+      definition.AddModifier(SyntaxKindX.InternalKeyword);
+      definition.AddModifier(SyntaxKindX.StaticKeyword);
+      definition.AddModifier(SyntaxKindX.PartialKeyword);
 
       definition.AddField("count", "int");
 
@@ -68,10 +68,10 @@ namespace SixtenLabs.Spawn.Test.Extensions
 
 			var definition = new ClassDefinition("Customer");
 
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 
 			var property = definition.AddProperty("Name", "string");
-			property.AddModifier(SyntaxKind.PublicKeyword);
+			property.AddModifier(SyntaxKindX.PublicKeyword);
 			property.AddGetter();
 			property.AddSetter();
 

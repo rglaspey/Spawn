@@ -30,7 +30,7 @@ namespace SixtenLabs.Spawn.Test.Definitions
     {
       var subject = NewSubject("Batman");
 
-      subject.BaseType.Should().Be(SyntaxKind.IntKeyword);
+      subject.BaseType.Should().Be(SyntaxKindX.IntKeyword);
     }
 
     [Fact]

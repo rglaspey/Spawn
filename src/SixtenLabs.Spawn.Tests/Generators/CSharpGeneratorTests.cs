@@ -20,7 +20,7 @@ namespace SixtenLabs.Spawn.Test.Generators
 			output.AddNamespace("SixtenLabs.Spawn.GeneratorTest");
 
 			var definition = new EnumDefinition("OnMyToast");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 
 			definition.AddEnumMember("Error", "0");
 			definition.AddEnumMember("Butter", "");
@@ -43,7 +43,7 @@ namespace SixtenLabs.Spawn.Test.Generators
 
 			var definition = new EnumDefinition("OnMyToast");
 
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 
 			definition.AddEnumMember("Error", "0");
 			definition.AddEnumMember("Butter", "");
@@ -68,7 +68,7 @@ namespace SixtenLabs.Spawn.Test.Generators
 
 			var definition = new EnumDefinition("OnMyToast", hasFlags: true);
 
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 
 			definition.AddEnumMember("Error", "0");
 			definition.AddEnumMember("Butter", "1");
@@ -97,9 +97,9 @@ namespace SixtenLabs.Spawn.Test.Generators
 
 			var definition = new ClassDefinition("Delegates");
 
-			definition.AddModifier(SyntaxKind.InternalKeyword);
-			definition.AddModifier(SyntaxKind.StaticKeyword);
-			definition.AddModifier(SyntaxKind.PartialKeyword);
+			definition.AddModifier(SyntaxKindX.InternalKeyword);
+			definition.AddModifier(SyntaxKindX.StaticKeyword);
+			definition.AddModifier(SyntaxKindX.PartialKeyword);
 
 			var subject = NewSubject();
 

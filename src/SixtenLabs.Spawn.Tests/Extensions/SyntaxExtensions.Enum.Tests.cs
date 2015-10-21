@@ -21,7 +21,7 @@ namespace SixtenLabs.Spawn.Test.Extensions
 			output.AddNamespace("SixtenLabs.Spawn.GeneratorTest");
 
 			var definition = new EnumDefinition("OnMyToast");
-			definition.AddModifier(SyntaxKind.PublicKeyword);
+			definition.AddModifier(SyntaxKindX.PublicKeyword);
 
 			definition.AddEnumMember("Error", "0");
 			definition.AddEnumMember("Butter", "");

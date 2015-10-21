@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,19 @@ namespace SixtenLabs.Spawn
 {
 	public interface ISpawn
 	{
-		string SourceProject { get; set; }
+		/// <summary>
+		/// Before generating any code, intialize the workspace with 
+		/// the solution file.
+		/// </summary>
+		/// <param name="solutionPath"></param>
+		void Intialize(string solutionPath);
 
-		string TargetProject { get; set; }
-
-		IEnumerable<string> FilesToGenerate { get; }
-	}
+		/// <summary>
+		/// Create a file in the target project with generated code from the passed in SyntaxNode
+		/// </summary>
+		/// <param name="targetProject"></param>
+		/// <param name="newFileName"></param>
+		/// <param name="contents"></param>
+		void AddDocumentToProject(string targetProject, string newFileName, string contents, IEnumerable<string> folders = null, string filePath = null);
+  }
 }

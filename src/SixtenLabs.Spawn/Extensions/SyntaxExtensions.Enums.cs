@@ -44,9 +44,9 @@ namespace SixtenLabs.Spawn
         .WithModifiers(modifiers)
         .WithMembers(SF.SeparatedList(members));
 
-      if(enumDefinition.BaseType != SyntaxKind.None)
+      if((int)enumDefinition.BaseType != (int)SyntaxKind.None)
       {
-        enumDeclaration = enumDeclaration.WithBaseList(SF.BaseList(SF.SingletonSeparatedList<BaseTypeSyntax>(SF.SimpleBaseType(SF.PredefinedType(SF.Token(enumDefinition.BaseType))))));
+        enumDeclaration = enumDeclaration.WithBaseList(SF.BaseList(SF.SingletonSeparatedList<BaseTypeSyntax>(SF.SimpleBaseType(SF.PredefinedType(SF.Token(enumDefinition.BaseType.ConvertToSyntaxKind()))))));
       }
 
       if(enumDefinition.HasFlags)
@@ -59,6 +59,11 @@ namespace SixtenLabs.Spawn
       return compilationUnit.AddMembers(nameSpaceDeclaration);
     }
 
-    #endregion
-  }
+		public static SyntaxKind ConvertToSyntaxKind(this SyntaxKindX syntaxKind)
+		{
+			return (SyntaxKind)syntaxKind;
+		}
+
+		#endregion
+	}
 }
