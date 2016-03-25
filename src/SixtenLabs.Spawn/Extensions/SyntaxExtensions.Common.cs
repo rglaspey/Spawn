@@ -185,6 +185,19 @@ namespace SixtenLabs.Spawn
 
 		#region Modifier Methods
 
+		private static SyntaxList<AttributeListSyntax> GetAttributeTokens(IList<AttributeDefinition> attributeDefinitions)
+		{
+			var list = new SyntaxList<AttributeListSyntax>();
+
+			foreach (var attribute in attributeDefinitions)
+			{
+				list.Add(attribute.Attribute);
+			}
+
+			return list;
+		}
+
+
 		private static SyntaxTokenList GetModifierTokens(IList<ModifierDefinition> modifierDefinitions)
     {
       var list = new List<SyntaxToken>();
@@ -217,6 +230,38 @@ namespace SixtenLabs.Spawn
 			var formattedCode = Formatter.Format(code, cw);
 
 			return formattedCode.ToFullString();
+		}
+
+		#endregion
+
+		#region Composition Methods
+
+		public static LiteralDefinition CreateLiteralDefinition(object defaultValue = null)
+		{
+			LiteralDefinition literalDefinition = null;
+
+			if (defaultValue != null)
+			{
+				literalDefinition = new LiteralDefinition(defaultValue, defaultValue.GetType());
+			}
+
+			return literalDefinition;
+		}
+
+		public static FieldDefinition CreateFieldDefinition(this string name, string returnType = "string", object defaultValue = null)
+		{
+			var literalDefinition = CreateLiteralDefinition(defaultValue);
+			var fieldDefinition = new FieldDefinition(name, returnType, literalDefinition);
+
+			return fieldDefinition;
+		}
+
+		public static PropertyDefinition CreatePropertyDefinition(this string name, string returnType = "string", object defaultValue = null)
+		{
+			var literalDefinition = CreateLiteralDefinition(defaultValue);
+			var propertyDefinition = new PropertyDefinition(name, returnType, literalDefinition);
+
+			return propertyDefinition;
 		}
 
 		#endregion

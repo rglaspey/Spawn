@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68102348-123B-4A09-84CF-058C11867992}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SixtenLabs.Spawn.Vulkan.Target</RootNamespace>
+    <AssemblyName>SixtenLabs.Spawn.Vulkan.Target</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\Access.cs" />
+    <Compile Include="Enums\AttachmentDescription.cs" />
+    <Compile Include="Enums\AttachmentLoadOp.cs" />
+    <Compile Include="Enums\AttachmentStoreOp.cs" />
+    <Compile Include="Enums\BlendFactor.cs" />
+    <Compile Include="Enums\BlendOp.cs" />
+    <Compile Include="Enums\BorderColor.cs" />
+    <Compile Include="Enums\BufferCreate.cs" />
+    <Compile Include="Enums\BufferUsage.cs" />
+    <Compile Include="Enums\ColorComponent.cs" />
+    <Compile Include="Enums\ColorSpaceKHR.cs" />
+    <Compile Include="Enums\CommandBufferLevel.cs" />
+    <Compile Include="Enums\CommandBufferReset.cs" />
+    <Compile Include="Enums\CommandBufferUsage.cs" />
+    <Compile Include="Enums\CommandPoolCreate.cs" />
+    <Compile Include="Enums\CommandPoolReset.cs" />
+    <Compile Include="Enums\CompareOp.cs" />
+    <Compile Include="Enums\ComponentSwizzle.cs" />
+    <Compile Include="Enums\CompositeAlphaKHR.cs" />
+    <Compile Include="Enums\CullMode.cs" />
+    <Compile Include="Enums\DebugReportErrorEXT.cs" />
+    <Compile Include="Enums\DebugReportEXT.cs" />
+    <Compile Include="Enums\DebugReportObjectTypeEXT.cs" />
+    <Compile Include="Enums\Dependency.cs" />
+    <Compile Include="Enums\DescriptorPoolCreate.cs" />
+    <Compile Include="Enums\DescriptorType.cs" />
+    <Compile Include="Enums\DisplayPlaneAlphaKHR.cs" />
+    <Compile Include="Enums\DynamicState.cs" />
+    <Compile Include="Enums\FenceCreate.cs" />
+    <Compile Include="Enums\Filter.cs" />
+    <Compile Include="Enums\Format.cs" />
+    <Compile Include="Enums\FormatFeature.cs" />
+    <Compile Include="Enums\FrontFace.cs" />
+    <Compile Include="Enums\ImageAspect.cs" />
+    <Compile Include="Enums\ImageCreate.cs" />
+    <Compile Include="Enums\ImageLayout.cs" />
+    <Compile Include="Enums\ImageTiling.cs" />
+    <Compile Include="Enums\ImageType.cs" />
+    <Compile Include="Enums\ImageUsage.cs" />
+    <Compile Include="Enums\ImageViewType.cs" />
+    <Compile Include="Enums\IndexType.cs" />
+    <Compile Include="Enums\InternalAllocationType.cs" />
+    <Compile Include="Enums\LogicOp.cs" />
+    <Compile Include="Enums\MemoryHeap.cs" />
+    <Compile Include="Enums\MemoryProperty.cs" />
+    <Compile Include="Enums\PhysicalDeviceType.cs" />
+    <Compile Include="Enums\PipelineBindPoint.cs" />
+    <Compile Include="Enums\PipelineCacheHeaderVersion.cs" />
+    <Compile Include="Enums\PipelineCreate.cs" />
+    <Compile Include="Enums\PipelineStage.cs" />
+    <Compile Include="Enums\PolygonMode.cs" />
+    <Compile Include="Enums\PresentModeKHR.cs" />
+    <Compile Include="Enums\PrimitiveTopology.cs" />
+    <Compile Include="Enums\QueryControl.cs" />
+    <Compile Include="Enums\QueryPipelineStatistic.cs" />
+    <Compile Include="Enums\QueryResult.cs" />
+    <Compile Include="Enums\QueryType.cs" />
+    <Compile Include="Enums\Queue.cs" />
+    <Compile Include="Enums\Result.cs" />
+    <Compile Include="Enums\SampleCount.cs" />
+    <Compile Include="Enums\SamplerAddressMode.cs" />
+    <Compile Include="Enums\SamplerMipmapMode.cs" />
+    <Compile Include="Enums\ShaderStage.cs" />
+    <Compile Include="Enums\SharingMode.cs" />
+    <Compile Include="Enums\SparseImageFormat.cs" />
+    <Compile Include="Enums\SparseMemoryBind.cs" />
+    <Compile Include="Enums\StencilFace.cs" />
+    <Compile Include="Enums\StencilOp.cs" />
+    <Compile Include="Enums\StructureType.cs" />
+    <Compile Include="Enums\SubpassContents.cs" />
+    <Compile Include="Enums\SurfaceTransformKHR.cs" />
+    <Compile Include="Enums\SystemAllocationScope.cs" />
+    <Compile Include="Enums\VertexInputRate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Structs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SixtenLabs.Spawn.OpenGL.Generator
+namespace SixtenLabs.Spawn.Vulkan
 {
-  public enum RegistryLoadMethod
-  {
-    Error,
-    FromFile,
-    FromUri
-  }
+	class HandleCreator
+	{
+	}
 }

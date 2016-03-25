@@ -23,7 +23,7 @@ namespace SixtenLabs.Spawn
 
 		private Project GetProject(string projectName)
 		{
-			var newSolution = Solution;
+			var newSolution = Workspace.CurrentSolution;
 			var project = newSolution.Projects.First(x => x.Name == projectName);
 
 			return project;
@@ -31,7 +31,12 @@ namespace SixtenLabs.Spawn
 
 		private void ApplyChanges(Solution solution)
 		{
-			Workspace.TryApplyChanges(solution);
+			var result = Workspace.TryApplyChanges(solution);
+
+			if(!result)
+			{
+				throw new InvalidOperationException("Could not apply changes to workspace...why not?");
+			}
 		}
 
 		/// <summary>
@@ -57,19 +62,18 @@ namespace SixtenLabs.Spawn
 
 			var document = project.Documents.Where(x => x.Name == $"{newFileName}.cs").FirstOrDefault();
 
+			Document newDocument = null;
+
 			if (document != null)
 			{
-				document = document.WithText(SourceText.From(contents));
+				newDocument = document.WithText(SourceText.From(contents));
 			}
 			else
 			{
-				document = project.AddDocument(newFileName, contents, folders, filePath);
+				newDocument = project.AddDocument(newFileName, contents, folders, filePath);
 			}
 
-			project = document.Project;
-			var solution = project.Solution;
-
-			ApplyChanges(solution);
+			ApplyChanges(newDocument.Project.Solution);
     }
 
 		private MSBuildWorkspace Workspace { get; set; }

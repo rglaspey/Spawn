@@ -7,14 +7,12 @@ namespace SixtenLabs.Spawn
 {
   public static partial class SyntaxExtensions
   {
-    #region Public Methods
-
     public static CompilationUnitSyntax AddClass(this CompilationUnitSyntax compilationUnit, OutputDefinition outputDefinition, ClassDefinition classDefinition)
     {
 			var memberList = SF.List<MemberDeclarationSyntax>();
 
-			var fields = AddFields(classDefinition.Fields);
-			var properties = AddProperties(classDefinition.Properties);
+			var fields = AddFields(classDefinition.FieldDefinitions);
+			var properties = AddProperties(classDefinition.PropertyDefinitions);
 
 			memberList = memberList.AddRange(fields);
 			memberList = memberList.AddRange(properties);		
@@ -30,7 +28,5 @@ namespace SixtenLabs.Spawn
 
       return compilationUnit.AddMembers(nameSpaceDeclaration);
     }
-
-    #endregion
   }
 }

@@ -7,15 +7,9 @@ namespace SixtenLabs.Spawn
 {
 	public class CSharpGenerator : CodeGenerator
 	{
-		#region Constructors
-
 		public CSharpGenerator()
 		{
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		/// Generate a single output with an enum
@@ -23,7 +17,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="outputDefinition"></param>
 		/// <param name="enumDefinition"></param>
 		/// <returns></returns>
-		public string GenerateEnum(OutputDefinition outputDefinition, EnumDefinition enumDefinition)
+		public override string GenerateEnum(OutputDefinition outputDefinition, EnumDefinition enumDefinition)
 		{
 			var code = SF.CompilationUnit()
 				.AddUsingDirectives(outputDefinition.Usings)
@@ -31,7 +25,9 @@ namespace SixtenLabs.Spawn
 				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
 				.NormalizeWhitespace();
 
-			return code.GetFormattedCode();
+			var formattedCode = code.GetFormattedCode();
+
+			return formattedCode;
 		}
 
 		/// <summary>
@@ -43,9 +39,25 @@ namespace SixtenLabs.Spawn
 		public string GenerateClass(OutputDefinition outputDefinition, ClassDefinition classDefinition)
 		{
 			var code = SF.CompilationUnit()
-				
 				.AddUsingDirectives(outputDefinition.Usings)
 				.AddClass(outputDefinition, classDefinition)
+				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
+				.NormalizeWhitespace();
+
+			return code.GetFormattedCode();
+		}
+
+		/// <summary>
+		/// Generate a single output with a struct
+		/// </summary>
+		/// <param name="outputDefinition"></param>
+		/// <param name="delegateDefinition"></param>
+		/// <returns></returns>
+		public string GenerateStruct(OutputDefinition outputDefinition, StructDefinition structDefinition)
+		{
+			var code = SF.CompilationUnit()
+				.AddUsingDirectives(outputDefinition.Usings)
+				.AddStruct(outputDefinition, structDefinition)
 				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
 				.NormalizeWhitespace();
 
@@ -63,16 +75,7 @@ namespace SixtenLabs.Spawn
 		//	throw new NotImplementedException();
 		//}
 
-		///// <summary>
-		///// Generate a single output with a struct
-		///// </summary>
-		///// <param name="outputDefinition"></param>
-		///// <param name="delegateDefinition"></param>
-		///// <returns></returns>
-		//public string GenerateStruct(OutputDefinition outputDefinition, StructDefinition delegateDefinition)
-		//{
-		//	throw new NotImplementedException();
-		//}
+
 
 		///// <summary>
 		///// Generate a single output with a delegate
@@ -84,7 +87,5 @@ namespace SixtenLabs.Spawn
 		//{
 		//	throw new NotImplementedException();
 		//}
-
-		#endregion
 	}
 }

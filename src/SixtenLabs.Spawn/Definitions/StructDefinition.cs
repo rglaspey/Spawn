@@ -39,14 +39,7 @@ namespace SixtenLabs.Spawn
 
 		public void AddField(string name, string returnType = "string", object defaultValue = null)
 		{
-			LiteralDefinition literalDefinition = null;
-
-			if (defaultValue != null)
-			{
-				literalDefinition = new LiteralDefinition(defaultValue, defaultValue.GetType());
-			}
-
-			var fieldDefinition = new FieldDefinition(name, returnType, literalDefinition);
+			var fieldDefinition = name.CreateFieldDefinition(returnType, defaultValue);
 			FieldDefinitions.Add(fieldDefinition);
 		}
 
@@ -55,6 +48,8 @@ namespace SixtenLabs.Spawn
 		#region Properties
 
 		public List<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
+
+		public IList<PropertyDefinition> PropertyDefinitions { get; } = new List<PropertyDefinition>();
 
 		#endregion
 	}

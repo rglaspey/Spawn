@@ -21,7 +21,7 @@ namespace SixtenLabs.Spawn.Test.Definitions
 
       subject.AddField("count");
 
-      subject.Fields.Count.Should().Be(1);
+      subject.FieldDefinitions.Count.Should().Be(1);
     }
 
     [Fact]
@@ -31,7 +31,7 @@ namespace SixtenLabs.Spawn.Test.Definitions
 
       subject.AddField("count", "int", 10);
 
-      subject.Fields[0].DefaultValue.Value.Should().Be(10);
+      subject.FieldDefinitions[0].DefaultValue.Value.Should().Be(10);
     }
 
     [Fact]

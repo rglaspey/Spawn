@@ -1,4 +1,5 @@
 ﻿using SimpleInjector;
+using SixtenLabs.Spawn.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 			SimpleContainer = new Container();
 
 			SimpleContainer.RegisterSingleton<ISpawn, Spawn>();
-
+			SimpleContainer.RegisterSingleton<IGeneratorSettings, GlSettings>();
+			SimpleContainer.RegisterSingleton<XmlFileLoader>();
 
 			SimpleContainer.Verify();
 		}
@@ -32,19 +34,15 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 		{
 			var spawn = SimpleContainer.GetInstance<ISpawn>();
 
-			spawn.Intialize("../../../../../Spawn.sln");
-			
+			spawn.Intialize("../../../../../Spawn/Spawn.sln");
 
-			var settings = new RegistryGeneratorSettings()
-			{
-				LoadMethod = RegistryLoadMethod.FromFile
-			};
+			var settings = new GlSettings();
 
 			// Load opengl registry
-			var loader = new RegistryLoader(settings);
-			var registry = loader.LoadRegistry();
+			var loader = new XmlFileLoader(settings);
+			//var registry = loader.LoadRegistry();
 
-			CreateEnums(registry, spawn);
+			//CreateEnums(registry, spawn);
 		}
 
 		private static void CreateEnums(registry registry, ISpawn spawn)

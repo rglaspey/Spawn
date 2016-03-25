@@ -71,9 +71,7 @@
     <Compile Include="OpenGlVersion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistryGeneratorSettings.cs" />
-    <Compile Include="RegistryLoader.cs" />
-    <Compile Include="RegistryLoadMethod.cs" />
+    <Compile Include="GlSettings.cs" />
     <Compile Include="Registry\gl.cs">
       <DependentUpon>gl.xsd</DependentUpon>
     </Compile>
