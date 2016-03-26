@@ -9,20 +9,12 @@ namespace SixtenLabs.Spawn
 {
 	public class ParameterDefinition : BaseTypeDefinition
 	{
-		#region Constructors
-
 		public ParameterDefinition(string name, string returnType)
 			: base(name)
 		{
 			ReturnType = returnType;
 		}
 
-		#endregion
-
-		#region Properties
-
 		public string ReturnType { get; }
-
-		#endregion
 	}
 }

@@ -29,16 +29,10 @@ namespace SixtenLabs.Spawn
 	/// </summary>
   public class ClassDefinition : TypeDefinition
   {
-    #region Constructors
-
     public ClassDefinition(string name)
       : base(name)
     {
     }
-
-		#endregion
-
-		#region Public Methods
 
 		public void AddField(string name, string returnType = "string", object defaultValue = null)
 		{
@@ -54,14 +48,8 @@ namespace SixtenLabs.Spawn
 			return propertyDefinition;
 		}
 
-		#endregion
-
-		#region Properties
-
 		public IList<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
 
 		public IList<PropertyDefinition> PropertyDefinitions { get; } = new List<PropertyDefinition>();
-
-    #endregion
   }
 }

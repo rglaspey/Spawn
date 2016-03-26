@@ -11,24 +11,16 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class FieldDefinition : TypeMemberDefinition
 	{
-		#region Constructors
-
 		public FieldDefinition(string name, string returnType, LiteralDefinition defaultValue = null)
 			: base(name, returnType)
 		{
 			DefaultValue = defaultValue;
 		}
 
-		#endregion
-
-		#region Properties
-
 		/// <summary>
 		/// The default value of the field. 
 		/// Null by default
 		/// </summary>
 		public LiteralDefinition DefaultValue { get; }
-
-		#endregion
 	}
 }

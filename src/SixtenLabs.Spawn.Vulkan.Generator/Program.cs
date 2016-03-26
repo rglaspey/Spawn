@@ -18,6 +18,7 @@ namespace SixtenLabs.Spawn.Vulkan.Generator
 
 			generator.Initialize();
 			generator.MapTypes();
+			generator.Rewrite();
 			generator.Build();
 			generator.Generate();
 		}

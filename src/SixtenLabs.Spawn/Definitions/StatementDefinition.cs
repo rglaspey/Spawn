@@ -33,20 +33,12 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class StatementDefinition : Definition
 	{
-		#region Constructors
-
 		public StatementDefinition(string name, string code)
 			: base(name)
 		{
 			Code = code;
 		}
 
-		#endregion
-
-		#region Properties
-
 		public string Code { get; }
-
-		#endregion
 	}
 }

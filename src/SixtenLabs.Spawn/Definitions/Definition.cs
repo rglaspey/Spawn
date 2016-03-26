@@ -8,19 +8,11 @@ namespace SixtenLabs.Spawn
 	/// </summary>
   public abstract class Definition
   {
-    #region Constructors
-
     public Definition(string name)
     {
       Name = name;
     }
 
-    #endregion
-
-    #region Properties
-
     public string Name { get; }
-
-	  #endregion
   }
 }

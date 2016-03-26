@@ -23,8 +23,6 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class NamespaceDefinition : Definition
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Use this constructor to create a namespace definition
 		/// </summary>
@@ -33,7 +31,5 @@ namespace SixtenLabs.Spawn
       : base(@namespace)
     {
 		}
-
-		#endregion
 	}
 }

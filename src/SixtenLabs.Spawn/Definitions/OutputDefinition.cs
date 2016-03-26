@@ -7,16 +7,10 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class OutputDefinition : Definition
 	{
-		#region Constructors
-
 		public OutputDefinition(string name)
 			: base(name)
 		{
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		/// Add the names of the dlls to use to create using statements for this output
@@ -53,10 +47,6 @@ namespace SixtenLabs.Spawn
 			Namespace = new NamespaceDefinition(@namespace);
     }
 
-		#endregion
-
-		#region Properties
-
 		/// <summary>
 		/// The names of the dlls to use to create using statements for this output
 		/// </summary>
@@ -66,7 +56,5 @@ namespace SixtenLabs.Spawn
 		/// The namesapce of the output.
 		/// </summary>
 		public NamespaceDefinition Namespace { get; private set; }
-
-		#endregion
 	}
 }

@@ -165,6 +165,7 @@
     <Compile Include="Extensions\SyntaxExtensions.Enum.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.TypeMember.Tests.cs" />
     <Compile Include="Generators\CSharpGeneratorTests.cs" />
+    <Compile Include="Model\SerializationTest.cs" />
     <Compile Include="OutputStringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -175,7 +176,11 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SampleData\Enum_01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">
       <Project>{d3447c4f-bdc3-4de0-8905-18e0f6be7fc2}</Project>

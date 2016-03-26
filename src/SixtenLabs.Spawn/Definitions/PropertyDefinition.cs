@@ -9,17 +9,11 @@ namespace SixtenLabs.Spawn
 {
 	public class PropertyDefinition : TypeMemberDefinition
 	{
-		#region Constructors
-
 		public PropertyDefinition(string name, string returnType, LiteralDefinition defaultValue = null)
 			: base(name, returnType)
 		{
 			DefaultValue = defaultValue;
 		}
-
-		#endregion
-
-		#region Private Methods
 
 		public AccessorDefinition AddAccessor(SyntaxKind type, SyntaxKind modifier = SyntaxKind.None, string block = null)
 		{
@@ -35,10 +29,6 @@ namespace SixtenLabs.Spawn
 			return accessor;
     }
 
-		#endregion
-
-		#region Public Methods
-
 		public void AddGetter(SyntaxKind modifier = SyntaxKind.None, string block = null)
 		{
 			Getter = AddAccessor(SyntaxKind.GetAccessorDeclaration, modifier, block);
@@ -49,10 +39,6 @@ namespace SixtenLabs.Spawn
 			Setter = AddAccessor(SyntaxKind.SetAccessorDeclaration, modifier, block);
 		}
 		
-		#endregion
-
-		#region Properties
-
 		/// <summary>
 		/// The default value of the field. 
 		/// Null by default
@@ -62,7 +48,5 @@ namespace SixtenLabs.Spawn
 		public AccessorDefinition Getter { get; private set; }
 
 		public AccessorDefinition Setter { get; private set; }
-
-		#endregion
 	}
 }

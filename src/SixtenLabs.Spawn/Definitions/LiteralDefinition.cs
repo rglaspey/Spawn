@@ -4,8 +4,6 @@ namespace SixtenLabs.Spawn
 {
   public class LiteralDefinition : Definition
   {
-    #region Constructors
-
     public LiteralDefinition(object value, Type literalType)
 			: base(value.ToString())
 		{
@@ -13,14 +11,8 @@ namespace SixtenLabs.Spawn
       LiteralType = literalType;
     }
 
-    #endregion
-
-    #region Properties
-
     public object Value { get; }
 
     public Type LiteralType { get; }
-
-    #endregion
   }
 }

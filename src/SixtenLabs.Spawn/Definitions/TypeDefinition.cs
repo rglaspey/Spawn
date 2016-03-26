@@ -8,13 +8,9 @@ namespace SixtenLabs.Spawn
 {
 	public abstract class TypeDefinition : BaseTypeDefinition
 	{
-		#region Constructors
-
 		protected TypeDefinition(string name)
 			: base(name)
 		{
 		}
-
-		#endregion
 	}
 }

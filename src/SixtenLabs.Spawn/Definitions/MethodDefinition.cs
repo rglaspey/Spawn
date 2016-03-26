@@ -8,16 +8,10 @@ namespace SixtenLabs.Spawn
 {
 	public class MethodDefinition : TypeMemberDefinition
 	{
-		#region Constructors
-
 		public MethodDefinition(string name, string returnType)
 			: base(name, returnType)
 		{
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		public void AddCodeLineToBody(string code)
 		{
@@ -29,12 +23,5 @@ namespace SixtenLabs.Spawn
 
 			Block.AddStatement(code);
 		}
-
-		#endregion
-
-		#region Properties
-
-
-		#endregion
 	}
 }

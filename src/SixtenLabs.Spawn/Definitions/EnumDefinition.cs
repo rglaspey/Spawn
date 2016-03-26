@@ -12,8 +12,6 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class EnumDefinition : TypeDefinition
   {
-    #region Constructors
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -26,10 +24,6 @@ namespace SixtenLabs.Spawn
       BaseType = baseType;
       HasFlags = hasFlags;
     }
-
-    #endregion
-
-    #region Public Methods
 
     public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
     {
@@ -51,10 +45,6 @@ namespace SixtenLabs.Spawn
       }
     }
 
-    #endregion
-
-    #region Properties
-
     public IList<string> MemberNames { get; } = new List<string>();
 
     public IDictionary<string, string> MemberValues { get; } = new Dictionary<string, string>();
@@ -64,7 +54,5 @@ namespace SixtenLabs.Spawn
     public bool HasFlags { get; }
 
     public SyntaxKindX BaseType { get; }
-
-    #endregion
   }
 }

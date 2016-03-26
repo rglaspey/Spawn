@@ -5,12 +5,13 @@ using System.Linq;
 using System;
 using System.Globalization;
 using System.Text;
+using SixtenLabs.Spawn.Vulkan.Model;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class VulkanRules : ICreatorRules
+	public class VulkanSpec : IVulkanSpec
 	{
-		public VulkanRules(XmlFileLoader xmlFileLoader)
+		public VulkanSpec(XmlFileLoader xmlFileLoader)
 		{
 			FileLoader = xmlFileLoader;
 		}
@@ -37,6 +38,23 @@ namespace SixtenLabs.Spawn.Vulkan
 			TypeMaps.Add(name, transformedName);
 		}
 
+		public VulkanType GetOrAddType(string name)
+		{
+			if (AllTypes.ContainsKey(name))
+				return AllTypes[name];
+
+			// Could be one of the poorly-named enums
+			var enumName = name.GetEnumName();
+			if (AllTypes.ContainsKey(enumName))
+				return AllTypes[enumName];
+
+			var newType = new VulkanType();
+			newType.Name = name;
+
+			AllTypes.Add(name, newType);
+			return newType;
+		}
+
 		public IDictionary<string, string> TypeMaps { get; } = new Dictionary<string, string>()
 		{
 			//{ "void", "IntPtr" },
@@ -60,5 +78,35 @@ namespace SixtenLabs.Spawn.Vulkan
 				return FileLoader.Registry;
 			}
 		}
+
+		public IDictionary<string, VulkanType> AllTypes { get; } = new Dictionary<string, VulkanType>();
+
+		public IEnumerable<VulkanStruct> Structs
+		{
+			get
+			{
+				return AllTypes.Values.Where(x => x is VulkanStruct).Cast<VulkanStruct>().ToArray();
+			}
+		}
+
+		public IEnumerable<VulkanHandle> Handles
+		{
+			get
+			{
+				return AllTypes.Values.Where(x => x is VulkanHandle).Cast<VulkanHandle>().ToArray();
+			}
+		}
+
+		public IEnumerable<VulkanEnum> Enums
+		{
+			get
+			{
+				return AllTypes.Values.Where(x => x is VulkanEnum).Cast<VulkanEnum>().ToArray();
+			}
+		}
+
+		public VulkanCommand[] Commands { get; set; }
+
+		public VulkanFeature[] Features { get; set; }
 	}
 }

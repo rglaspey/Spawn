@@ -8,16 +8,10 @@ namespace SixtenLabs.Spawn
 {
 	public class BlockDefinition : Definition
 	{
-		#region Constructors
-
 		public BlockDefinition(string name)
 			: base(name)
 		{
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		public void AddStatement(string code)
 		{
@@ -25,12 +19,6 @@ namespace SixtenLabs.Spawn
 			Statements.Add(definition);
 		}
 
-		#endregion
-
-		#region Properties
-
 		public IList<StatementDefinition> Statements { get; } = new List<StatementDefinition>();
-
-		#endregion
 	}
 }

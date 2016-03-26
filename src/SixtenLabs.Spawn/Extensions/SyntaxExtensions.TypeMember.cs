@@ -59,16 +59,6 @@ namespace SixtenLabs.Spawn
 
 		#endregion
 
-		#region Add Constructor Methods
-
-
-		#endregion
-
-		#region Add Method Methods
-
-
-		#endregion
-
 		#region Add Property Methods
 
 		private static AccessorDeclarationSyntax ComposeAccessor(AccessorDefinition definition)

@@ -10,7 +10,7 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class VulkanGenerator
 	{
-		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawn spawn, ICreatorRules rules)
+		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawn spawn, IVulkanSpec rules)
 		{
 			Creators = creators;
 			Spawn = spawn;
@@ -25,11 +25,25 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void MapTypes()
 		{
-			foreach (var creator in Creators)
+			var orderedCreators = Creators.OrderBy(x => x.Order);
+
+			foreach (var creator in orderedCreators)
 			{
 				Console.WriteLine($"Mapping {creator.TypeName} files.");
 				creator.MapTypes();
 				Console.WriteLine($"Mapped {creator.NumberCreated} {creator.TypeName} files.");
+			}
+		}
+
+		public void Rewrite()
+		{
+			var orderedCreators = Creators.OrderBy(x => x.Order);
+
+			foreach (var creator in orderedCreators)
+			{
+				Console.WriteLine($"Rewriting {creator.TypeName} files.");
+				creator.Rewrite();
+				Console.WriteLine($"Rewrote {creator.NumberCreated} {creator.TypeName} files.");
 			}
 		}
 
@@ -61,6 +75,6 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		private ISpawn Spawn { get; }
 
-		private ICreatorRules Rules { get; }
+		private IVulkanSpec Rules { get; }
 	}
 }

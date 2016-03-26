@@ -12,24 +12,11 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class InterfaceDefinition : TypeDefinition
 	{
-		#region Constructors
-
 		public InterfaceDefinition(string name)
       : base(name)
     {
 		}
 
-		#endregion
-
-		#region Public Methods
-
-
-		#endregion
-
-		#region Properties
-
 		public List<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
-
-		#endregion
 	}
 }

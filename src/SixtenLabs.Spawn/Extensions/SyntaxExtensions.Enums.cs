@@ -4,23 +4,42 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
+using System.Linq;
+using Microsoft.CodeAnalysis;
+
 namespace SixtenLabs.Spawn
 {
   public static partial class SyntaxExtensions
   {
-    #region Private Methods
-
     private static List<EnumMemberDeclarationSyntax> ComposeEnumMembers(EnumDefinition enumDefinition)
     {
       var enumMembers = new List<EnumMemberDeclarationSyntax>();
 
       foreach(var enumMember in enumDefinition.MemberNames)
       {
-        var enumDeclaration = SF.EnumMemberDeclaration(enumMember);
+				var hasComments = enumDefinition.MemberComments.ContainsKey(enumMember);
+
+				EnumMemberDeclarationSyntax enumDeclaration = null;
+
+				//if (hasComments)
+				//{
+				//	var comment = enumDefinition.MemberComments[enumMember];
+
+				//	var body = SF.Literal(enumMember);
+				//	var leading = SF.TriviaList().Add(SF.Comment($"// {comment}"));
+				//	var trailing = SF.TriviaList();
+				//	var identifier = SF.Token(leading, SyntaxKind.token,  "", enumMember, trailing);
+					
+				//	enumDeclaration = SF.EnumMemberDeclaration(identifier);
+				//}
+				//else
+				//{
+					enumDeclaration = SF.EnumMemberDeclaration(enumMember);
+				//}
 
         if(enumDefinition.MemberValues.Keys.Contains(enumMember))
         {
-          enumDeclaration = enumDeclaration.WithEqualsValue(SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, SF.Literal(SF.TriviaList(), enumDefinition.MemberValues[enumMember], 0, SF.TriviaList()))));
+					enumDeclaration = enumDeclaration.WithEqualsValue(SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, SF.Literal(SF.TriviaList(), enumDefinition.MemberValues[enumMember], 0, SF.TriviaList()))));
         }
 
         enumMembers.Add(enumDeclaration);
@@ -28,10 +47,6 @@ namespace SixtenLabs.Spawn
 
       return enumMembers;
     }
-
-    #endregion
-
-    #region Public Methods
 
     public static CompilationUnitSyntax AddEnum(this CompilationUnitSyntax compilationUnit, OutputDefinition outputDefinition, EnumDefinition enumDefinition)
     {
@@ -42,7 +57,7 @@ namespace SixtenLabs.Spawn
 
       var enumDeclaration = SF.EnumDeclaration(enumDefinition.Name)
         .WithModifiers(modifiers)
-        .WithMembers(SF.SeparatedList(members));
+				.WithMembers(SF.SeparatedList(members));
 
       if((int)enumDefinition.BaseType != (int)SyntaxKind.None)
       {
@@ -51,8 +66,20 @@ namespace SixtenLabs.Spawn
 
       if(enumDefinition.HasFlags)
       {
-        enumDeclaration = enumDeclaration.WithAttributeLists(SF.SingletonList<AttributeListSyntax>(SF.AttributeList(SF.SingletonSeparatedList<AttributeSyntax>(SF.Attribute(SF.IdentifierName("Flags"))))));
+        enumDeclaration = enumDeclaration.WithAttributeLists(SF.SingletonList(SF.AttributeList(SF.SingletonSeparatedList(SF.Attribute(SF.IdentifierName("Flags"))))));
       }
+
+			if(enumDefinition.MemberComments.Count > 0)
+			{
+				var trivia = SF.TriviaList();
+
+				foreach (var comment in enumDefinition.MemberComments.Values)
+				{
+					trivia.Add(SF.SyntaxTrivia(SyntaxKind.SingleLineCommentTrivia, comment));
+				}
+
+				enumDeclaration.WithLeadingTrivia(trivia);
+			}
 
       nameSpaceDeclaration = nameSpaceDeclaration.AddMembers(enumDeclaration);
 
@@ -63,7 +90,5 @@ namespace SixtenLabs.Spawn
 		{
 			return (SyntaxKind)syntaxKind;
 		}
-
-		#endregion
 	}
 }

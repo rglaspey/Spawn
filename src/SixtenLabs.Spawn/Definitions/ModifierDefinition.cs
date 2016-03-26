@@ -32,8 +32,6 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class ModifierDefinition : Definition
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Use this constructor to create a modifier definition
 		/// </summary>
@@ -44,12 +42,6 @@ namespace SixtenLabs.Spawn
 			Modifier = modifier;
 		}
 
-		#endregion
-
-		#region Properties
-
 		public SyntaxKindX Modifier { get; }
-
-		#endregion
 	}
 }

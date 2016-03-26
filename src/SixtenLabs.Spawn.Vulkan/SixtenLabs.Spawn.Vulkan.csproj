@@ -40,10 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCreator.cs" />
     <Compile Include="CommandCreator.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="FeatureCreator.cs" />
     <Compile Include="HandleCreator.cs" />
+    <Compile Include="ICreator.cs" />
+    <Compile Include="ICreatorRules.cs" />
+    <Compile Include="ImportCreator.cs" />
+    <Compile Include="Model\VulkanCommand.cs" />
+    <Compile Include="Model\VulkanEnum.cs" />
+    <Compile Include="Model\VulkanEnumValue.cs" />
+    <Compile Include="Model\VulkanFeature.cs" />
+    <Compile Include="Model\VulkanFeatureRequirement.cs" />
+    <Compile Include="Model\VulkanHandle.cs" />
+    <Compile Include="Model\VulkanMember.cs" />
+    <Compile Include="Model\VulkanParam.cs" />
+    <Compile Include="Model\VulkanStruct.cs" />
+    <Compile Include="Model\VulkanType.cs" />
+    <Compile Include="Model\VulkanTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EnumCreator.cs" />
+    <Compile Include="PlatformTypeCreator.cs" />
     <Compile Include="UnionCreator.cs" />
     <Compile Include="VulkanGenerator.cs" />
     <Compile Include="VulkanRules.cs" />
@@ -56,6 +74,12 @@
       <Name>SixtenLabs.Spawn</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Spec\vk.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

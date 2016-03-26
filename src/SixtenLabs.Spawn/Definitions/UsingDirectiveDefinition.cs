@@ -19,8 +19,6 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class UsingDirectiveDefinition : Definition
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Use this constructor to create a standard or static using directive definition
 		/// </summary>
@@ -51,10 +49,6 @@ namespace SixtenLabs.Spawn
 			}
 		}
 
-		#endregion
-
-		#region Properties
-
 		/// <summary>
 		/// Is this a static using directive?
 		/// </summary>
@@ -69,7 +63,5 @@ namespace SixtenLabs.Spawn
 		/// The alias to use in the using directive
 		/// </summary>
 		public string Alias { get; }
-
-		#endregion
 	}
 }

@@ -26,16 +26,10 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class StructDefinition : TypeDefinition
 	{
-		#region Constructors
-
 		public StructDefinition(string name)
       : base(name)
     {
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		public void AddField(string name, string returnType = "string", object defaultValue = null)
 		{
@@ -43,14 +37,8 @@ namespace SixtenLabs.Spawn
 			FieldDefinitions.Add(fieldDefinition);
 		}
 
-		#endregion
-
-		#region Properties
-
 		public List<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
 
 		public IList<PropertyDefinition> PropertyDefinitions { get; } = new List<PropertyDefinition>();
-
-		#endregion
 	}
 }

@@ -19,7 +19,7 @@ namespace SixtenLabs.Spawn.Vulkan.Generator
 			SimpleContainer.RegisterSingleton<IGeneratorSettings, VulkanSettings>();
 			SimpleContainer.RegisterSingleton<XmlFileLoader>();
 			SimpleContainer.RegisterSingleton<VulkanGenerator>();
-			SimpleContainer.RegisterSingleton<ICreatorRules, VulkanRules>();
+			SimpleContainer.RegisterSingleton<IVulkanSpec, VulkanSpec>();
 			SimpleContainer.RegisterSingleton<ICodeGenerator, CSharpGenerator>();
 
 			var creatorTypes = SimpleContainer.GetTypesToRegister(typeof(ICreator), Assemblies);
@@ -47,7 +47,7 @@ namespace SixtenLabs.Spawn.Vulkan.Generator
 		protected void SelectAssemblies()
 		{
 			var spawnAssembly = Assembly.GetAssembly(typeof(BaseCreator));
-			var vulkanAssembly = Assembly.GetAssembly(typeof(VulkanRules));
+			var vulkanAssembly = Assembly.GetAssembly(typeof(VulkanSpec));
 			var generatorAssembly = Assembly.GetAssembly(typeof(Program));
 
 			Assemblies.Add(spawnAssembly);

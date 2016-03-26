@@ -15,13 +15,9 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class DelegateDefinition : TypeMemberDefinition
 	{
-		#region Constructors
-
 		public DelegateDefinition(string name, string returnType)
 			: base(name, returnType)
 		{
 		}
-
-		#endregion
 	}
 }
