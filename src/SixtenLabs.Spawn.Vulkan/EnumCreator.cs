@@ -7,15 +7,13 @@ using System;
 using System.Collections.Generic;
 using SixtenLabs.Spawn.Vulkan.Model;
 using System.Text.RegularExpressions;
-using SixtenLabs.Spawn.Model;
-using System.Xml.Serialization;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
 	public class EnumCreator : BaseCreator
-	{
-		public EnumCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 20, "Enum", "Enum")
+	{ 
+		public EnumCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 20, "Enum", "Enum")
 		{
 		}
 		
@@ -196,42 +194,36 @@ namespace SixtenLabs.Spawn.Vulkan
 			{
 				if (vulkanEnum.Name != "API Constants")
 				{
-					var spawnEnum = new SpawnEnum();
+					var spawnEnum = new EnumDefinition();
 					spawnEnum.Name = vulkanEnum.Name;
 					spawnEnum.Comments.Add(vulkanEnum.Comment);
 					spawnEnum.HasFlags = vulkanEnum.IsBitmask;
 
-					//var enumDefinition = new EnumDefinition(vulkanEnum.Name, SyntaxKindX.None, hasFlags: vulkanEnum.IsBitmask);
-					//enumDefinition.AddModifier(SyntaxKindX.PublicKeyword);
-
 					foreach (var enumValue in vulkanEnum.Values)
 					{
-						spawnEnum.Members.Add(new SpawnEnumMember() { Name = enumValue.Name, Value = enumValue.Value, Comment = enumValue.Comment });
+						spawnEnum.AddEnumMember(enumValue.Name, enumValue.Value, enumValue.Comment);
 					}
 
-					SpawnEnums.Add(spawnEnum);
+					EnumDefinitions.Add(spawnEnum);
 				}
 			}
 		}
 
 		public override void Create()
 		{
-			foreach (var spawnEnum in SpawnEnums)
+			foreach (var enumDefinition in EnumDefinitions)
 			{
-				if (spawnEnum.Members.Count > 0)
+				if (enumDefinition.Members.Count > 0)
 				{
-					var output = new OutputDefinition($"{spawnEnum.Name}.cs");
+					var output = new OutputDefinition() { Name = $"{enumDefinition.Name}.cs" };
 					output.AddNamespace(TargetNamespace);
 
-					if (spawnEnum.HasFlags)
+					if (enumDefinition.HasFlags)
 					{
 						output.AddStandardUsingDirective("System");
 					}
 
-					//var xml = SerializeToXml(spawnEnum);
-					//var contents = GetFormattedCode(xml);
-
-					//Spawn.AddDocumentToProject(TargetSolution, spawnEnum.Name, contents, new string[] { "Enums" });
+					Generator.GenerateEnum(enumDefinition, output);
 					NumberCreated++;
 				}
 				else
@@ -241,6 +233,6 @@ namespace SixtenLabs.Spawn.Vulkan
 			}
 		}
 
-		private IList<SpawnEnum> SpawnEnums { get; } = new List<SpawnEnum>();
+		private IList<EnumDefinition> EnumDefinitions { get; } = new List<EnumDefinition>();
 	}
 }

@@ -11,8 +11,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class HandleCreator : BaseCreator
 	{
-		public HandleCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 30, "Type", "Type")
+		public HandleCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 30, "Type", "Type")
 		{
 		}
 

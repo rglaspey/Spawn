@@ -10,8 +10,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class ImportCreator : BaseCreator
 	{
-		public ImportCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 1, "Import", "Import")
+		public ImportCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 1, "Import", "Import")
 		{
 		}
 

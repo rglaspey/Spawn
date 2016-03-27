@@ -10,8 +10,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class UnionCreator : BaseCreator
 	{
-		public UnionCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 2, "Union", "Union")
+		public UnionCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 2, "Union", "Union")
 		{
 		}
 

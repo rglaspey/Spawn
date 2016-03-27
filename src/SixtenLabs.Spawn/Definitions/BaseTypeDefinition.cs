@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace SixtenLabs.Spawn
 {
@@ -8,26 +7,25 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public abstract class BaseTypeDefinition : Definition
 	{
-		protected BaseTypeDefinition(string name)
-			: base(name)
+		protected BaseTypeDefinition()
 		{
 		}
 
-		public void AddModifier(SyntaxKindX modifier)
+		public void AddModifier(Modifiers modifier, int order)
 		{
-			ModifierDefinitions.Add(new ModifierDefinition(modifier));
+			ModifierDefinitions.Add(new ModifierDefinition() { Modifier = modifier, Order = order });
 		}
 
-		public void AddAttribute(string attributeName)
-		{
-			AttributeDefinitions.Add(new AttributeDefinition(attributeName));
-		}
+		//public void AddAttribute(string attributeName)
+		//{
+		//	AttributeDefinitions.Add(new AttributeDefinition(attributeName));
+		//}
 
 		/// <summary>
 		/// Modifiers are used to modify declarations of types and type members
 		/// </summary>
 		public List<ModifierDefinition> ModifierDefinitions { get; } = new List<ModifierDefinition>();
 
-		public List<AttributeDefinition> AttributeDefinitions { get; } = new List<AttributeDefinition>();
+		//public List<AttributeDefinition> AttributeDefinitions { get; } = new List<AttributeDefinition>();
 	}
 }

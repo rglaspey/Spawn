@@ -8,11 +8,10 @@ namespace SixtenLabs.Spawn
 	/// </summary>
   public abstract class Definition
   {
-    public Definition(string name)
+    public Definition()
     {
-      Name = name;
     }
 
-    public string Name { get; }
+    public string Name { get; set; }
   }
 }

@@ -8,9 +8,8 @@ namespace SixtenLabs.Spawn.Utility
 {
 	public abstract class BaseCreator : ICreator
 	{
-		public BaseCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec rules, int order, string name, string typeName)
+		public BaseCreator(ICodeGenerator generator, IVulkanSpec rules, int order, string name, string typeName)
 		{
-			Spawn = spawn;
 			Generator = generator;
 			Name = name;
 			TypeName = typeName;
@@ -25,8 +24,6 @@ namespace SixtenLabs.Spawn.Utility
 		public abstract void Build();
 
 		public abstract void Create();
-
-		protected ISpawn Spawn { get; }
 
 		protected ICodeGenerator Generator { get; }
 

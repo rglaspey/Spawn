@@ -47,34 +47,34 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 
 		private static void CreateEnums(registry registry, ISpawn spawn)
 		{
-			var generator = new CSharpGenerator();
+			//var generator = new CSharpGenerator();
 
-			foreach(var e in registry.groups)
-			{
-				var output = new OutputDefinition($"{e.name}.cs");
-				//output.AddStandardUsingDirective("System");
-				//output.AddStandardUsingDirective("System.Linq");
-				output.AddNamespace("SixtenLabs.Spawn.OpenGL.Target");
+			//foreach(var e in registry.groups)
+			//{
+			//	var output = new OutputDefinition() { Name = $"{e.name}.cs" };
+			//	//output.AddStandardUsingDirective("System");
+			//	//output.AddStandardUsingDirective("System.Linq");
+			//	output.AddNamespace("SixtenLabs.Spawn.OpenGL.Target");
 
-				var definition = new EnumDefinition(e.name);
-				definition.AddModifier(SyntaxKindX.PublicKeyword);
+			//	var definition = new EnumDefinition(e.name);
+			//	definition.AddModifier(SyntaxKindX.PublicKeyword);
 				
-				if (e.@enum != null)
-				{
-					foreach (var enumValue in e.@enum)
-					{
-						var transformedEnumName = TransformEnumName(enumValue.name);
+			//	if (e.@enum != null)
+			//	{
+			//		foreach (var enumValue in e.@enum)
+			//		{
+			//			var transformedEnumName = TransformEnumName(enumValue.name);
 						
-						definition.AddEnumMember(transformedEnumName, "0");
-					}
-				}
+			//			definition.AddEnumMember(transformedEnumName, "0");
+			//		}
+			//	}
 
-				var contents = generator.GenerateEnum(output, definition);
+			//	var contents = generator.GenerateEnum(output, definition);
 
-				Console.WriteLine($"Creating {e.name}");
-				spawn.AddDocumentToProject("SixtenLabs.Spawn.OpenGL.Target", definition.Name, contents, new string[] { "Enums" });
-				Console.WriteLine($"Done Creating {e.name}");
-			}
+			//	Console.WriteLine($"Creating {e.name}");
+			//	spawn.AddDocumentToProject("SixtenLabs.Spawn.OpenGL.Target", definition.Name, contents, new string[] { "Enums" });
+			//	Console.WriteLine($"Done Creating {e.name}");
+			//}
 		}
 
 		private static string TransformEnumName(string value)

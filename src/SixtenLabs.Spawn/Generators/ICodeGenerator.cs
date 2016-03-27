@@ -2,6 +2,6 @@
 {
 	public interface ICodeGenerator
 	{
-		string GenerateEnum(OutputDefinition outputDefinition, EnumDefinition enumDefinition);
+		void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
 	}
 }

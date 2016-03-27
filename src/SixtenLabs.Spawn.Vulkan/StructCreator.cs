@@ -9,8 +9,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class StructCreator : BaseCreator
 	{
-		public StructCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 40, "Struct", "Struct")
+		public StructCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 40, "Struct", "Struct")
 		{
 		}
 

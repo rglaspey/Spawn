@@ -11,8 +11,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class FeatureCreator : BaseCreator
 	{
-		public FeatureCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 60, "Feature", "Feature")
+		public FeatureCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 60, "Feature", "Feature")
 		{
 		}
 

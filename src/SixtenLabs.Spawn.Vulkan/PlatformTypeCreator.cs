@@ -11,8 +11,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class TypeCreator : BaseCreator
 	{
-		public TypeCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec rules)
-			: base(spawn, generator, rules, 10, "Type", "Type")
+		public TypeCreator(ICodeGenerator generator, IVulkanSpec rules)
+			: base(generator, rules, 10, "Type", "Type")
 		{
 		}
 

@@ -19,49 +19,23 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class UsingDirectiveDefinition : Definition
 	{
-		/// <summary>
-		/// Use this constructor to create a standard or static using directive definition
-		/// </summary>
-		/// <param name="dllName">The name of the dll to create a using directive for</param>
-		/// <param name="isStatic">Should this be a static using directive</param>
-		public UsingDirectiveDefinition(string dllName, bool isStatic = false)
-      : base(dllName)
+		public UsingDirectiveDefinition()
     {
-			IsStatic = isStatic;
-		}
-
-		/// <summary>
-		/// Use this constructor to create an aliased using directive.
-		/// </summary>
-		/// <param name="dllName">The name of the dll to create a using directive for</param>
-		/// <param name="alias">The alias to use in the using directive</param>
-		public UsingDirectiveDefinition(string dllName, string alias)
-			: base(dllName)
-		{
-			if (string.IsNullOrEmpty(alias))
-			{
-				throw new ArgumentNullException("You cannot have a null or empty alias. Pass in correct alias value or use the non alias constructor.");
-			}
-			else
-			{
-				Alias = alias;
-				UseAlias = true;
-			}
 		}
 
 		/// <summary>
 		/// Is this a static using directive?
 		/// </summary>
-		public bool IsStatic { get; }
+		public bool IsStatic { get; set; }
 
 		/// <summary>
 		/// Is this an aliased using directive?
 		/// </summary>
-		public bool UseAlias { get; }
+		public bool UseAlias { get; set; }
 
 		/// <summary>
 		/// The alias to use in the using directive
 		/// </summary>
-		public string Alias { get; }
+		public string Alias { get; set; }
 	}
 }

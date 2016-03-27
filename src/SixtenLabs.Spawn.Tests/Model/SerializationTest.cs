@@ -1,8 +1,8 @@
 ﻿using Xunit;
 using FluentAssertions;
 using NSubstitute;
+
 using System.Xml.Serialization;
-using SixtenLabs.Spawn.Model;
 using System.IO;
 using System.Xml;
 
@@ -13,17 +13,17 @@ namespace SixtenLabs.Spawn.Tests.Model
 		[Fact]
 		public void EnumSerialization()
 		{
-			var spawnEnum = new SpawnEnum();
+			var spawnEnum = new EnumDefinition();
 			spawnEnum.Name = "TestSpawnEnum";
 			spawnEnum.HasFlags = true;
-			spawnEnum.EnumType = "int";
+			spawnEnum.BaseType = BaseType.Integer;
 			spawnEnum.Comments.Add("Comment Line 1");
 
-			spawnEnum.Members.Add(new SpawnEnumMember() { Name = "None", Value = "0", Comment = "zero comment" });
-			spawnEnum.Members.Add(new SpawnEnumMember() { Name = "One", Value = "1", Comment = "one comment" });
-			spawnEnum.Members.Add(new SpawnEnumMember() { Name = "Two", Value = "2", Comment = "two comment" });
+			spawnEnum.AddEnumMember("None", "0", "zero comment");
+			spawnEnum.AddEnumMember("One", "1", "one comment" );
+			spawnEnum.AddEnumMember("Two", "2", "two comment");
 
-			XmlSerializer xsSubmit = new XmlSerializer(typeof(SpawnEnum));
+			XmlSerializer xsSubmit = new XmlSerializer(typeof(EnumDefinition));
 
 			using (StringWriter sww = new StringWriter())
 			{

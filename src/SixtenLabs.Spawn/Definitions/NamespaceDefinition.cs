@@ -27,8 +27,7 @@ namespace SixtenLabs.Spawn
 		/// Use this constructor to create a namespace definition
 		/// </summary>
 		/// <param name="@namespace">The name to create a namespace for</param>
-		public NamespaceDefinition(string @namespace)
-      : base(@namespace)
+		public NamespaceDefinition()
     {
 		}
 	}

@@ -11,8 +11,8 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class CommandCreator : BaseCreator
 	{
-		public CommandCreator(ISpawn spawn, ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(spawn, generator, vulkanSpec, 50, "Command", "Command")
+		public CommandCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+			: base(generator, vulkanSpec, 50, "Command", "Command")
 		{
 		}
 

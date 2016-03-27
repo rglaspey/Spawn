@@ -7,8 +7,7 @@ namespace SixtenLabs.Spawn
 	/// </summary>
 	public class OutputDefinition : Definition
 	{
-		public OutputDefinition(string name)
-			: base(name)
+		public OutputDefinition()
 		{
 		}
 
@@ -18,7 +17,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddStandardUsingDirective(string dllName)
 		{
-			var usingDefinition = new UsingDirectiveDefinition(dllName);
+			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName };
 			Usings.Add(usingDefinition);
 		}
 
@@ -28,7 +27,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddStaticUsingDirective(string dllName)
 		{
-			var usingDefinition = new UsingDirectiveDefinition(dllName, true);
+			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName, IsStatic = true };
 			Usings.Add(usingDefinition);
 		}
 
@@ -38,13 +37,13 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddAliasedUsingDirective(string dllName, string alias)
 		{
-			var usingDefinition = new UsingDirectiveDefinition(dllName, alias);
+			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName, Alias = alias };
 			Usings.Add(usingDefinition);
 		}
 
 		public void AddNamespace(string @namespace)
 		{
-			Namespace = new NamespaceDefinition(@namespace);
+			Namespace = new NamespaceDefinition() { Name = @namespace };
     }
 
 		/// <summary>
@@ -56,5 +55,10 @@ namespace SixtenLabs.Spawn
 		/// The namesapce of the output.
 		/// </summary>
 		public NamespaceDefinition Namespace { get; private set; }
+
+
+		public IList<TypeDefinition> TypeDefinitions { get; } = new List<TypeDefinition>();
+
+		public string TargetSolution { get; set; }
 	}
 }

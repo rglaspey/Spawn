@@ -1,29 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.CodeAnalysis.CSharp;
+using System.Xml.Serialization;
 
 namespace SixtenLabs.Spawn
 {
 	/// <summary>
 	/// Define an enum to Generate.
 	/// 
-	/// The enum keyword is used to declare an enumeration, a distinct type that consists of a set of named constants called the enumerator list.
+	/// The enum keyword is used to declare an enumeration, 
+	/// a distinct type that consists of a set of named constants called the enumerator list.
 	/// 
 	/// </summary>
 	public class EnumDefinition : TypeDefinition
   {
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="baseType"></param>
-		/// <param name="hasFlags"></param>
-    public EnumDefinition(string name, SyntaxKindX baseType = SyntaxKindX.IntKeyword, bool hasFlags = false)
-      : base(name)
-    {
-      BaseType = baseType;
-      HasFlags = hasFlags;
-    }
+		public EnumDefinition()
+		{
+		}
 
     public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
     {
@@ -32,27 +24,16 @@ namespace SixtenLabs.Spawn
         throw new ArgumentNullException("The member name must be defined");
       }
 
-      MemberNames.Add(memberName);
-
-      if(!string.IsNullOrEmpty(memberValue))
-      {
-        MemberValues.Add(memberName, memberValue);
-      }
-
-      if(!string.IsNullOrEmpty(comment))
-      {
-        MemberComments.Add(memberName, comment);
-      }
+			var enumMember = new EnumMemberDefinition() { Name = memberName, Value = memberValue, Comment = comment };
+			Members.Add(enumMember);
     }
 
-    public IList<string> MemberNames { get; } = new List<string>();
+		[XmlArray("Members")]
+		[XmlArrayItem(typeof(EnumMemberDefinition), ElementName = "Member")]
+		public IList<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
 
-    public IDictionary<string, string> MemberValues { get; } = new Dictionary<string, string>();
+    public bool HasFlags { get; set; }
 
-    public IDictionary<string, string> MemberComments { get; } = new Dictionary<string, string>();
-
-    public bool HasFlags { get; }
-
-    public SyntaxKindX BaseType { get; }
+    public BaseType BaseType { get; set; }
   }
 }

@@ -8,97 +8,97 @@ using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace SixtenLabs.Spawn.Test.Extensions
 {
-	public class SyntaxExtensionsCommonTests
-	{
-		#region AddUsingDirectives
+	//public class SyntaxExtensionsCommonTests
+	//{
+	//	#region AddUsingDirectives
 
-		[Fact]
-		public void AddUsingDirectives_Standard_Correct()
-		{
-			var subject = NewSubject();
+	//	[Fact]
+	//	public void AddUsingDirectives_Standard_Correct()
+	//	{
+	//		var subject = NewSubject();
 
-			var usingDirectiveDefinition = new UsingDirectiveDefinition("System.Text");
+	//		var usingDirectiveDefinition = new UsingDirectiveDefinition("System.Text");
 
-			var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
+	//		var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
 
-			var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
+	//		var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
 
-			actualString.Should().Be("using System.Text;");
-		}
+	//		actualString.Should().Be("using System.Text;");
+	//	}
 
-		[Fact]
-		public void AddUsingDirectives_Static_Correct()
-		{
-			var subject = NewSubject();
+	//	[Fact]
+	//	public void AddUsingDirectives_Static_Correct()
+	//	{
+	//		var subject = NewSubject();
 
-			var usingDirectiveDefinition = new UsingDirectiveDefinition("System.Math", true);
+	//		var usingDirectiveDefinition = new UsingDirectiveDefinition("System.Math", true);
 
-			var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
+	//		var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
 
-			var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
+	//		var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
 
-			actualString.Should().Be("using static System.Math;");
-		}
+	//		actualString.Should().Be("using static System.Math;");
+	//	}
 
-		[Fact]
-		public void AddUsingDirectives_Alias_Correct()
-		{
-			var subject = NewSubject();
+	//	[Fact]
+	//	public void AddUsingDirectives_Alias_Correct()
+	//	{
+	//		var subject = NewSubject();
 
-			var usingDirectiveDefinition = new UsingDirectiveDefinition("PC.MyCompany.Project", "Project");
+	//		var usingDirectiveDefinition = new UsingDirectiveDefinition("PC.MyCompany.Project", "Project");
 
-			var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
+	//		var actual = subject.AddUsingDirectives(new[] { usingDirectiveDefinition });
 
-			var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
+	//		var actualString = actual.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken)).NormalizeWhitespace().GetFormattedCode();
 
-			actualString.Should().Be("using Project = PC.MyCompany.Project;");
-		}
+	//		actualString.Should().Be("using Project = PC.MyCompany.Project;");
+	//	}
 
-		#endregion
+	//	#endregion
 
-		#region AddNamespace
+	//	#region AddNamespace
 
-		[Fact]
-		public void AddNamespace_NamespaceOutput_IsCorrect()
-		{
-			var subject = NewSubject();
+	//	[Fact]
+	//	public void AddNamespace_NamespaceOutput_IsCorrect()
+	//	{
+	//		var subject = NewSubject();
 
-			var namespaceDefinition = new NamespaceDefinition("PC.MyCompany.Project");
+	//		var namespaceDefinition = new NamespaceDefinition("PC.MyCompany.Project");
 
-			var actual = SyntaxExtensions.AddNamespace(namespaceDefinition);
+	//		var actual = SyntaxExtensions.AddNamespace(namespaceDefinition);
 
-			var actualString = actual.GetFormattedCode();
+	//		var actualString = actual.GetFormattedCode();
 
-			actualString.Should().BeEquivalentTo("namespace PC.MyCompany.Project\r\n{\r\n}");
-		}
+	//		actualString.Should().BeEquivalentTo("namespace PC.MyCompany.Project\r\n{\r\n}");
+	//	}
 
-		#endregion
+	//	#endregion
 
-		#region GetModifierTokens
+	//	#region GetModifierTokens
 
-		[Fact]
-		public void GetModifierTokens_NamespaceOutput_IsCorrect()
-		{
-			var subject = NewSubject();
+	//	[Fact]
+	//	public void GetModifierTokens_NamespaceOutput_IsCorrect()
+	//	{
+	//		var subject = NewSubject();
 
-			var namespaceDefinition = new NamespaceDefinition("PC.MyCompany.Project");
+	//		var namespaceDefinition = new NamespaceDefinition("PC.MyCompany.Project");
 
-			var actual = SyntaxExtensions.AddNamespace(namespaceDefinition);
+	//		var actual = SyntaxExtensions.AddNamespace(namespaceDefinition);
 
-			var actualString = actual.GetFormattedCode();
+	//		var actualString = actual.GetFormattedCode();
 
-			actualString.Should().BeEquivalentTo("namespace PC.MyCompany.Project\r\n{\r\n}");
-		}
+	//		actualString.Should().BeEquivalentTo("namespace PC.MyCompany.Project\r\n{\r\n}");
+	//	}
 
-		#endregion
+	//	#endregion
 
-		#region Subjects under test
+	//	#region Subjects under test
 
-		public CompilationUnitSyntax NewSubject()
-		{
-			return SF.CompilationUnit();
-    }
+	//	public CompilationUnitSyntax NewSubject()
+	//	{
+	//		return SF.CompilationUnit();
+ //   }
 
-		#endregion
-	}
+	//	#endregion
+	//}
 }

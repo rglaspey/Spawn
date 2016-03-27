@@ -1,21 +1,58 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Formatting;
-using Microsoft.CodeAnalysis.Formatting;
-using Microsoft.CodeAnalysis.MSBuild;
-using System;
+﻿using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Xml.XPath;
+using System.Xml.Xsl;
 
 namespace SixtenLabs.Spawn
 {
   public abstract class CodeGenerator : ICodeGenerator
   {
-    public CodeGenerator()
+    public CodeGenerator(ISpawn spawn)
     {
+			Spawn = spawn;
     }
 
-		public virtual string GenerateEnum(OutputDefinition outputDefinition, EnumDefinition enumDefinition)
+		protected string SerializeDefinition<T>(T definition) where T : TypeDefinition
 		{
-			throw new NotImplementedException();
+			string xml = null;
+
+			var serializer = new XmlSerializer(typeof(T));
+
+			using (StringWriter sw = new StringWriter())
+			{
+				serializer.Serialize(sw, definition);
+				xml = sw.ToString();
+			}
+
+			return xml;
 		}
+
+		protected string LoadTemplate(string templateName)
+		{
+			return string.Empty;
+		}
+
+		protected string TransformXmlFromTemplate(string xml, string template)
+		{
+			string output = string.Empty;
+
+			var xpd = new XPathDocument(new StringReader(xml));
+
+			var transform = new XslCompiledTransform();
+			transform.Load(new XmlTextReader(template, XmlNodeType.Document, null));
+			
+			using (var sr = new StringWriter())
+			{
+				transform.Transform(xpd.CreateNavigator(), null, sr);
+				output = sr.ToString();
+			}
+
+			return output;
+		}
+
+		public abstract void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
+
+		protected ISpawn Spawn { get; }
 	}
 }
