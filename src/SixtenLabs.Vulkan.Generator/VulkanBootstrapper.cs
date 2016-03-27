@@ -1,9 +1,15 @@
 ﻿using SimpleInjector;
+using SixtenLabs.Spawn;
 using SixtenLabs.Spawn.Utility;
+using SixtenLabs.Spawn.Vulkan;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SixtenLabs.Spawn.Vulkan.Generator
+namespace SixtenLabs.Vulkan.Generator
 {
 	public class VulkanBootstrapper
 	{

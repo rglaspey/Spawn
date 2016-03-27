@@ -12,23 +12,19 @@ namespace SixtenLabs.Spawn.Utility
 	{
 		void ProcessRegistry();
 
-		void MapType(string name, string transformedName);
-
 		IEnumerable<XElement> GetTypes(string type);
 
-		VulkanType GetOrAddType(string name);
-
-		string TransformedName(string key);
+		TypeDefinition GetOrAddType(string name);
 
 		XElement SpecTree { get; }
 
-		IDictionary<string, VulkanType> AllTypes { get; }
+		IDictionary<string, TypeDefinition> AllTypes { get; }
 
-		IEnumerable<VulkanStruct> Structs { get; }
+		IEnumerable<StructDefinition> Structs { get; }
 
-		IEnumerable<VulkanHandle> Handles { get; }
+		IEnumerable<HandleDefinition> Handles { get; }
 
-		IEnumerable<VulkanEnum> Enums { get; }
+		IEnumerable<EnumDefinition> Enums { get; }
 
 		VulkanCommand[] Commands { get; set; }
 

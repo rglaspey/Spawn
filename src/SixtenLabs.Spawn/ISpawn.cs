@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn
 {
-	public interface ISpawn
+	public interface ISpawnService
 	{
 		/// <summary>
 		/// Before generating any code, intialize the workspace with 
 		/// the solution file.
 		/// </summary>
 		/// <param name="solutionPath"></param>
-		void Intialize(string solutionPath);
+		void Initialize(string solutionPath);
 
 		/// <summary>
 		/// Create a file in the target project with generated code from the passed in SyntaxNode

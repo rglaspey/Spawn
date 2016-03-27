@@ -12,6 +12,14 @@ namespace SixtenLabs.Spawn
     {
     }
 
+		/// <summary>
+		/// Final name to use.
+		/// </summary>
     public string Name { get; set; }
+
+		/// <summary>
+		/// Original Name found in the spec that is being parsed
+		/// </summary>
+		public string SpecName { get; set; }
   }
 }

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.XPath;
@@ -8,7 +9,7 @@ namespace SixtenLabs.Spawn
 {
   public abstract class CodeGenerator : ICodeGenerator
   {
-    public CodeGenerator(ISpawn spawn)
+    public CodeGenerator(ISpawnService spawn)
     {
 			Spawn = spawn;
     }
@@ -30,7 +31,20 @@ namespace SixtenLabs.Spawn
 
 		protected string LoadTemplate(string templateName)
 		{
-			return string.Empty;
+			string template = null;
+
+			var assembly = Assembly.GetExecutingAssembly();
+			var resourceName = $"SixtenLabs.Spawn.Templates.{templateName}.xslt";
+
+			using (var stream = assembly.GetManifestResourceStream(resourceName))
+			{
+				using (var reader = new StreamReader(stream))
+				{
+					template = reader.ReadToEnd();
+				}
+			}
+
+			return template;
 		}
 
 		protected string TransformXmlFromTemplate(string xml, string template)
@@ -53,6 +67,6 @@ namespace SixtenLabs.Spawn
 
 		public abstract void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
 
-		protected ISpawn Spawn { get; }
+		protected ISpawnService Spawn { get; }
 	}
 }

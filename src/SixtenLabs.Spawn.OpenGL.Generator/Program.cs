@@ -23,7 +23,7 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 		{
 			SimpleContainer = new Container();
 
-			SimpleContainer.RegisterSingleton<ISpawn, Spawn>();
+			SimpleContainer.RegisterSingleton<ISpawnService, SpawnService>();
 			SimpleContainer.RegisterSingleton<IGeneratorSettings, GlSettings>();
 			SimpleContainer.RegisterSingleton<XmlFileLoader>();
 
@@ -32,9 +32,9 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 
 		private static void GenerateOpenGLBindings()
 		{
-			var spawn = SimpleContainer.GetInstance<ISpawn>();
+			var spawn = SimpleContainer.GetInstance<ISpawnService>();
 
-			spawn.Intialize("../../../../../Spawn/Spawn.sln");
+			spawn.Initialize("../../../../../Spawn/Spawn.sln");
 
 			var settings = new GlSettings();
 
@@ -45,7 +45,7 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 			//CreateEnums(registry, spawn);
 		}
 
-		private static void CreateEnums(registry registry, ISpawn spawn)
+		private static void CreateEnums(registry registry, ISpawnService spawn)
 		{
 			//var generator = new CSharpGenerator();
 

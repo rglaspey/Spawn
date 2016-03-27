@@ -7,9 +7,9 @@ using System.Xml.Serialization;
 
 namespace SixtenLabs.Spawn
 {
-	public abstract class TypeDefinition : BaseTypeDefinition
+	public class TypeDefinition : BaseTypeDefinition
 	{
-		protected TypeDefinition()
+		public TypeDefinition()
 		{
 		}
 

@@ -10,7 +10,7 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class VulkanGenerator
 	{
-		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawn spawn, IVulkanSpec rules)
+		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawnService spawn, IVulkanSpec rules)
 		{
 			Creators = creators;
 			Spawn = spawn;
@@ -19,7 +19,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void Initialize()
 		{
-			Spawn.Intialize("../../../../../Spawn/Spawn.sln");
+			Spawn.Initialize(@"C:\Users\pglas\Documents\GitHub\SixtenLabs\Spawn\Spawn.sln");
 			Rules.ProcessRegistry();
 		}
 
@@ -73,7 +73,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		private XElement Registry { get; set; }
 
-		private ISpawn Spawn { get; }
+		private ISpawnService Spawn { get; }
 
 		private IVulkanSpec Rules { get; }
 	}

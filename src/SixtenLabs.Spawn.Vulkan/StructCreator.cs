@@ -7,223 +7,223 @@ using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class StructCreator : BaseCreator
-	{
-		public StructCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
-			: base(generator, vulkanSpec, 40, "Struct", "Struct")
-		{
-		}
+//	public class StructCreator : BaseCreator
+//	{
+//		public StructCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
+//			: base(generator, vulkanSpec, 40, "Struct", "Struct")
+//		{
+//		}
 
-		
 
-		private VulkanMember ReadMember(XElement xmember)
-		{
-			// note: pretty much identical to <param>
 
-			if (xmember.Name != "member")
-				throw new ArgumentException("Not a member", nameof(xmember));
+//		private VulkanMember ReadMember(XElement xmember)
+//		{
+//			note: pretty much identical to < param >
 
-			var xelements = xmember.Elements();
-			if (xelements.Count() == 0)
-				throw new ArgumentException("Contains no elements", nameof(xmember));
+//			if (xmember.Name != "member")
+//				throw new ArgumentException("Not a member", nameof(xmember));
 
-			var vkMember = new VulkanMember();
+//			var xelements = xmember.Elements();
+//			if (xelements.Count() == 0)
+//				throw new ArgumentException("Contains no elements", nameof(xmember));
 
-			foreach (var elm in xelements)
-			{
-				switch (elm.Name.ToString())
-				{
-					case "type":
-						vkMember.Type = VulkanSpec.GetOrAddType(elm.Value);
-						break;
-					case "name":
-						vkMember.Name = vkMember.SpecName = elm.Value;
-						break;
-					case "enum": // todo
-						break;
-					default: throw new NotImplementedException(elm.Name.ToString());
-				}
-			}
+//			var vkMember = new VulkanMember();
 
-			if (string.IsNullOrEmpty(vkMember.Name) || vkMember.Type == null)
-				throw new InvalidOperationException("Member does not have proper `<name>` or `<type>` element");
+//			foreach (var elm in xelements)
+//			{
+//				switch (elm.Name.ToString())
+//				{
+//					case "type":
+//						vkMember.Type = VulkanSpec.GetOrAddType(elm.Value);
+//						break;
+//					case "name":
+//						vkMember.Name = vkMember.SpecName = elm.Value;
+//						break;
+//					case "enum": // todo
+//						break;
+//					default: throw new NotImplementedException(elm.Name.ToString());
+//				}
+//			}
 
-			// Gah! Why are these not encoded properly!
-			var paramStr = xmember.Value;
-			vkMember.PointerRank = paramStr.Count(x => x == '*');
-			vkMember.IsConst = paramStr.Contains("const");
+//			if (string.IsNullOrEmpty(vkMember.Name) || vkMember.Type == null)
+//				throw new InvalidOperationException("Member does not have proper `<name>` or `<type>` element");
 
-			// read member attributes
-			var xattributes = xmember.Attributes();
-			if (xattributes.Count() != 0)
-			{
-				foreach (var xattrib in xattributes)
-				{
-					switch (xattrib.Name.ToString())
-					{
-						case "optional":
-							var value = xattrib.Value;
-							if (value != "true") throw new NotImplementedException(value);
-							vkMember.Optional = value;
-							break;
-						case "len":
-							vkMember.Len = xattrib.Value;
-							break;
-						/*case "externsync":
-						param.ExternSync = attrib.Value == "true";
-						break;*/
-						case "noautovalidity":
-							vkMember.NoAutoValidity = xattrib.Value == "true";
-							break;
-						default: throw new NotImplementedException(xattrib.Name.ToString());
-					}
-				}
-			}
+//			Gah!Why are these not encoded properly!
+//		var paramStr = xmember.Value;
+//			vkMember.PointerRank = paramStr.Count(x => x == '*');
+//			vkMember.IsConst = paramStr.Contains("const");
 
-			return vkMember;
-		}
+//			read member attributes
+//		 var xattributes = xmember.Attributes();
+//			if (xattributes.Count() != 0)
+//			{
+//				foreach (var xattrib in xattributes)
+//				{
+//					switch (xattrib.Name.ToString())
+//					{
+//						case "optional":
+//							var value = xattrib.Value;
+//							if (value != "true") throw new NotImplementedException(value);
+//							vkMember.Optional = value;
+//							break;
+//						case "len":
+//							vkMember.Len = xattrib.Value;
+//							break;
+//						/*case "externsync":
+//						param.ExternSync = attrib.Value == "true";
+//						break;*/
+//						case "noautovalidity":
+//							vkMember.NoAutoValidity = xattrib.Value == "true";
+//							break;
+//						default: throw new NotImplementedException(xattrib.Name.ToString());
+//					}
+//				}
+//			}
 
-		private VulkanStruct ReadStruct(XElement xstruct, VulkanStruct vkStruct)
-		{
-			if (xstruct.Name != "type")
-				throw new ArgumentException("Not a type element", nameof(xstruct));
+//			return vkMember;
+//		}
 
-			var xcategory = xstruct.Attribute("category");
-			if (xcategory == null || xcategory.Value != "struct")
-				throw new ArgumentException("Invalid category", nameof(xstruct));
+//		private VulkanStruct ReadStruct(XElement xstruct, VulkanStruct vkStruct)
+//		{
+//			if (xstruct.Name != "type")
+//				throw new ArgumentException("Not a type element", nameof(xstruct));
 
-			var xattributes = xstruct.Attributes();
-			if (xattributes.Count() != 0)
-			{
-				foreach (var xattrib in xattributes)
-				{
-					switch (xattrib.Name.ToString())
-					{
-						case "name":
-							vkStruct.Name = vkStruct.SpecName = xattrib.Value;
-							break;
-						case "returnedonly":
-							vkStruct.ReturnedOnly = xattrib.Value == "true";
-							break;
-						case "category":
-							break;
-						default: throw new NotImplementedException(xattrib.Name.ToString());
-					}
-				}
-			}
+//			var xcategory = xstruct.Attribute("category");
+//			if (xcategory == null || xcategory.Value != "struct")
+//				throw new ArgumentException("Invalid category", nameof(xstruct));
 
-			vkStruct.Members = xstruct.Elements("member").Select(ReadMember).ToArray();
+//			var xattributes = xstruct.Attributes();
+//			if (xattributes.Count() != 0)
+//			{
+//				foreach (var xattrib in xattributes)
+//				{
+//					switch (xattrib.Name.ToString())
+//					{
+//						case "name":
+//							vkStruct.Name = vkStruct.SpecName = xattrib.Value;
+//							break;
+//						case "returnedonly":
+//							vkStruct.ReturnedOnly = xattrib.Value == "true";
+//							break;
+//						case "category":
+//							break;
+//						default: throw new NotImplementedException(xattrib.Name.ToString());
+//					}
+//				}
+//			}
 
-			var xvalidity = xstruct.Element("validity");
-			if (xvalidity != null)
-			{
-				vkStruct.Validity = xvalidity.Elements()
-						.Select(x => x.Value)
-						.ToArray();
-			}
+//			vkStruct.Members = xstruct.Elements("member").Select(ReadMember).ToArray();
 
-			return vkStruct;
-		}
+//			var xvalidity = xstruct.Element("validity");
+//			if (xvalidity != null)
+//			{
+//				vkStruct.Validity = xvalidity.Elements()
+//						.Select(x => x.Value)
+//						.ToArray();
+//			}
 
-		private bool TypeStructFilter(XElement xtype)
-		{
-			var xcat = xtype.Attribute("category");
+//			return vkStruct;
+//		}
 
-			return xcat != null && xcat.Value == "struct";
-		}
+//		private bool TypeStructFilter(XElement xtype)
+//		{
+//			var xcat = xtype.Attribute("category");
 
-		private Dictionary<string, XElement> CreateStructureDictionary(IEnumerable<XElement> xstructs)
-		{
-			var dictionary = new Dictionary<string, XElement>();
-			foreach (var xstruct in xstructs)
-			{
-				if (xstruct.Name != "type")
-					throw new ArgumentException("Not a type element", nameof(xstruct));
+//			return xcat != null && xcat.Value == "struct";
+//		}
 
-				var xcategory = xstruct.Attribute("category");
-				if (xcategory == null || xcategory.Value != "struct")
-					throw new ArgumentException("Invalid category", nameof(xstruct));
+//		private Dictionary<string, XElement> CreateStructureDictionary(IEnumerable<XElement> xstructs)
+//		{
+//			var dictionary = new Dictionary<string, XElement>();
+//			foreach (var xstruct in xstructs)
+//			{
+//				if (xstruct.Name != "type")
+//					throw new ArgumentException("Not a type element", nameof(xstruct));
 
-				var xnameAttribute = xstruct.Attribute("name");
-				if (xnameAttribute == null)
-					throw new ArgumentException("Struct does not have a `<name>` attribute!");
+//				var xcategory = xstruct.Attribute("category");
+//				if (xcategory == null || xcategory.Value != "struct")
+//					throw new ArgumentException("Invalid category", nameof(xstruct));
 
-				dictionary.Add(xnameAttribute.Value, xstruct);
-			}
-			return dictionary;
-		}
+//				var xnameAttribute = xstruct.Attribute("name");
+//				if (xnameAttribute == null)
+//					throw new ArgumentException("Struct does not have a `<name>` attribute!");
 
-		public override void MapTypes()
-		{
-			var xTypes = VulkanSpec.SpecTree.Element("types").Elements("type");
+//				dictionary.Add(xnameAttribute.Value, xstruct);
+//			}
+//			return dictionary;
+//		}
 
-			var xstructs = xTypes.Where(TypeStructFilter);
+//		public override void MapTypes()
+//		{
+//			var xTypes = VulkanSpec.SpecTree.Element("types").Elements("type");
 
-			// Create a map of `struct name` -> `struct xml definition`
-			var structDefMap = CreateStructureDictionary(xstructs);
+//			var xstructs = xTypes.Where(TypeStructFilter);
 
-			// Create a VkStruct object for each class before reading the xml definitions,
-			// this is so the struct members can refrence other struct types
-			var structs = structDefMap.Keys.Select(x => new VulkanStruct { Name = x }).ToArray();
+//			Create a map of `struct name` -> `struct xml definition`
+//			var structDefMap = CreateStructureDictionary(xstructs);
 
-			foreach (var vkStruct in structs)
-			{
-				VulkanSpec.AllTypes.Add(vkStruct.Name, vkStruct);
-			}
+//		Create a VkStruct object for each class before reading the xml definitions,
+//			 this is so the struct members can refrence other struct types
+//			var structs = structDefMap.Keys.Select(x => new VulkanStruct { Name = x }).ToArray();
 
-			// Read the struct definitions
-			for (int x = 0; x < structs.Length; x++)
-			{
-				ReadStruct(structDefMap[structs[x].Name], structs[x]);
-			}
-		}
+//			foreach (var vkStruct in structs)
+//			{
+//				VulkanSpec.AllTypes.Add(vkStruct.Name, vkStruct);
+//			}
 
-		Dictionary<string, string> structNameOverride = new Dictionary<string, string>
-            {
-                //{ "void",     "void"    },
-                { "char",     "Char"    },
-                { "float",    "Single"  },
-                { "uint8_t",  "Byte"    },
-                { "uint32_t", "UInt32"  },
-                { "uint64_t", "UInt64"  },
-                { "int32_t",  "Int32"   },
-                { "size_t",   "UIntPtr" },
-                { "VkBool32", "Boolean" }
-            };
+//	Read the struct definitions
+//			for (int x = 0; x<structs.Length; x++)
+//			{
+//				ReadStruct(structDefMap[structs[x].Name], structs[x]);
+//}
+//		}
 
-		public override void Rewrite()
-		{
-			foreach(var vkStruct in VulkanSpec.Structs)
-			{
-				var name = vkStruct.Name;
+//		Dictionary<string, string> structNameOverride = new Dictionary<string, string>
+//						{
+//								{ "void",     "void"    },
+//								{ "char",     "Char"    },
+//								{ "float",    "Single"  },
+//								{ "uint8_t",  "Byte"    },
+//								{ "uint32_t", "UInt32"  },
+//								{ "uint64_t", "UInt64"  },
+//								{ "int32_t",  "Int32"   },
+//								{ "size_t",   "UIntPtr" },
+//								{ "VkBool32", "Boolean" }
+//						};
 
-				if (structNameOverride.ContainsKey(name))
-					name = structNameOverride[name];
+//public override void Rewrite()
+//{
+//	foreach (var vkStruct in VulkanSpec.Structs)
+//	{
+//		var name = vkStruct.Name;
 
-				if (name.StartsWith("Vk"))
-					name = name.Remove(0, 2); // trim `Vk`
+//		if (structNameOverride.ContainsKey(name))
+//			name = structNameOverride[name];
 
-				vkStruct.Name = name;
+//		if (name.StartsWith("Vk"))
+//			name = name.Remove(0, 2); // trim `Vk`
 
-				for (var x = 0; x < vkStruct.Members.Length; x++)
-				{
-					var member = vkStruct.Members[x];
-					var memberName = member.Name;
-					if (member.PointerRank != 0)
-						memberName = memberName.TrimStart(new[] { 'p' });
+//		vkStruct.Name = name;
 
-					member.Name = memberName;
-				}
-			}
-		}
+//		for (var x = 0; x < vkStruct.Members.Length; x++)
+//		{
+//			var member = vkStruct.Members[x];
+//			var memberName = member.Name;
+//			if (member.PointerRank != 0)
+//				memberName = memberName.TrimStart(new[] { 'p' });
 
-		public override void Build()
-		{
-			
-		}
+//			member.Name = memberName;
+//		}
+//	}
+//}
 
-		public override void Create()
-		{
-		}
-	}
+//public override void Build()
+//{
+
+//}
+
+//public override void Create()
+//{
+//}
+//	}
 }

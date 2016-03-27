@@ -2,7 +2,7 @@
 {
 	public class CSharpGenerator : CodeGenerator
 	{
-		public CSharpGenerator(ISpawn spawn)
+		public CSharpGenerator(ISpawnService spawn)
 			: base(spawn)
 		{
 		}

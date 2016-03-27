@@ -17,6 +17,11 @@ namespace SixtenLabs.Spawn
 		{
 		}
 
+		public void AddEnumMembers(IEnumerable<EnumMemberDefinition> memberValues)
+		{
+			Members.AddRange(memberValues);
+		}
+
     public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
     {
       if(string.IsNullOrEmpty(memberName))
@@ -30,10 +35,14 @@ namespace SixtenLabs.Spawn
 
 		[XmlArray("Members")]
 		[XmlArrayItem(typeof(EnumMemberDefinition), ElementName = "Member")]
-		public IList<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
+		public List<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
 
     public bool HasFlags { get; set; }
 
-    public BaseType BaseType { get; set; }
+		public string Expand { get; set; }
+
+		public string Namespace { get; set; }
+
+		public BaseType BaseType { get; set; }
   }
 }

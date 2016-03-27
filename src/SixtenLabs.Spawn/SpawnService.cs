@@ -4,27 +4,25 @@ using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn
 {
-	public class Spawn : ISpawn
+	public class SpawnService : ISpawnService
 	{
-		public Spawn()
+		public SpawnService()
 		{
 		}
 
-		private void OpenWorkspace()
+		private async void OpenWorkspace()
 		{
 			Workspace = MSBuildWorkspace.Create();
-			Solution = Workspace.OpenSolutionAsync(SolutionPath).Result;
+			Solution = await Workspace.OpenSolutionAsync(SolutionPath);
 		}
 
 		private Project GetProject(string projectName)
 		{
 			var newSolution = Workspace.CurrentSolution;
-			var project = newSolution.Projects.First(x => x.Name == projectName);
+			var project = newSolution.Projects.Where(x => x.Name == projectName).FirstOrDefault();
 
 			return project;
 		}
@@ -44,7 +42,7 @@ namespace SixtenLabs.Spawn
 		/// the solution file.
 		/// </summary>
 		/// <param name="solutionPath"></param>
-		public void Intialize(string solutionPath)
+		public void Initialize(string solutionPath)
 		{
 			SolutionPath = solutionPath;
 			OpenWorkspace();
