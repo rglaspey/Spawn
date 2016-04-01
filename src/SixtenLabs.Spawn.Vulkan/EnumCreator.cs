@@ -195,13 +195,17 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public override void Create()
 		{
-			foreach (var enumDefinition in VulkanSpec.Enums)
+			var validEnums = VulkanSpec.Enums.Where(x => x.Name != "API Constants");
+
+			foreach (var enumDefinition in validEnums)
 			{
 				if (enumDefinition.Members.Count > 0)
 				{
 					var output = new OutputDefinition() { Name = $"{enumDefinition.Name}.cs" };
 					output.TargetSolution = TargetSolution;
 					output.AddNamespace(TargetNamespace);
+
+					// Handle Usings and NameSpaces. Move from output definition to type definition.
 
 					if (enumDefinition.HasFlags)
 					{

@@ -16,8 +16,8 @@
 		public override void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition)
 		{
 			var xml = SerializeDefinition(enumDefinition);
-			var template = LoadTemplate("EnumTemplate");
-			var contents = TransformXmlFromTemplate(xml, template);
+
+			var contents = TransformXmlFromTemplate("EnumTemplate", xml);
 
 			Spawn.AddDocumentToProject(outputDefinition.TargetSolution, enumDefinition.Name, contents, new string[] { "Enums" });
 		}

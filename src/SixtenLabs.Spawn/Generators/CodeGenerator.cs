@@ -29,41 +29,67 @@ namespace SixtenLabs.Spawn
 			return xml;
 		}
 
-		protected string LoadTemplate(string templateName)
+		//protected string LoadTemplate(string templateName)
+		//{
+		//	string template = null;
+
+		//	var assembly = Assembly.GetExecutingAssembly();
+		//	var resourceName = $"SixtenLabs.Spawn.Templates.{templateName}.xslt";
+
+		//	using (var stream = assembly.GetManifestResourceStream(resourceName))
+		//	{
+		//		using (var reader = new StreamReader(stream))
+		//		{
+		//			template = reader.ReadToEnd();
+		//		}
+		//	}
+
+		//	return template;
+		//}
+
+		protected string TransformXmlFromTemplate(string templateName, string xmlData)
 		{
-			string template = null;
+			var transformer = new XslCompiledTransform(true);
+			var argumentList = new XsltArgumentList();
 
-			var assembly = Assembly.GetExecutingAssembly();
-			var resourceName = $"SixtenLabs.Spawn.Templates.{templateName}.xslt";
+			transformer.Load($"Templates/{templateName}.xslt");
 
-			using (var stream = assembly.GetManifestResourceStream(resourceName))
+			string result;
+
+			using (StringReader sr = new StringReader(xmlData))
 			{
-				using (var reader = new StreamReader(stream))
+				using (var xr = XmlReader.Create(sr))
 				{
-					template = reader.ReadToEnd();
+					using (StringWriter sw = new StringWriter())
+					{
+						transformer.Transform(xr, argumentList, sw);
+						result = sw.ToString();
+					}
 				}
 			}
 
-			return template;
+			return result;
 		}
 
-		protected string TransformXmlFromTemplate(string xml, string template)
-		{
-			string output = string.Empty;
+		//protected string TransformXmlFromTemplate(string xml, string template)
+		//{
+		//	string output = string.Empty;
 
-			var xpd = new XPathDocument(new StringReader(xml));
+		//	var xpd = new XPathDocument(new StringReader(xml));
 
-			var transform = new XslCompiledTransform();
-			transform.Load(new XmlTextReader(template, XmlNodeType.Document, null));
+		//	var transform = new XslCompiledTransform();
+		//	transform.Load(new XmlTextReader(template, XmlNodeType.Document, null));
 			
-			using (var sr = new StringWriter())
-			{
-				transform.Transform(xpd.CreateNavigator(), null, sr);
-				output = sr.ToString();
-			}
+		//	using (var sr = new StringWriter())
+		//	{
+		//		transform.Transform(xpd.CreateNavigator(), null, sr);
+		//		output = sr.ToString();
+		//	}
 
-			return output;
-		}
+		//	// The output is incorrect. WHY?
+
+		//	return output;
+		//}
 
 		public abstract void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
 

@@ -13,12 +13,17 @@ namespace SixtenLabs.Spawn
 		{
 		}
 
-		private async void OpenWorkspace()
+		private void OpenWorkspace()
 		{
 			Workspace = MSBuildWorkspace.Create();
-			Solution = await Workspace.OpenSolutionAsync(SolutionPath);
+			Solution = Workspace.OpenSolutionAsync(SolutionPath).Result;
 		}
 
+		/// <summary>
+		/// Had to add dlls manually to generator to get this to work. add code to get it added automatically.
+		/// </summary>
+		/// <param name="projectName"></param>
+		/// <returns></returns>
 		private Project GetProject(string projectName)
 		{
 			var newSolution = Workspace.CurrentSolution;
