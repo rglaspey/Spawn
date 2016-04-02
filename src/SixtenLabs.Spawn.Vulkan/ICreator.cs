@@ -1,4 +1,6 @@
-﻿namespace SixtenLabs.Spawn.Utility
+﻿using System.Collections.Generic;
+
+namespace SixtenLabs.Spawn.Utility
 {
 	public interface ICreator
 	{
@@ -25,6 +27,8 @@
 		string TargetSolution { get; set; }
 
 		string TargetNamespace { get; set; }
+
+		List<string> GeneratedComments { get; }
 
 		int NumberCreated { get; }
 

@@ -40,5 +40,10 @@ namespace SixtenLabs.Spawn.Utility
 		protected IVulkanSpec VulkanSpec { get; }
 
 		public int Order { get; set; }
+
+		/// <summary>
+		/// Used to populate a generated code message in the top level type comments.
+		/// </summary>
+		public List<string> GeneratedComments { get; } = new List<string>();
 	}
 }

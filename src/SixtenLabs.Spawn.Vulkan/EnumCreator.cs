@@ -1,22 +1,18 @@
-﻿using System.Globalization;
-using System.Text;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Linq;
 using SixtenLabs.Spawn.Utility;
 using System;
-using System.Collections.Generic;
-using SixtenLabs.Spawn.Vulkan.Model;
 using System.Text.RegularExpressions;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
 	public class EnumCreator : BaseCreator
-	{ 
+	{
 		public EnumCreator(ICodeGenerator generator, IVulkanSpec vulkanSpec)
 			: base(generator, vulkanSpec, 20, "Enum", "Enum")
 		{
 		}
-		
+
 		private bool TypeBitmaskFilter(XElement xtype)
 		{
 			var xcat = xtype.Attribute("category");
@@ -121,7 +117,9 @@ namespace SixtenLabs.Spawn.Vulkan
 			}
 
 			if (string.IsNullOrEmpty(vkEnum.Name) || string.IsNullOrEmpty(vkEnum.Value))
+			{
 				throw new InvalidOperationException("Enum collection does not have proper `<name>` or `<value>` or `<bitpos>` element");
+			}
 
 			return vkEnum;
 		}
@@ -130,9 +128,7 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			var xTypes = VulkanSpec.SpecTree.Element("types").Elements("type");
 
-			var bitmaskTypes = xTypes
-										.Where(TypeBitmaskFilter)
-										.ToList();
+			var bitmaskTypes = xTypes.Where(TypeBitmaskFilter).ToList();
 
 			var emptyBitmaskNames = bitmaskTypes
 					.Where(x => x.Attribute("requires") == null)
@@ -158,19 +154,27 @@ namespace SixtenLabs.Spawn.Vulkan
 			foreach (var vkEnum in VulkanSpec.Enums)
 			{
 				if (vkEnum.Name.StartsWith("Vk"))
+				{
 					vkEnum.Name = vkEnum.Name.Remove(0, 2); // trim `Vk`
+				}
 
 				var expand = vkEnum.Expand;
 				// Add one to the length to deal with the trailing underscore. ie: {VK_EXPAND_NAME_}VALUE_NAME
 				var expandLen = (!string.IsNullOrEmpty(expand)) ? expand.Length + 1 : 0;
+
 				foreach (var vkEnumValue in vkEnum.Members)
 				{
 					var name = vkEnumValue.Name;
+
 					if (!string.IsNullOrEmpty(expand) && name.StartsWith(expand))
+					{
 						name = name.Substring(expandLen, name.Length - expandLen);
+					}
 
 					if (name.StartsWith("VK_"))
+					{
 						name = name.Substring(3, name.Length - 3);
+					}
 
 					vkEnumValue.Name = name;
 				}
@@ -195,32 +199,35 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public override void Create()
 		{
-			var validEnums = VulkanSpec.Enums.Where(x => x.Name != "API Constants");
+			var validEnums = VulkanSpec.Enums.Where(x => x.Name != "API Constants" && x.Members.Count > 0);
 
 			foreach (var enumDefinition in validEnums)
 			{
-				if (enumDefinition.Members.Count > 0)
-				{
-					var output = new OutputDefinition<EnumDefinition>() { FileName = enumDefinition.Name };
-					output.TargetSolution = TargetSolution;
-					output.AddNamespace(TargetNamespace);
-					output.TemplateName = "EnumTemplate";
-					output.OutputDirectory = "Enums";
+				var output = new OutputDefinition<EnumDefinition>() { FileName = enumDefinition.Name };
+				output.TargetSolution = TargetSolution;
+				output.AddNamespace(TargetNamespace);
+				output.TemplateName = "EnumTemplate";
+				output.OutputDirectory = "Enums";
 
-					output.TypeDefinitions.Add(enumDefinition);
-										
-					if (enumDefinition.HasFlags)
-					{
-						output.AddStandardUsingDirective("System");
-					}
-
-					Generator.GenerateCodeFile(output);
-					NumberCreated++;
-				}
-				else
+				foreach (var commentLine in GeneratedComments)
 				{
-					// Do not make an enum for a type with no values...
+					output.CommentLines.Add(commentLine);
 				}
+
+				foreach (var commentLine in enumDefinition.Comments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
+
+				output.TypeDefinitions.Add(enumDefinition);
+
+				if (enumDefinition.HasFlags)
+				{
+					output.AddStandardUsingDirective("System");
+				}
+
+				Generator.GenerateCodeFile(output);
+				NumberCreated++;
 			}
 		}
 	}
