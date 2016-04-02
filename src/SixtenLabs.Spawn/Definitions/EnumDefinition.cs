@@ -40,7 +40,7 @@ namespace SixtenLabs.Spawn
     public bool HasFlags { get; set; }
 
 		public string Expand { get; set; }
-
+		
 		public string Namespace { get; set; }
 
 		public BaseType BaseType { get; set; }

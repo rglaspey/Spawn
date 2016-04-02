@@ -133,12 +133,15 @@
     <Compile Include="Definitions\TypeDefinition.cs" />
     <Compile Include="Definitions\TypeMemberDefinition.cs" />
     <Compile Include="Definitions\UsingDirectiveDefinition.cs" />
+    <Compile Include="Utility\DynamicToXmlSerializer.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />
     <Compile Include="Generators\CSharpGenerator.cs" />
     <Compile Include="Generators\ICodeGenerator.cs" />
     <Compile Include="ISpawn.cs" />
+    <Compile Include="Utility\IXmlSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnService.cs" />
+    <Compile Include="Extensions\TypeHelper.cs" />
     <Compile Include="Utility\IGeneratorSettings.cs" />
     <Compile Include="Utility\XmlFileLoader.cs" />
     <Compile Include="Utility\XmlLoadMethod.cs" />
@@ -149,10 +152,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Templates\Shared\FullComments.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Shared\NamespaceEnd.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Shared\NamespaceStart.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Shared\Usings.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

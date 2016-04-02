@@ -16,11 +16,11 @@ namespace SixtenLabs.Spawn
 		private void OpenWorkspace()
 		{
 			Workspace = MSBuildWorkspace.Create();
-			Solution = Workspace.OpenSolutionAsync(SolutionPath).Result;
+			var solution = Workspace.OpenSolutionAsync(SolutionPath).Result;
 		}
 
 		/// <summary>
-		/// Had to add dlls manually to generator to get this to work. add code to get it added automatically.
+		/// TODO : Had to add dlls manually to generator to get this to work. add code to get it added automatically.
 		/// </summary>
 		/// <param name="projectName"></param>
 		/// <returns></returns>
@@ -54,7 +54,7 @@ namespace SixtenLabs.Spawn
 		}
 
 		/// <summary>
-		/// Create a file in the target project with generated code from the passed in SyntaxNode
+		/// Create a file in the target project with generated code from the passed in contents
 		/// </summary>
 		/// <param name="targetProject"></param>
 		/// <param name="newFileName"></param>
@@ -63,7 +63,8 @@ namespace SixtenLabs.Spawn
 		{
 			var project = GetProject(targetProject);
 
-			var document = project.Documents.Where(x => x.Name == $"{newFileName}.cs").FirstOrDefault();
+			var documentName = $"{newFileName}.cs";
+			var document = project.Documents.Where(x => x.Name == documentName).FirstOrDefault();
 
 			Document newDocument = null;
 
@@ -82,7 +83,5 @@ namespace SixtenLabs.Spawn
 		private MSBuildWorkspace Workspace { get; set; }
 
 		private string SolutionPath { get; set; }
-
-		private Solution Solution { get; set; }
 	}
 }

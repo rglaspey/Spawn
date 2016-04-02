@@ -2,6 +2,6 @@
 {
 	public interface ICodeGenerator
 	{
-		void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
+		void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition) where T : TypeDefinition;
 	}
 }

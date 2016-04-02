@@ -2,8 +2,8 @@
 {
 	public class CSharpGenerator : CodeGenerator
 	{
-		public CSharpGenerator(ISpawnService spawn)
-			: base(spawn)
+		public CSharpGenerator(ISpawnService spawn, IXmlSerializer serializer)
+			: base(spawn, serializer)
 		{
 		}
 
@@ -13,13 +13,12 @@
 		/// <param name="outputDefinition"></param>
 		/// <param name="enumDefinition"></param>
 		/// <returns></returns>
-		public override void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition)
+		public override void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition)
 		{
-			var xml = SerializeDefinition(enumDefinition);
+			var xml = SerializeData(outputDefinition, "output");
+			var contents = TransformXmlFromTemplate(outputDefinition.TemplateName, xml);
 
-			var contents = TransformXmlFromTemplate("EnumTemplate", xml);
-
-			Spawn.AddDocumentToProject(outputDefinition.TargetSolution, enumDefinition.Name, contents, new string[] { "Enums" });
+			Spawn.AddDocumentToProject(outputDefinition.TargetSolution, outputDefinition.FileName, contents, new string[] { outputDefinition.OutputDirectory });
 		}
 	}
 }

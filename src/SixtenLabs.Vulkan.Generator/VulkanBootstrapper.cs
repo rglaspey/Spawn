@@ -27,6 +27,7 @@ namespace SixtenLabs.Vulkan.Generator
 			SimpleContainer.RegisterSingleton<VulkanGenerator>();
 			SimpleContainer.RegisterSingleton<IVulkanSpec, VulkanSpec>();
 			SimpleContainer.RegisterSingleton<ICodeGenerator, CSharpGenerator>();
+			SimpleContainer.RegisterSingleton<IXmlSerializer, DynamicToXmlSerializer>();
 
 			var creatorTypes = SimpleContainer.GetTypesToRegister(typeof(ICreator), Assemblies);
 

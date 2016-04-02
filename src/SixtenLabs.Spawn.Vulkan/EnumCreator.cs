@@ -201,18 +201,20 @@ namespace SixtenLabs.Spawn.Vulkan
 			{
 				if (enumDefinition.Members.Count > 0)
 				{
-					var output = new OutputDefinition() { Name = $"{enumDefinition.Name}.cs" };
+					var output = new OutputDefinition<EnumDefinition>() { FileName = enumDefinition.Name };
 					output.TargetSolution = TargetSolution;
 					output.AddNamespace(TargetNamespace);
+					output.TemplateName = "EnumTemplate";
+					output.OutputDirectory = "Enums";
 
-					// Handle Usings and NameSpaces. Move from output definition to type definition.
-
+					output.TypeDefinitions.Add(enumDefinition);
+										
 					if (enumDefinition.HasFlags)
 					{
 						output.AddStandardUsingDirective("System");
 					}
 
-					Generator.GenerateEnum(enumDefinition, output);
+					Generator.GenerateCodeFile(output);
 					NumberCreated++;
 				}
 				else

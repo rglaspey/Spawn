@@ -1,84 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<EnumDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name>API Constants</Name>
-  <ModifierDefinitions />
-  <Members>
-    <Member>
-      <Name>MAX_PHYSICAL_DEVICE_NAME_SIZE</Name>
-      <SpecName>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</SpecName>
-      <Value>256</Value>
-    </Member>
-    <Member>
-      <Name>UUID_SIZE</Name>
-      <SpecName>VK_UUID_SIZE</SpecName>
-      <Value>16</Value>
-    </Member>
-    <Member>
-      <Name>MAX_EXTENSION_NAME_SIZE</Name>
-      <SpecName>VK_MAX_EXTENSION_NAME_SIZE</SpecName>
-      <Value>256</Value>
-    </Member>
-    <Member>
-      <Name>MAX_DESCRIPTION_SIZE</Name>
-      <SpecName>VK_MAX_DESCRIPTION_SIZE</SpecName>
-      <Value>256</Value>
-    </Member>
-    <Member>
-      <Name>MAX_MEMORY_TYPES</Name>
-      <SpecName>VK_MAX_MEMORY_TYPES</SpecName>
-      <Value>32</Value>
-    </Member>
-    <Member>
-      <Name>MAX_MEMORY_HEAPS</Name>
-      <SpecName>VK_MAX_MEMORY_HEAPS</SpecName>
-      <Value>16</Value>
-    </Member>
-    <Member>
-      <Name>LOD_CLAMP_NONE</Name>
-      <SpecName>VK_LOD_CLAMP_NONE</SpecName>
-      <Value>1000.0f</Value>
-    </Member>
-    <Member>
-      <Name>REMAINING_MIP_LEVELS</Name>
-      <SpecName>VK_REMAINING_MIP_LEVELS</SpecName>
-      <Value>(~0U)</Value>
-    </Member>
-    <Member>
-      <Name>REMAINING_ARRAY_LAYERS</Name>
-      <SpecName>VK_REMAINING_ARRAY_LAYERS</SpecName>
-      <Value>(~0U)</Value>
-    </Member>
-    <Member>
-      <Name>WHOLE_SIZE</Name>
-      <SpecName>VK_WHOLE_SIZE</SpecName>
-      <Value>(~0ULL)</Value>
-    </Member>
-    <Member>
-      <Name>ATTACHMENT_UNUSED</Name>
-      <SpecName>VK_ATTACHMENT_UNUSED</SpecName>
-      <Value>(~0U)</Value>
-    </Member>
-    <Member>
-      <Name>TRUE</Name>
-      <SpecName>VK_TRUE</SpecName>
-      <Value>1</Value>
-    </Member>
-    <Member>
-      <Name>FALSE</Name>
-      <SpecName>VK_FALSE</SpecName>
-      <Value>0</Value>
-    </Member>
-    <Member>
-      <Name>QUEUE_FAMILY_IGNORED</Name>
-      <SpecName>VK_QUEUE_FAMILY_IGNORED</SpecName>
-      <Value>(~0U)</Value>
-    </Member>
-    <Member>
-      <Name>SUBPASS_EXTERNAL</Name>
-      <SpecName>VK_SUBPASS_EXTERNAL</SpecName>
-      <Value>(~0U)</Value>
-    </Member>
-  </Members>
-  <HasFlags>false</HasFlags>
-  <BaseType>Integer</BaseType>
-</EnumDefinition>
+<root>
+  <Usings />
+  <Namespace>
+    <Name>SixtenLabs.Spawn.Vulkan.Target</Name>
+  </Namespace>
+  <TypeDefinitions>
+    <TypeDefinitionsItem>
+      <Members>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_UNDEFINED</Name>
+          <SpecName>VK_IMAGE_LAYOUT_UNDEFINED</SpecName>
+          <Value>0</Value>
+          <Comment>Implicit layout an image is when its contents are undefined due to various reasons (e.g. right after creation)</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_GENERAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_GENERAL</SpecName>
+          <Value>1</Value>
+          <Comment>General layout when image can be used for any kind of access</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</SpecName>
+          <Value>2</Value>
+          <Comment>Optimal layout when image is only used for color attachment read/write</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</SpecName>
+          <Value>3</Value>
+          <Comment>Optimal layout when image is only used for depth/stencil attachment read/write</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL</SpecName>
+          <Value>4</Value>
+          <Comment>Optimal layout when image is used for read only depth/stencil attachment and shader access</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</SpecName>
+          <Value>5</Value>
+          <Comment>Optimal layout when image is used for read only shader access</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL</SpecName>
+          <Value>6</Value>
+          <Comment>Optimal layout when image is used only as source of transfer operations</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</Name>
+          <SpecName>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</SpecName>
+          <Value>7</Value>
+          <Comment>Optimal layout when image is used only as destination of transfer operations</Comment>
+        </MembersItem>
+        <MembersItem>
+          <Name>IMAGE_LAYOUT_PREINITIALIZED</Name>
+          <SpecName>VK_IMAGE_LAYOUT_PREINITIALIZED</SpecName>
+          <Value>8</Value>
+          <Comment>Initial layout used when the data is populated by the CPU</Comment>
+        </MembersItem>
+      </Members>
+      <HasFlags>false</HasFlags>
+      <BaseType>Integer</BaseType>
+      <Comments />
+      <ModifierDefinitions />
+      <Name>ImageLayout</Name>
+    </TypeDefinitionsItem>
+  </TypeDefinitions>
+  <TargetSolution>SixtenLabs.Spawn.Vulkan.Target</TargetSolution>
+  <FileName>ImageLayout.cs</FileName>
+  <TemplateName>EnumTemplate</TemplateName>
+  <OutputDirectory>Enums</OutputDirectory>
+</root>

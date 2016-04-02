@@ -9,25 +9,44 @@ namespace SixtenLabs.Spawn
 {
   public abstract class CodeGenerator : ICodeGenerator
   {
-    public CodeGenerator(ISpawnService spawn)
+    public CodeGenerator(ISpawnService spawn, IXmlSerializer serializer)
     {
 			Spawn = spawn;
+			Serializer = serializer;
     }
 
-		protected string SerializeDefinition<T>(T definition) where T : TypeDefinition
+		public string SerializeData(dynamic data, string elementName)
 		{
-			string xml = null;
+			string xmlData = null; 
 
-			var serializer = new XmlSerializer(typeof(T));
-
-			using (StringWriter sw = new StringWriter())
+			using (var stream = new MemoryStream())
 			{
-				serializer.Serialize(sw, definition);
-				xml = sw.ToString();
+				Serializer.ToXml(data, stream, elementName);
+
+				using (var reader = new StreamReader(stream))
+				{
+					stream.Position = 0;
+					xmlData = reader.ReadToEnd();
+				}
 			}
 
-			return xml;
+			return xmlData;
 		}
+
+		//protected string SerializeDefinition<T>(T definition) where T : class
+		//{
+		//	string xml = null;
+
+		//	var serializer = new XmlSerializer(typeof(T));
+
+		//	using (StringWriter sw = new StringWriter())
+		//	{
+		//		serializer.Serialize(sw, definition);
+		//		xml = sw.ToString();
+		//	}
+
+		//	return xml;
+		//}
 
 		//protected string LoadTemplate(string templateName)
 		//{
@@ -79,7 +98,7 @@ namespace SixtenLabs.Spawn
 
 		//	var transform = new XslCompiledTransform();
 		//	transform.Load(new XmlTextReader(template, XmlNodeType.Document, null));
-			
+
 		//	using (var sr = new StringWriter())
 		//	{
 		//		transform.Transform(xpd.CreateNavigator(), null, sr);
@@ -91,8 +110,10 @@ namespace SixtenLabs.Spawn
 		//	return output;
 		//}
 
-		public abstract void GenerateEnum(EnumDefinition enumDefinition, OutputDefinition outputDefinition);
+		public abstract void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition) where T : TypeDefinition;
 
 		protected ISpawnService Spawn { get; }
+
+		protected IXmlSerializer Serializer { get; }
 	}
 }
