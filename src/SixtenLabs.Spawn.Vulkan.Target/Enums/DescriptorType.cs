@@ -11,26 +11,26 @@
   /// </summary>
   public enum DescriptorType
   {
-    DESCRIPTOR_TYPE_SAMPLER = 0,
+    DescriptorTypeSampler = 0,
 
-    DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER = 1,
+    DescriptorTypeCombinedImageSampler = 1,
 
-    DESCRIPTOR_TYPE_SAMPLED_IMAGE = 2,
+    DescriptorTypeSampledImage = 2,
 
-    DESCRIPTOR_TYPE_STORAGE_IMAGE = 3,
+    DescriptorTypeStorageImage = 3,
 
-    DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER = 4,
+    DescriptorTypeUniformTexelBuffer = 4,
 
-    DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER = 5,
+    DescriptorTypeStorageTexelBuffer = 5,
 
-    DESCRIPTOR_TYPE_UNIFORM_BUFFER = 6,
+    DescriptorTypeUniformBuffer = 6,
 
-    DESCRIPTOR_TYPE_STORAGE_BUFFER = 7,
+    DescriptorTypeStorageBuffer = 7,
 
-    DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = 8,
+    DescriptorTypeUniformBufferDynamic = 8,
 
-    DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = 9,
+    DescriptorTypeStorageBufferDynamic = 9,
 
-    DESCRIPTOR_TYPE_INPUT_ATTACHMENT = 10
+    DescriptorTypeInputAttachment = 10
   }
 }

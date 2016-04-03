@@ -14,8 +14,6 @@ namespace SixtenLabs.Spawn.Utility
 
 		IEnumerable<XElement> GetTypes(string type);
 
-		TypeDefinition GetOrAddType(string name);
-
 		XElement SpecTree { get; }
 
 		IDictionary<string, TypeDefinition> AllTypes { get; }
@@ -29,5 +27,7 @@ namespace SixtenLabs.Spawn.Utility
 		VulkanCommand[] Commands { get; set; }
 
 		VulkanFeature[] Features { get; set; }
+
+		IDictionary<string, string> NameCorrections { get; }
 	}
 }

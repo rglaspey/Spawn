@@ -11,14 +11,14 @@
   /// </summary>
   public enum SystemAllocationScope
   {
-    SYSTEM_ALLOCATION_SCOPE_COMMAND = 0,
+    SystemAllocationScopeCommand = 0,
 
-    SYSTEM_ALLOCATION_SCOPE_OBJECT = 1,
+    SystemAllocationScopeObject = 1,
 
-    SYSTEM_ALLOCATION_SCOPE_CACHE = 2,
+    SystemAllocationScopeCache = 2,
 
-    SYSTEM_ALLOCATION_SCOPE_DEVICE = 3,
+    SystemAllocationScopeDevice = 3,
 
-    SYSTEM_ALLOCATION_SCOPE_INSTANCE = 4
+    SystemAllocationScopeInstance = 4
   }
 }

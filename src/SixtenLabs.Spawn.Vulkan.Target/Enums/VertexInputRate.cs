@@ -11,8 +11,8 @@
   /// </summary>
   public enum VertexInputRate
   {
-    VERTEX_INPUT_RATE_VERTEX = 0,
+    VertexInputRateVertex = 0,
 
-    VERTEX_INPUT_RATE_INSTANCE = 1
+    VertexInputRateInstance = 1
   }
 }

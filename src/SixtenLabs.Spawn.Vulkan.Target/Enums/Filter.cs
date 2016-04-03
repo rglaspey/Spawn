@@ -11,8 +11,13 @@
   /// </summary>
   public enum Filter
   {
-    FILTER_NEAREST = 0,
+    FilterNearest = 0,
 
-    FILTER_LINEAR = 1
+    FilterLinear = 1,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    FilterCubicImg = 1000015000
   }
 }

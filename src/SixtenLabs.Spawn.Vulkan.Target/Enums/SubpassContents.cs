@@ -11,8 +11,8 @@
   /// </summary>
   public enum SubpassContents
   {
-    SUBPASS_CONTENTS_INLINE = 0,
+    SubpassContentsInline = 0,
 
-    SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS = 1
+    SubpassContentsSecondaryCommandBuffers = 1
   }
 }

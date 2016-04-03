@@ -11,16 +11,16 @@
   /// </summary>
   public enum BorderColor
   {
-    BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = 0,
+    BorderColorFloatTransparentBlack = 0,
 
-    BORDER_COLOR_INT_TRANSPARENT_BLACK = 1,
+    BorderColorIntTransparentBlack = 1,
 
-    BORDER_COLOR_FLOAT_OPAQUE_BLACK = 2,
+    BorderColorFloatOpaqueBlack = 2,
 
-    BORDER_COLOR_INT_OPAQUE_BLACK = 3,
+    BorderColorIntOpaqueBlack = 3,
 
-    BORDER_COLOR_FLOAT_OPAQUE_WHITE = 4,
+    BorderColorFloatOpaqueWhite = 4,
 
-    BORDER_COLOR_INT_OPAQUE_WHITE = 5
+    BorderColorIntOpaqueWhite = 5
   }
 }

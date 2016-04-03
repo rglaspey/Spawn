@@ -11,36 +11,36 @@
   /// </summary>
   public enum LogicOp
   {
-    LOGIC_OP_CLEAR = 0,
+    LogicOpClear = 0,
 
-    LOGIC_OP_AND = 1,
+    LogicOpAnd = 1,
 
-    LOGIC_OP_AND_REVERSE = 2,
+    LogicOpAndReverse = 2,
 
-    LOGIC_OP_COPY = 3,
+    LogicOpCopy = 3,
 
-    LOGIC_OP_AND_INVERTED = 4,
+    LogicOpAndInverted = 4,
 
-    LOGIC_OP_NO_OP = 5,
+    LogicOpNoOp = 5,
 
-    LOGIC_OP_XOR = 6,
+    LogicOpXor = 6,
 
-    LOGIC_OP_OR = 7,
+    LogicOpOr = 7,
 
-    LOGIC_OP_NOR = 8,
+    LogicOpNor = 8,
 
-    LOGIC_OP_EQUIVALENT = 9,
+    LogicOpEquivalent = 9,
 
-    LOGIC_OP_INVERT = 10,
+    LogicOpInvert = 10,
 
-    LOGIC_OP_OR_REVERSE = 11,
+    LogicOpOrReverse = 11,
 
-    LOGIC_OP_COPY_INVERTED = 12,
+    LogicOpCopyInverted = 12,
 
-    LOGIC_OP_OR_INVERTED = 13,
+    LogicOpOrInverted = 13,
 
-    LOGIC_OP_NAND = 14,
+    LogicOpNand = 14,
 
-    LOGIC_OP_SET = 15
+    LogicOpSet = 15
   }
 }

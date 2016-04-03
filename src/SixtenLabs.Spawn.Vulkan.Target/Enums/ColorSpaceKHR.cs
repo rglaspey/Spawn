@@ -9,8 +9,8 @@
   /// https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/1.0/src/spec/vk.xml
   /// 
   /// </summary>
-  public enum ColorSpaceKHR
+  public enum ColorSpaceKhr
   {
-    COLORSPACE_SRGB_NONLINEAR_KHR = 0
+    ColorspaceSrgbNonlinearKhr = 0
   }
 }

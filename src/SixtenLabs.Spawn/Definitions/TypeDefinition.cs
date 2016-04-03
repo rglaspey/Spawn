@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 
 namespace SixtenLabs.Spawn
 {
@@ -13,8 +8,6 @@ namespace SixtenLabs.Spawn
 		{
 		}
 
-		[XmlArray("Comments")]
-		[XmlArrayItem(typeof(string), ElementName = "Comment")]
 		public IList<string> Comments { get; } = new List<string>();
 	}
 }

@@ -11,26 +11,26 @@
   /// </summary>
   public enum PrimitiveTopology
   {
-    PRIMITIVE_TOPOLOGY_POINT_LIST = 0,
+    PrimitiveTopologyPointList = 0,
 
-    PRIMITIVE_TOPOLOGY_LINE_LIST = 1,
+    PrimitiveTopologyLineList = 1,
 
-    PRIMITIVE_TOPOLOGY_LINE_STRIP = 2,
+    PrimitiveTopologyLineStrip = 2,
 
-    PRIMITIVE_TOPOLOGY_TRIANGLE_LIST = 3,
+    PrimitiveTopologyTriangleList = 3,
 
-    PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP = 4,
+    PrimitiveTopologyTriangleStrip = 4,
 
-    PRIMITIVE_TOPOLOGY_TRIANGLE_FAN = 5,
+    PrimitiveTopologyTriangleFan = 5,
 
-    PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY = 6,
+    PrimitiveTopologyLineListWithAdjacency = 6,
 
-    PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY = 7,
+    PrimitiveTopologyLineStripWithAdjacency = 7,
 
-    PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY = 8,
+    PrimitiveTopologyTriangleListWithAdjacency = 8,
 
-    PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY = 9,
+    PrimitiveTopologyTriangleStripWithAdjacency = 9,
 
-    PRIMITIVE_TOPOLOGY_PATCH_LIST = 10
+    PrimitiveTopologyPatchList = 10
   }
 }

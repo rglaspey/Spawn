@@ -11,8 +11,8 @@
   /// </summary>
   public enum FrontFace
   {
-    FRONT_FACE_COUNTER_CLOCKWISE = 0,
+    FrontFaceCounterClockwise = 0,
 
-    FRONT_FACE_CLOCKWISE = 1
+    FrontFaceClockwise = 1
   }
 }

@@ -28,29 +28,6 @@ namespace SixtenLabs.Spawn.Vulkan
 			FileLoader.LoadRegistry();
 		}
 
-		public TypeDefinition GetOrAddType(string name)
-		{
-			if (AllTypes.ContainsKey(name))
-			{
-				return AllTypes[name];
-			}
-
-			// Could be one of the poorly-named enums
-			var enumName = name.GetEnumName();
-
-			if (AllTypes.ContainsKey(enumName))
-			{
-				return AllTypes[enumName];
-			}
-
-			var newType = new TypeDefinition();
-			newType.Name = name;
-
-			AllTypes.Add(name, newType);
-
-			return newType;
-		}
-
 		private XmlFileLoader FileLoader { get; set; }
 
 		public XElement SpecTree
@@ -90,5 +67,13 @@ namespace SixtenLabs.Spawn.Vulkan
 		public VulkanCommand[] Commands { get; set; }
 
 		public VulkanFeature[] Features { get; set; }
+
+
+		public IDictionary<string, string> NameCorrections { get; } = new Dictionary<string, string>()
+		{
+			{ "API", "Api" },
+			{ "EXT", "Ext" },
+			{ "KHR", "Khr" },
+		};
 	}
 }

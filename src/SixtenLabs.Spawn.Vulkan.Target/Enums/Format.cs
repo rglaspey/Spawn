@@ -12,374 +12,374 @@
   /// </summary>
   public enum Format
   {
-    FORMAT_UNDEFINED = 0,
+    FormatUndefined = 0,
 
-    FORMAT_R4G4_UNORM_PACK8 = 1,
+    FormatR4g4UnormPack8 = 1,
 
-    FORMAT_R4G4B4A4_UNORM_PACK16 = 2,
+    FormatR4g4b4a4UnormPack16 = 2,
 
-    FORMAT_B4G4R4A4_UNORM_PACK16 = 3,
+    FormatB4g4r4a4UnormPack16 = 3,
 
-    FORMAT_R5G6B5_UNORM_PACK16 = 4,
+    FormatR5g6b5UnormPack16 = 4,
 
-    FORMAT_B5G6R5_UNORM_PACK16 = 5,
+    FormatB5g6r5UnormPack16 = 5,
 
-    FORMAT_R5G5B5A1_UNORM_PACK16 = 6,
+    FormatR5g5b5a1UnormPack16 = 6,
 
-    FORMAT_B5G5R5A1_UNORM_PACK16 = 7,
+    FormatB5g5r5a1UnormPack16 = 7,
 
-    FORMAT_A1R5G5B5_UNORM_PACK16 = 8,
+    FormatA1r5g5b5UnormPack16 = 8,
 
-    FORMAT_R8_UNORM = 9,
+    FormatR8Unorm = 9,
 
-    FORMAT_R8_SNORM = 10,
+    FormatR8Snorm = 10,
 
-    FORMAT_R8_USCALED = 11,
+    FormatR8Uscaled = 11,
 
-    FORMAT_R8_SSCALED = 12,
+    FormatR8Sscaled = 12,
 
-    FORMAT_R8_UINT = 13,
+    FormatR8Uint = 13,
 
-    FORMAT_R8_SINT = 14,
+    FormatR8Sint = 14,
 
-    FORMAT_R8_SRGB = 15,
+    FormatR8Srgb = 15,
 
-    FORMAT_R8G8_UNORM = 16,
+    FormatR8g8Unorm = 16,
 
-    FORMAT_R8G8_SNORM = 17,
+    FormatR8g8Snorm = 17,
 
-    FORMAT_R8G8_USCALED = 18,
+    FormatR8g8Uscaled = 18,
 
-    FORMAT_R8G8_SSCALED = 19,
+    FormatR8g8Sscaled = 19,
 
-    FORMAT_R8G8_UINT = 20,
+    FormatR8g8Uint = 20,
 
-    FORMAT_R8G8_SINT = 21,
+    FormatR8g8Sint = 21,
 
-    FORMAT_R8G8_SRGB = 22,
+    FormatR8g8Srgb = 22,
 
-    FORMAT_R8G8B8_UNORM = 23,
+    FormatR8g8b8Unorm = 23,
 
-    FORMAT_R8G8B8_SNORM = 24,
+    FormatR8g8b8Snorm = 24,
 
-    FORMAT_R8G8B8_USCALED = 25,
+    FormatR8g8b8Uscaled = 25,
 
-    FORMAT_R8G8B8_SSCALED = 26,
+    FormatR8g8b8Sscaled = 26,
 
-    FORMAT_R8G8B8_UINT = 27,
+    FormatR8g8b8Uint = 27,
 
-    FORMAT_R8G8B8_SINT = 28,
+    FormatR8g8b8Sint = 28,
 
-    FORMAT_R8G8B8_SRGB = 29,
+    FormatR8g8b8Srgb = 29,
 
-    FORMAT_B8G8R8_UNORM = 30,
+    FormatB8g8r8Unorm = 30,
 
-    FORMAT_B8G8R8_SNORM = 31,
+    FormatB8g8r8Snorm = 31,
 
-    FORMAT_B8G8R8_USCALED = 32,
+    FormatB8g8r8Uscaled = 32,
 
-    FORMAT_B8G8R8_SSCALED = 33,
+    FormatB8g8r8Sscaled = 33,
 
-    FORMAT_B8G8R8_UINT = 34,
+    FormatB8g8r8Uint = 34,
 
-    FORMAT_B8G8R8_SINT = 35,
+    FormatB8g8r8Sint = 35,
 
-    FORMAT_B8G8R8_SRGB = 36,
+    FormatB8g8r8Srgb = 36,
 
-    FORMAT_R8G8B8A8_UNORM = 37,
+    FormatR8g8b8a8Unorm = 37,
 
-    FORMAT_R8G8B8A8_SNORM = 38,
+    FormatR8g8b8a8Snorm = 38,
 
-    FORMAT_R8G8B8A8_USCALED = 39,
+    FormatR8g8b8a8Uscaled = 39,
 
-    FORMAT_R8G8B8A8_SSCALED = 40,
+    FormatR8g8b8a8Sscaled = 40,
 
-    FORMAT_R8G8B8A8_UINT = 41,
+    FormatR8g8b8a8Uint = 41,
 
-    FORMAT_R8G8B8A8_SINT = 42,
+    FormatR8g8b8a8Sint = 42,
 
-    FORMAT_R8G8B8A8_SRGB = 43,
+    FormatR8g8b8a8Srgb = 43,
 
-    FORMAT_B8G8R8A8_UNORM = 44,
+    FormatB8g8r8a8Unorm = 44,
 
-    FORMAT_B8G8R8A8_SNORM = 45,
+    FormatB8g8r8a8Snorm = 45,
 
-    FORMAT_B8G8R8A8_USCALED = 46,
+    FormatB8g8r8a8Uscaled = 46,
 
-    FORMAT_B8G8R8A8_SSCALED = 47,
+    FormatB8g8r8a8Sscaled = 47,
 
-    FORMAT_B8G8R8A8_UINT = 48,
+    FormatB8g8r8a8Uint = 48,
 
-    FORMAT_B8G8R8A8_SINT = 49,
+    FormatB8g8r8a8Sint = 49,
 
-    FORMAT_B8G8R8A8_SRGB = 50,
+    FormatB8g8r8a8Srgb = 50,
 
-    FORMAT_A8B8G8R8_UNORM_PACK32 = 51,
+    FormatA8b8g8r8UnormPack32 = 51,
 
-    FORMAT_A8B8G8R8_SNORM_PACK32 = 52,
+    FormatA8b8g8r8SnormPack32 = 52,
 
-    FORMAT_A8B8G8R8_USCALED_PACK32 = 53,
+    FormatA8b8g8r8UscaledPack32 = 53,
 
-    FORMAT_A8B8G8R8_SSCALED_PACK32 = 54,
+    FormatA8b8g8r8SscaledPack32 = 54,
 
-    FORMAT_A8B8G8R8_UINT_PACK32 = 55,
+    FormatA8b8g8r8UintPack32 = 55,
 
-    FORMAT_A8B8G8R8_SINT_PACK32 = 56,
+    FormatA8b8g8r8SintPack32 = 56,
 
-    FORMAT_A8B8G8R8_SRGB_PACK32 = 57,
+    FormatA8b8g8r8SrgbPack32 = 57,
 
-    FORMAT_A2R10G10B10_UNORM_PACK32 = 58,
+    FormatA2r10g10b10UnormPack32 = 58,
 
-    FORMAT_A2R10G10B10_SNORM_PACK32 = 59,
+    FormatA2r10g10b10SnormPack32 = 59,
 
-    FORMAT_A2R10G10B10_USCALED_PACK32 = 60,
+    FormatA2r10g10b10UscaledPack32 = 60,
 
-    FORMAT_A2R10G10B10_SSCALED_PACK32 = 61,
+    FormatA2r10g10b10SscaledPack32 = 61,
 
-    FORMAT_A2R10G10B10_UINT_PACK32 = 62,
+    FormatA2r10g10b10UintPack32 = 62,
 
-    FORMAT_A2R10G10B10_SINT_PACK32 = 63,
+    FormatA2r10g10b10SintPack32 = 63,
 
-    FORMAT_A2B10G10R10_UNORM_PACK32 = 64,
+    FormatA2b10g10r10UnormPack32 = 64,
 
-    FORMAT_A2B10G10R10_SNORM_PACK32 = 65,
+    FormatA2b10g10r10SnormPack32 = 65,
 
-    FORMAT_A2B10G10R10_USCALED_PACK32 = 66,
+    FormatA2b10g10r10UscaledPack32 = 66,
 
-    FORMAT_A2B10G10R10_SSCALED_PACK32 = 67,
+    FormatA2b10g10r10SscaledPack32 = 67,
 
-    FORMAT_A2B10G10R10_UINT_PACK32 = 68,
+    FormatA2b10g10r10UintPack32 = 68,
 
-    FORMAT_A2B10G10R10_SINT_PACK32 = 69,
+    FormatA2b10g10r10SintPack32 = 69,
 
-    FORMAT_R16_UNORM = 70,
+    FormatR16Unorm = 70,
 
-    FORMAT_R16_SNORM = 71,
+    FormatR16Snorm = 71,
 
-    FORMAT_R16_USCALED = 72,
+    FormatR16Uscaled = 72,
 
-    FORMAT_R16_SSCALED = 73,
+    FormatR16Sscaled = 73,
 
-    FORMAT_R16_UINT = 74,
+    FormatR16Uint = 74,
 
-    FORMAT_R16_SINT = 75,
+    FormatR16Sint = 75,
 
-    FORMAT_R16_SFLOAT = 76,
+    FormatR16Sfloat = 76,
 
-    FORMAT_R16G16_UNORM = 77,
+    FormatR16g16Unorm = 77,
 
-    FORMAT_R16G16_SNORM = 78,
+    FormatR16g16Snorm = 78,
 
-    FORMAT_R16G16_USCALED = 79,
+    FormatR16g16Uscaled = 79,
 
-    FORMAT_R16G16_SSCALED = 80,
+    FormatR16g16Sscaled = 80,
 
-    FORMAT_R16G16_UINT = 81,
+    FormatR16g16Uint = 81,
 
-    FORMAT_R16G16_SINT = 82,
+    FormatR16g16Sint = 82,
 
-    FORMAT_R16G16_SFLOAT = 83,
+    FormatR16g16Sfloat = 83,
 
-    FORMAT_R16G16B16_UNORM = 84,
+    FormatR16g16b16Unorm = 84,
 
-    FORMAT_R16G16B16_SNORM = 85,
+    FormatR16g16b16Snorm = 85,
 
-    FORMAT_R16G16B16_USCALED = 86,
+    FormatR16g16b16Uscaled = 86,
 
-    FORMAT_R16G16B16_SSCALED = 87,
+    FormatR16g16b16Sscaled = 87,
 
-    FORMAT_R16G16B16_UINT = 88,
+    FormatR16g16b16Uint = 88,
 
-    FORMAT_R16G16B16_SINT = 89,
+    FormatR16g16b16Sint = 89,
 
-    FORMAT_R16G16B16_SFLOAT = 90,
+    FormatR16g16b16Sfloat = 90,
 
-    FORMAT_R16G16B16A16_UNORM = 91,
+    FormatR16g16b16a16Unorm = 91,
 
-    FORMAT_R16G16B16A16_SNORM = 92,
+    FormatR16g16b16a16Snorm = 92,
 
-    FORMAT_R16G16B16A16_USCALED = 93,
+    FormatR16g16b16a16Uscaled = 93,
 
-    FORMAT_R16G16B16A16_SSCALED = 94,
+    FormatR16g16b16a16Sscaled = 94,
 
-    FORMAT_R16G16B16A16_UINT = 95,
+    FormatR16g16b16a16Uint = 95,
 
-    FORMAT_R16G16B16A16_SINT = 96,
+    FormatR16g16b16a16Sint = 96,
 
-    FORMAT_R16G16B16A16_SFLOAT = 97,
+    FormatR16g16b16a16Sfloat = 97,
 
-    FORMAT_R32_UINT = 98,
+    FormatR32Uint = 98,
 
-    FORMAT_R32_SINT = 99,
+    FormatR32Sint = 99,
 
-    FORMAT_R32_SFLOAT = 100,
+    FormatR32Sfloat = 100,
 
-    FORMAT_R32G32_UINT = 101,
+    FormatR32g32Uint = 101,
 
-    FORMAT_R32G32_SINT = 102,
+    FormatR32g32Sint = 102,
 
-    FORMAT_R32G32_SFLOAT = 103,
+    FormatR32g32Sfloat = 103,
 
-    FORMAT_R32G32B32_UINT = 104,
+    FormatR32g32b32Uint = 104,
 
-    FORMAT_R32G32B32_SINT = 105,
+    FormatR32g32b32Sint = 105,
 
-    FORMAT_R32G32B32_SFLOAT = 106,
+    FormatR32g32b32Sfloat = 106,
 
-    FORMAT_R32G32B32A32_UINT = 107,
+    FormatR32g32b32a32Uint = 107,
 
-    FORMAT_R32G32B32A32_SINT = 108,
+    FormatR32g32b32a32Sint = 108,
 
-    FORMAT_R32G32B32A32_SFLOAT = 109,
+    FormatR32g32b32a32Sfloat = 109,
 
-    FORMAT_R64_UINT = 110,
+    FormatR64Uint = 110,
 
-    FORMAT_R64_SINT = 111,
+    FormatR64Sint = 111,
 
-    FORMAT_R64_SFLOAT = 112,
+    FormatR64Sfloat = 112,
 
-    FORMAT_R64G64_UINT = 113,
+    FormatR64g64Uint = 113,
 
-    FORMAT_R64G64_SINT = 114,
+    FormatR64g64Sint = 114,
 
-    FORMAT_R64G64_SFLOAT = 115,
+    FormatR64g64Sfloat = 115,
 
-    FORMAT_R64G64B64_UINT = 116,
+    FormatR64g64b64Uint = 116,
 
-    FORMAT_R64G64B64_SINT = 117,
+    FormatR64g64b64Sint = 117,
 
-    FORMAT_R64G64B64_SFLOAT = 118,
+    FormatR64g64b64Sfloat = 118,
 
-    FORMAT_R64G64B64A64_UINT = 119,
+    FormatR64g64b64a64Uint = 119,
 
-    FORMAT_R64G64B64A64_SINT = 120,
+    FormatR64g64b64a64Sint = 120,
 
-    FORMAT_R64G64B64A64_SFLOAT = 121,
+    FormatR64g64b64a64Sfloat = 121,
 
-    FORMAT_B10G11R11_UFLOAT_PACK32 = 122,
+    FormatB10g11r11UfloatPack32 = 122,
 
-    FORMAT_E5B9G9R9_UFLOAT_PACK32 = 123,
+    FormatE5b9g9r9UfloatPack32 = 123,
 
-    FORMAT_D16_UNORM = 124,
+    FormatD16Unorm = 124,
 
-    FORMAT_X8_D24_UNORM_PACK32 = 125,
+    FormatX8D24UnormPack32 = 125,
 
-    FORMAT_D32_SFLOAT = 126,
+    FormatD32Sfloat = 126,
 
-    FORMAT_S8_UINT = 127,
+    FormatS8Uint = 127,
 
-    FORMAT_D16_UNORM_S8_UINT = 128,
+    FormatD16UnormS8Uint = 128,
 
-    FORMAT_D24_UNORM_S8_UINT = 129,
+    FormatD24UnormS8Uint = 129,
 
-    FORMAT_D32_SFLOAT_S8_UINT = 130,
+    FormatD32SfloatS8Uint = 130,
 
-    FORMAT_BC1_RGB_UNORM_BLOCK = 131,
+    FormatBc1RgbUnormBlock = 131,
 
-    FORMAT_BC1_RGB_SRGB_BLOCK = 132,
+    FormatBc1RgbSrgbBlock = 132,
 
-    FORMAT_BC1_RGBA_UNORM_BLOCK = 133,
+    FormatBc1RgbaUnormBlock = 133,
 
-    FORMAT_BC1_RGBA_SRGB_BLOCK = 134,
+    FormatBc1RgbaSrgbBlock = 134,
 
-    FORMAT_BC2_UNORM_BLOCK = 135,
+    FormatBc2UnormBlock = 135,
 
-    FORMAT_BC2_SRGB_BLOCK = 136,
+    FormatBc2SrgbBlock = 136,
 
-    FORMAT_BC3_UNORM_BLOCK = 137,
+    FormatBc3UnormBlock = 137,
 
-    FORMAT_BC3_SRGB_BLOCK = 138,
+    FormatBc3SrgbBlock = 138,
 
-    FORMAT_BC4_UNORM_BLOCK = 139,
+    FormatBc4UnormBlock = 139,
 
-    FORMAT_BC4_SNORM_BLOCK = 140,
+    FormatBc4SnormBlock = 140,
 
-    FORMAT_BC5_UNORM_BLOCK = 141,
+    FormatBc5UnormBlock = 141,
 
-    FORMAT_BC5_SNORM_BLOCK = 142,
+    FormatBc5SnormBlock = 142,
 
-    FORMAT_BC6H_UFLOAT_BLOCK = 143,
+    FormatBc6hUfloatBlock = 143,
 
-    FORMAT_BC6H_SFLOAT_BLOCK = 144,
+    FormatBc6hSfloatBlock = 144,
 
-    FORMAT_BC7_UNORM_BLOCK = 145,
+    FormatBc7UnormBlock = 145,
 
-    FORMAT_BC7_SRGB_BLOCK = 146,
+    FormatBc7SrgbBlock = 146,
 
-    FORMAT_ETC2_R8G8B8_UNORM_BLOCK = 147,
+    FormatEtc2R8g8b8UnormBlock = 147,
 
-    FORMAT_ETC2_R8G8B8_SRGB_BLOCK = 148,
+    FormatEtc2R8g8b8SrgbBlock = 148,
 
-    FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK = 149,
+    FormatEtc2R8g8b8a1UnormBlock = 149,
 
-    FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK = 150,
+    FormatEtc2R8g8b8a1SrgbBlock = 150,
 
-    FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK = 151,
+    FormatEtc2R8g8b8a8UnormBlock = 151,
 
-    FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK = 152,
+    FormatEtc2R8g8b8a8SrgbBlock = 152,
 
-    FORMAT_EAC_R11_UNORM_BLOCK = 153,
+    FormatEacR11UnormBlock = 153,
 
-    FORMAT_EAC_R11_SNORM_BLOCK = 154,
+    FormatEacR11SnormBlock = 154,
 
-    FORMAT_EAC_R11G11_UNORM_BLOCK = 155,
+    FormatEacR11g11UnormBlock = 155,
 
-    FORMAT_EAC_R11G11_SNORM_BLOCK = 156,
+    FormatEacR11g11SnormBlock = 156,
 
-    FORMAT_ASTC_4x4_UNORM_BLOCK = 157,
+    FormatAstc4X4UnormBlock = 157,
 
-    FORMAT_ASTC_4x4_SRGB_BLOCK = 158,
+    FormatAstc4X4SrgbBlock = 158,
 
-    FORMAT_ASTC_5x4_UNORM_BLOCK = 159,
+    FormatAstc5X4UnormBlock = 159,
 
-    FORMAT_ASTC_5x4_SRGB_BLOCK = 160,
+    FormatAstc5X4SrgbBlock = 160,
 
-    FORMAT_ASTC_5x5_UNORM_BLOCK = 161,
+    FormatAstc5X5UnormBlock = 161,
 
-    FORMAT_ASTC_5x5_SRGB_BLOCK = 162,
+    FormatAstc5X5SrgbBlock = 162,
 
-    FORMAT_ASTC_6x5_UNORM_BLOCK = 163,
+    FormatAstc6X5UnormBlock = 163,
 
-    FORMAT_ASTC_6x5_SRGB_BLOCK = 164,
+    FormatAstc6X5SrgbBlock = 164,
 
-    FORMAT_ASTC_6x6_UNORM_BLOCK = 165,
+    FormatAstc6X6UnormBlock = 165,
 
-    FORMAT_ASTC_6x6_SRGB_BLOCK = 166,
+    FormatAstc6X6SrgbBlock = 166,
 
-    FORMAT_ASTC_8x5_UNORM_BLOCK = 167,
+    FormatAstc8X5UnormBlock = 167,
 
-    FORMAT_ASTC_8x5_SRGB_BLOCK = 168,
+    FormatAstc8X5SrgbBlock = 168,
 
-    FORMAT_ASTC_8x6_UNORM_BLOCK = 169,
+    FormatAstc8X6UnormBlock = 169,
 
-    FORMAT_ASTC_8x6_SRGB_BLOCK = 170,
+    FormatAstc8X6SrgbBlock = 170,
 
-    FORMAT_ASTC_8x8_UNORM_BLOCK = 171,
+    FormatAstc8X8UnormBlock = 171,
 
-    FORMAT_ASTC_8x8_SRGB_BLOCK = 172,
+    FormatAstc8X8SrgbBlock = 172,
 
-    FORMAT_ASTC_10x5_UNORM_BLOCK = 173,
+    FormatAstc10X5UnormBlock = 173,
 
-    FORMAT_ASTC_10x5_SRGB_BLOCK = 174,
+    FormatAstc10X5SrgbBlock = 174,
 
-    FORMAT_ASTC_10x6_UNORM_BLOCK = 175,
+    FormatAstc10X6UnormBlock = 175,
 
-    FORMAT_ASTC_10x6_SRGB_BLOCK = 176,
+    FormatAstc10X6SrgbBlock = 176,
 
-    FORMAT_ASTC_10x8_UNORM_BLOCK = 177,
+    FormatAstc10X8UnormBlock = 177,
 
-    FORMAT_ASTC_10x8_SRGB_BLOCK = 178,
+    FormatAstc10X8SrgbBlock = 178,
 
-    FORMAT_ASTC_10x10_UNORM_BLOCK = 179,
+    FormatAstc10X10UnormBlock = 179,
 
-    FORMAT_ASTC_10x10_SRGB_BLOCK = 180,
+    FormatAstc10X10SrgbBlock = 180,
 
-    FORMAT_ASTC_12x10_UNORM_BLOCK = 181,
+    FormatAstc12X10UnormBlock = 181,
 
-    FORMAT_ASTC_12x10_SRGB_BLOCK = 182,
+    FormatAstc12X10SrgbBlock = 182,
 
-    FORMAT_ASTC_12x12_UNORM_BLOCK = 183,
+    FormatAstc12X12UnormBlock = 183,
 
-    FORMAT_ASTC_12x12_SRGB_BLOCK = 184
+    FormatAstc12X12SrgbBlock = 184
   }
 }

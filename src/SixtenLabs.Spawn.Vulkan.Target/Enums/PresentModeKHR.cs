@@ -9,14 +9,14 @@
   /// https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/1.0/src/spec/vk.xml
   /// 
   /// </summary>
-  public enum PresentModeKHR
+  public enum PresentModeKhr
   {
-    PRESENT_MODE_IMMEDIATE_KHR = 0,
+    PresentModeImmediateKhr = 0,
 
-    PRESENT_MODE_MAILBOX_KHR = 1,
+    PresentModeMailboxKhr = 1,
 
-    PRESENT_MODE_FIFO_KHR = 2,
+    PresentModeFifoKhr = 2,
 
-    PRESENT_MODE_FIFO_RELAXED_KHR = 3
+    PresentModeFifoRelaxedKhr = 3
   }
 }

@@ -11,20 +11,20 @@
   /// </summary>
   public enum CompareOp
   {
-    COMPARE_OP_NEVER = 0,
+    CompareOpNever = 0,
 
-    COMPARE_OP_LESS = 1,
+    CompareOpLess = 1,
 
-    COMPARE_OP_EQUAL = 2,
+    CompareOpEqual = 2,
 
-    COMPARE_OP_LESS_OR_EQUAL = 3,
+    CompareOpLessOrEqual = 3,
 
-    COMPARE_OP_GREATER = 4,
+    CompareOpGreater = 4,
 
-    COMPARE_OP_NOT_EQUAL = 5,
+    CompareOpNotEqual = 5,
 
-    COMPARE_OP_GREATER_OR_EQUAL = 6,
+    CompareOpGreaterOrEqual = 6,
 
-    COMPARE_OP_ALWAYS = 7
+    CompareOpAlways = 7
   }
 }

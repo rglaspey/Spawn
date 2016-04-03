@@ -11,42 +11,42 @@
   /// </summary>
   public enum BlendFactor
   {
-    BLEND_FACTOR_ZERO = 0,
+    BlendFactorZero = 0,
 
-    BLEND_FACTOR_ONE = 1,
+    BlendFactorOne = 1,
 
-    BLEND_FACTOR_SRC_COLOR = 2,
+    BlendFactorSrcColor = 2,
 
-    BLEND_FACTOR_ONE_MINUS_SRC_COLOR = 3,
+    BlendFactorOneMinusSrcColor = 3,
 
-    BLEND_FACTOR_DST_COLOR = 4,
+    BlendFactorDstColor = 4,
 
-    BLEND_FACTOR_ONE_MINUS_DST_COLOR = 5,
+    BlendFactorOneMinusDstColor = 5,
 
-    BLEND_FACTOR_SRC_ALPHA = 6,
+    BlendFactorSrcAlpha = 6,
 
-    BLEND_FACTOR_ONE_MINUS_SRC_ALPHA = 7,
+    BlendFactorOneMinusSrcAlpha = 7,
 
-    BLEND_FACTOR_DST_ALPHA = 8,
+    BlendFactorDstAlpha = 8,
 
-    BLEND_FACTOR_ONE_MINUS_DST_ALPHA = 9,
+    BlendFactorOneMinusDstAlpha = 9,
 
-    BLEND_FACTOR_CONSTANT_COLOR = 10,
+    BlendFactorConstantColor = 10,
 
-    BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR = 11,
+    BlendFactorOneMinusConstantColor = 11,
 
-    BLEND_FACTOR_CONSTANT_ALPHA = 12,
+    BlendFactorConstantAlpha = 12,
 
-    BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA = 13,
+    BlendFactorOneMinusConstantAlpha = 13,
 
-    BLEND_FACTOR_SRC_ALPHA_SATURATE = 14,
+    BlendFactorSrcAlphaSaturate = 14,
 
-    BLEND_FACTOR_SRC1_COLOR = 15,
+    BlendFactorSrc1Color = 15,
 
-    BLEND_FACTOR_ONE_MINUS_SRC1_COLOR = 16,
+    BlendFactorOneMinusSrc1Color = 16,
 
-    BLEND_FACTOR_SRC1_ALPHA = 17,
+    BlendFactorSrc1Alpha = 17,
 
-    BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA = 18
+    BlendFactorOneMinusSrc1Alpha = 18
   }
 }

@@ -11,10 +11,10 @@
   /// </summary>
   public enum PolygonMode
   {
-    POLYGON_MODE_FILL = 0,
+    PolygonModeFill = 0,
 
-    POLYGON_MODE_LINE = 1,
+    PolygonModeLine = 1,
 
-    POLYGON_MODE_POINT = 2
+    PolygonModePoint = 2
   }
 }

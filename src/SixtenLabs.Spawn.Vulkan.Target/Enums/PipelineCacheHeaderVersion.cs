@@ -11,6 +11,6 @@
   /// </summary>
   public enum PipelineCacheHeaderVersion
   {
-    PIPELINE_CACHE_HEADER_VERSION_ONE = 1
+    PipelineCacheHeaderVersionOne = 1
   }
 }

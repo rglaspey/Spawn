@@ -11,8 +11,8 @@
   /// </summary>
   public enum SharingMode
   {
-    SHARING_MODE_EXCLUSIVE = 0,
+    SharingModeExclusive = 0,
 
-    SHARING_MODE_CONCURRENT = 1
+    SharingModeConcurrent = 1
   }
 }

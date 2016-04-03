@@ -11,12 +11,17 @@
   /// </summary>
   public enum SamplerAddressMode
   {
-    SAMPLER_ADDRESS_MODE_REPEAT = 0,
+    SamplerAddressModeRepeat = 0,
 
-    SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT = 1,
+    SamplerAddressModeMirroredRepeat = 1,
 
-    SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE = 2,
+    SamplerAddressModeClampToEdge = 2,
 
-    SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER = 3
+    SamplerAddressModeClampToBorder = 3,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    SamplerAddressModeMirrorClampToEdge = 4
   }
 }

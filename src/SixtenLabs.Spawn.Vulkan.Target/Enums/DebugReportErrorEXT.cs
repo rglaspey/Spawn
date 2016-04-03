@@ -9,10 +9,10 @@
   /// https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/1.0/src/spec/vk.xml
   /// 
   /// </summary>
-  public enum DebugReportErrorEXT
+  public enum DebugReportErrorExt
   {
-    DEBUG_REPORT_ERROR_NONE_EXT = 0,
+    DebugReportErrorNoneExt = 0,
 
-    DEBUG_REPORT_ERROR_CALLBACK_REF_EXT = 1
+    DebugReportErrorCallbackRefExt = 1
   }
 }

@@ -2,7 +2,6 @@
 
 namespace SixtenLabs.Spawn
 {
-	[XmlRoot("EnumDefinition")]
 	public class EnumMemberDefinition
 	{
 		public EnumMemberDefinition()

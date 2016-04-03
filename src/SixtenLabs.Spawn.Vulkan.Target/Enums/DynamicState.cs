@@ -11,22 +11,22 @@
   /// </summary>
   public enum DynamicState
   {
-    DYNAMIC_STATE_VIEWPORT = 0,
+    DynamicStateViewport = 0,
 
-    DYNAMIC_STATE_SCISSOR = 1,
+    DynamicStateScissor = 1,
 
-    DYNAMIC_STATE_LINE_WIDTH = 2,
+    DynamicStateLineWidth = 2,
 
-    DYNAMIC_STATE_DEPTH_BIAS = 3,
+    DynamicStateDepthBias = 3,
 
-    DYNAMIC_STATE_BLEND_CONSTANTS = 4,
+    DynamicStateBlendConstants = 4,
 
-    DYNAMIC_STATE_DEPTH_BOUNDS = 5,
+    DynamicStateDepthBounds = 5,
 
-    DYNAMIC_STATE_STENCIL_COMPARE_MASK = 6,
+    DynamicStateStencilCompareMask = 6,
 
-    DYNAMIC_STATE_STENCIL_WRITE_MASK = 7,
+    DynamicStateStencilWriteMask = 7,
 
-    DYNAMIC_STATE_STENCIL_REFERENCE = 8
+    DynamicStateStencilReference = 8
   }
 }

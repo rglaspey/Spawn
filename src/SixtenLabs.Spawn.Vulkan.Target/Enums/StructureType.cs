@@ -12,102 +12,162 @@
   /// </summary>
   public enum StructureType
   {
-    STRUCTURE_TYPE_APPLICATION_INFO = 0,
+    StructureTypeApplicationInfo = 0,
 
-    STRUCTURE_TYPE_INSTANCE_CREATE_INFO = 1,
+    StructureTypeInstanceCreateInfo = 1,
 
-    STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO = 2,
+    StructureTypeDeviceQueueCreateInfo = 2,
 
-    STRUCTURE_TYPE_DEVICE_CREATE_INFO = 3,
+    StructureTypeDeviceCreateInfo = 3,
 
-    STRUCTURE_TYPE_SUBMIT_INFO = 4,
+    StructureTypeSubmitInfo = 4,
 
-    STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO = 5,
+    StructureTypeMemoryAllocateInfo = 5,
 
-    STRUCTURE_TYPE_MAPPED_MEMORY_RANGE = 6,
+    StructureTypeMappedMemoryRange = 6,
 
-    STRUCTURE_TYPE_BIND_SPARSE_INFO = 7,
+    StructureTypeBindSparseInfo = 7,
 
-    STRUCTURE_TYPE_FENCE_CREATE_INFO = 8,
+    StructureTypeFenceCreateInfo = 8,
 
-    STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO = 9,
+    StructureTypeSemaphoreCreateInfo = 9,
 
-    STRUCTURE_TYPE_EVENT_CREATE_INFO = 10,
+    StructureTypeEventCreateInfo = 10,
 
-    STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO = 11,
+    StructureTypeQueryPoolCreateInfo = 11,
 
-    STRUCTURE_TYPE_BUFFER_CREATE_INFO = 12,
+    StructureTypeBufferCreateInfo = 12,
 
-    STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO = 13,
+    StructureTypeBufferViewCreateInfo = 13,
 
-    STRUCTURE_TYPE_IMAGE_CREATE_INFO = 14,
+    StructureTypeImageCreateInfo = 14,
 
-    STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO = 15,
+    StructureTypeImageViewCreateInfo = 15,
 
-    STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO = 16,
+    StructureTypeShaderModuleCreateInfo = 16,
 
-    STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO = 17,
+    StructureTypePipelineCacheCreateInfo = 17,
 
-    STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO = 18,
+    StructureTypePipelineShaderStageCreateInfo = 18,
 
-    STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO = 19,
+    StructureTypePipelineVertexInputStateCreateInfo = 19,
 
-    STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO = 20,
+    StructureTypePipelineInputAssemblyStateCreateInfo = 20,
 
-    STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO = 21,
+    StructureTypePipelineTessellationStateCreateInfo = 21,
 
-    STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO = 22,
+    StructureTypePipelineViewportStateCreateInfo = 22,
 
-    STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO = 23,
+    StructureTypePipelineRasterizationStateCreateInfo = 23,
 
-    STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO = 24,
+    StructureTypePipelineMultisampleStateCreateInfo = 24,
 
-    STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO = 25,
+    StructureTypePipelineDepthStencilStateCreateInfo = 25,
 
-    STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO = 26,
+    StructureTypePipelineColorBlendStateCreateInfo = 26,
 
-    STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO = 27,
+    StructureTypePipelineDynamicStateCreateInfo = 27,
 
-    STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO = 28,
+    StructureTypeGraphicsPipelineCreateInfo = 28,
 
-    STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO = 29,
+    StructureTypeComputePipelineCreateInfo = 29,
 
-    STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO = 30,
+    StructureTypePipelineLayoutCreateInfo = 30,
 
-    STRUCTURE_TYPE_SAMPLER_CREATE_INFO = 31,
+    StructureTypeSamplerCreateInfo = 31,
 
-    STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO = 32,
+    StructureTypeDescriptorSetLayoutCreateInfo = 32,
 
-    STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO = 33,
+    StructureTypeDescriptorPoolCreateInfo = 33,
 
-    STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO = 34,
+    StructureTypeDescriptorSetAllocateInfo = 34,
 
-    STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET = 35,
+    StructureTypeWriteDescriptorSet = 35,
 
-    STRUCTURE_TYPE_COPY_DESCRIPTOR_SET = 36,
+    StructureTypeCopyDescriptorSet = 36,
 
-    STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO = 37,
+    StructureTypeFramebufferCreateInfo = 37,
 
-    STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO = 38,
+    StructureTypeRenderPassCreateInfo = 38,
 
-    STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO = 39,
+    StructureTypeCommandPoolCreateInfo = 39,
 
-    STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO = 40,
+    StructureTypeCommandBufferAllocateInfo = 40,
 
-    STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO = 41,
+    StructureTypeCommandBufferInheritanceInfo = 41,
 
-    STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO = 42,
+    StructureTypeCommandBufferBeginInfo = 42,
 
-    STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO = 43,
+    StructureTypeRenderPassBeginInfo = 43,
 
-    STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER = 44,
+    StructureTypeBufferMemoryBarrier = 44,
 
-    STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER = 45,
+    StructureTypeImageMemoryBarrier = 45,
 
-    STRUCTURE_TYPE_MEMORY_BARRIER = 46,
+    StructureTypeMemoryBarrier = 46,
 
-    STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO = 47,
+    StructureTypeLoaderInstanceCreateInfo = 47,
 
-    STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO = 48
+    StructureTypeLoaderDeviceCreateInfo = 48,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeSwapchainCreateInfoKhr = 1000001000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypePresentInfoKhr = 1000001001,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeDisplayModeCreateInfoKhr = 1000002000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeDisplaySurfaceCreateInfoKhr = 1000002001,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeDisplayPresentInfoKhr = 1000003000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeXlibSurfaceCreateInfoKhr = 1000004000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeXcbSurfaceCreateInfoKhr = 1000005000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeWaylandSurfaceCreateInfoKhr = 1000006000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeMirSurfaceCreateInfoKhr = 1000007000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeAndroidSurfaceCreateInfoKhr = 1000008000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeWin32SurfaceCreateInfoKhr = 1000009000,
+
+    /// <summary> 
+    /// Extension Enum Value
+    /// </summary> 
+    StructureTypeDebugReportCallbackCreateInfoExt = 1000011000
   }
 }

@@ -11,8 +11,8 @@
   /// </summary>
   public enum IndexType
   {
-    INDEX_TYPE_UINT16 = 0,
+    IndexTypeUint16 = 0,
 
-    INDEX_TYPE_UINT32 = 1
+    IndexTypeUint32 = 1
   }
 }

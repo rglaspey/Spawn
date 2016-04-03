@@ -133,6 +133,7 @@
     <Compile Include="Definitions\TypeDefinition.cs" />
     <Compile Include="Definitions\TypeMemberDefinition.cs" />
     <Compile Include="Definitions\UsingDirectiveDefinition.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Utility\DynamicToXmlSerializer.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />
     <Compile Include="Generators\CSharpGenerator.cs" />

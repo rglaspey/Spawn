@@ -11,8 +11,8 @@
   /// </summary>
   public enum PipelineBindPoint
   {
-    PIPELINE_BIND_POINT_GRAPHICS = 0,
+    PipelineBindPointGraphics = 0,
 
-    PIPELINE_BIND_POINT_COMPUTE = 1
+    PipelineBindPointCompute = 1
   }
 }

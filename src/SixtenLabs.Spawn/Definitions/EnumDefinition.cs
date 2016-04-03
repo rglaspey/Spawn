@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace SixtenLabs.Spawn
 {
@@ -22,19 +21,17 @@ namespace SixtenLabs.Spawn
 			Members.AddRange(memberValues);
 		}
 
-    public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
+    public void AddEnumMember(string memberSpecName, string memberValue = null, string comment = null)
     {
-      if(string.IsNullOrEmpty(memberName))
+      if(string.IsNullOrEmpty(memberSpecName))
       {
-        throw new ArgumentNullException("The member name must be defined");
+        throw new ArgumentNullException("The member spec name must be defined");
       }
 
-			var enumMember = new EnumMemberDefinition() { Name = memberName, Value = memberValue, Comment = comment };
+			var enumMember = new EnumMemberDefinition() { SpecName = memberSpecName, Value = memberValue, Comment = comment };
 			Members.Add(enumMember);
     }
 
-		[XmlArray("Members")]
-		[XmlArrayItem(typeof(EnumMemberDefinition), ElementName = "Member")]
 		public List<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
 
     public bool HasFlags { get; set; }

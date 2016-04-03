@@ -11,14 +11,14 @@
   /// </summary>
   public enum BlendOp
   {
-    BLEND_OP_ADD = 0,
+    BlendOpAdd = 0,
 
-    BLEND_OP_SUBTRACT = 1,
+    BlendOpSubtract = 1,
 
-    BLEND_OP_REVERSE_SUBTRACT = 2,
+    BlendOpReverseSubtract = 2,
 
-    BLEND_OP_MIN = 3,
+    BlendOpMin = 3,
 
-    BLEND_OP_MAX = 4
+    BlendOpMax = 4
   }
 }

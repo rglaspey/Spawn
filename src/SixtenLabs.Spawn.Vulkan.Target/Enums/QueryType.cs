@@ -11,13 +11,13 @@
   /// </summary>
   public enum QueryType
   {
-    QUERY_TYPE_OCCLUSION = 0,
+    QueryTypeOcclusion = 0,
 
     /// <summary> 
     /// Optional
     /// </summary> 
-    QUERY_TYPE_PIPELINE_STATISTICS = 1,
+    QueryTypePipelineStatistics = 1,
 
-    QUERY_TYPE_TIMESTAMP = 2
+    QueryTypeTimestamp = 2
   }
 }

@@ -11,18 +11,18 @@
   /// </summary>
   public enum ComponentSwizzle
   {
-    COMPONENT_SWIZZLE_IDENTITY = 0,
+    ComponentSwizzleIdentity = 0,
 
-    COMPONENT_SWIZZLE_ZERO = 1,
+    ComponentSwizzleZero = 1,
 
-    COMPONENT_SWIZZLE_ONE = 2,
+    ComponentSwizzleOne = 2,
 
-    COMPONENT_SWIZZLE_R = 3,
+    ComponentSwizzleR = 3,
 
-    COMPONENT_SWIZZLE_G = 4,
+    ComponentSwizzleG = 4,
 
-    COMPONENT_SWIZZLE_B = 5,
+    ComponentSwizzleB = 5,
 
-    COMPONENT_SWIZZLE_A = 6
+    ComponentSwizzleA = 6
   }
 }
