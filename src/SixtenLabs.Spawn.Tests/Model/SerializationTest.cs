@@ -14,9 +14,9 @@ namespace SixtenLabs.Spawn.Tests.Model
 		public void EnumSerialization()
 		{
 			var spawnEnum = new EnumDefinition();
-			spawnEnum.Name = "TestSpawnEnum";
+			spawnEnum.TranslatedName = "TestSpawnEnum";
 			spawnEnum.HasFlags = true;
-			spawnEnum.BaseType = BaseType.Integer;
+			//spawnEnum.BaseType = BaseType.Integer;
 			spawnEnum.Comments.Add("Comment Line 1");
 
 			spawnEnum.AddEnumMember("None", "0", "zero comment");

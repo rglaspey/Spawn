@@ -160,6 +160,7 @@
     <Compile Include="Definitions\RegionDefinitionTests.cs" />
     <Compile Include="Definitions\StructDefinitionTests.cs" />
     <Compile Include="Definitions\UsingDirectiveDefinitionTests.cs" />
+    <Compile Include="XmlToObjectParser.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Class.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Common.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Enum.Tests.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="OutputStringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VulkanSpecTests.cs" />
+    <Compile Include="XmlToFastExpandoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -181,7 +183,12 @@
     <Content Include="SampleData\Enum_02.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Spec\vk.xml" />
+    <Content Include="SampleData\Struct_01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spec\vk.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">

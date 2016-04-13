@@ -18,7 +18,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddStandardUsingDirective(string dllName)
 		{
-			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName };
+			var usingDefinition = new UsingDirectiveDefinition() { TranslatedName = dllName };
 			Usings.Add(usingDefinition);
 		}
 
@@ -28,7 +28,7 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddStaticUsingDirective(string dllName)
 		{
-			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName, IsStatic = true };
+			var usingDefinition = new UsingDirectiveDefinition() { TranslatedName = dllName, IsStatic = true };
 			Usings.Add(usingDefinition);
 		}
 
@@ -38,13 +38,13 @@ namespace SixtenLabs.Spawn
 		/// <param name="names"></param>
 		public void AddAliasedUsingDirective(string dllName, string alias)
 		{
-			var usingDefinition = new UsingDirectiveDefinition() { Name = dllName, Alias = alias };
+			var usingDefinition = new UsingDirectiveDefinition() { TranslatedName = dllName, Alias = alias };
 			Usings.Add(usingDefinition);
 		}
 
 		public void AddNamespace(string @namespace)
 		{
-			Namespace = new NamespaceDefinition() { Name = @namespace };
+			Namespace = new NamespaceDefinition() { TranslatedName = @namespace };
     }
 
 

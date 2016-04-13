@@ -20,5 +20,17 @@ namespace SixtenLabs.Spawn
 		/// Modifiers are used to modify declarations of types and type members
 		/// </summary>
 		public List<ModifierDefinition> ModifierDefinitions { get; } = new List<ModifierDefinition>();
+
+		public string DerivedType { get; set; }
+
+		public bool HasDerivedType
+		{
+			get
+			{
+				return !string.IsNullOrEmpty(DerivedType);
+			}
+		}
+
+		public string SpecDerivedType { get; set; }
 	}
 }

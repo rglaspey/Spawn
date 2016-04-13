@@ -25,7 +25,7 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 
 			SimpleContainer.RegisterSingleton<ISpawnService, SpawnService>();
 			SimpleContainer.RegisterSingleton<IGeneratorSettings, GlSettings>();
-			SimpleContainer.RegisterSingleton<XmlFileLoader>();
+			//SimpleContainer.RegisterSingleton<XmlFileLoader>();
 
 			SimpleContainer.Verify();
 		}
@@ -39,7 +39,7 @@ namespace SixtenLabs.Spawn.OpenGL.Generator
 			var settings = new GlSettings();
 
 			// Load opengl registry
-			var loader = new XmlFileLoader(settings);
+			//var loader = new XmlFileLoader(settings);
 			//var registry = loader.LoadRegistry();
 
 			//CreateEnums(registry, spawn);

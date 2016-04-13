@@ -1,16 +1,21 @@
-﻿namespace SixtenLabs.Spawn.Vulkan.Model
+﻿namespace SixtenLabs.Spawn.Vulkan
 {
-	public class VulkanType
+	public class VulkanTypeDefinition : Definition
 	{
-		public VulkanType(VulkanTypeCategory typeCategory = VulkanTypeCategory.None)
+		public VulkanTypeDefinition()
 		{
-			Category = typeCategory;
+
 		}
 
-		public string Name { get; set; }
+		public string Category { get; set; }
 
-		public VulkanTypeCategory Category { get; }
+		public string VulkanType { get; set; }
 
-		public override string ToString() => Name;
+		public string Requires { get; set; }
+
+		public string Parent { get; set; }
+
+		public string Value { get; set; }
+
 	}
 }

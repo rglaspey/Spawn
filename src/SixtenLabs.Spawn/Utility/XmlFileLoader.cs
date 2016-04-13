@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 using System.Text;
-using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace SixtenLabs.Spawn.Utility
 {
@@ -9,18 +9,12 @@ namespace SixtenLabs.Spawn.Utility
 	/// This class is responsible for loading the xml file
 	/// and serializing it to the classes generated from the xsd.
 	/// </summary>
-	public class XmlFileLoader
+	public class XmlFileLoader<T> where T : class
 	{
-		#region Constructors
-
 		public XmlFileLoader(IGeneratorSettings parseSettings)
 		{
 			ParseSettings = parseSettings;
 		}
-
-		#endregion
-
-		#region Private Methods
 
 		private void LoadFromUri()
 		{
@@ -41,13 +35,10 @@ namespace SixtenLabs.Spawn.Utility
 		{
 			using (var stream = new MemoryStream(xml))
 			{
-				Registry = XElement.Load(stream);
+				XmlSerializer s = new XmlSerializer(typeof(T));
+				Registry = (T)s.Deserialize(stream);
 			}
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		public void LoadRegistry()
 		{
@@ -61,14 +52,8 @@ namespace SixtenLabs.Spawn.Utility
 			}
 		}
 
-		#endregion
-
-		#region Properties
-
 		private IGeneratorSettings ParseSettings { get; }
 
-		public XElement Registry { get; set; }
-
-		#endregion
+		public T Registry { get; set; }
 	}
 }

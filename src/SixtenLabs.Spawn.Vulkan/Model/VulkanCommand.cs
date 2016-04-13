@@ -6,53 +6,53 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn.Vulkan.Model
 {
-	public class VulkanCommand
-	{
-		public string Name;
+	//public class VulkanCommand
+	//{
+	//	public string Name;
 
-		public VulkanType ReturnType;
+	//	public VulkanType ReturnType;
 
-		public int ReturnPointerRank;
+	//	public int ReturnPointerRank;
 
-		public VulkanParam[] Parameters;
+	//	public VulkanParam[] Parameters;
 
-		public string[] SuccessCodes;
+	//	public string[] SuccessCodes;
 
-		public string[] ErrorCodes;
+	//	public string[] ErrorCodes;
 
-		public string RenderPass;       // possibly only for queue functions?
+	//	public string RenderPass;       // possibly only for queue functions?
 
-		public string[] Queues;         //
+	//	public string[] Queues;         //
 
-		public string[] CmdBufferLevel; //
+	//	public string[] CmdBufferLevel; //
 
-		public string[] Validity;
+	//	public string[] Validity;
 
-		public string[] ImplicitExternSyncParams;
+	//	public string[] ImplicitExternSyncParams;
 
-		public string SpecName { get; set; }
+	//	public string SpecName { get; set; }
 
-		public string ToDeclaration()
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.Append(ReturnType);
-			sb.Append(new string('*', ReturnPointerRank));
-			sb.Append(" ");
-			sb.Append(SpecName);
-			sb.Append("(");
+	//	public string ToDeclaration()
+	//	{
+	//		StringBuilder sb = new StringBuilder();
+	//		sb.Append(ReturnType);
+	//		sb.Append(new string('*', ReturnPointerRank));
+	//		sb.Append(" ");
+	//		sb.Append(SpecName);
+	//		sb.Append("(");
 
-			for (int x = 0; x < Parameters.Length; x++)
-			{
-				sb.Append(Parameters[x]);
-				if (x + 1 < Parameters.Length)
-					sb.Append(", ");
-			}
+	//		for (int x = 0; x < Parameters.Length; x++)
+	//		{
+	//			sb.Append(Parameters[x]);
+	//			if (x + 1 < Parameters.Length)
+	//				sb.Append(", ");
+	//		}
 
-			sb.Append(")");
+	//		sb.Append(")");
 
-			return sb.ToString();
-		}
+	//		return sb.ToString();
+	//	}
 
-		public override string ToString() => $"{ReturnType} {Name}(...)";
-	}
+	//	public override string ToString() => $"{ReturnType} {Name}(...)";
+	//}
 }

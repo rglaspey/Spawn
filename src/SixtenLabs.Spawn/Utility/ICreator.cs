@@ -1,0 +1,32 @@
+﻿using System.Collections.Generic;
+
+namespace SixtenLabs.Spawn.Utility
+{
+	public interface ICreator
+	{
+		/// <summary>
+		/// Rewrite any names on this pass
+		/// </summary>
+		int Rewrite();
+
+		/// <summary>
+		/// Build the definition files
+		/// </summary>
+		int Build();
+
+		/// <summary>
+		/// Create Code files for all the definition files.
+		/// </summary>
+		int Create();
+
+		string TargetSolution { get; set; }
+
+		string TargetNamespace { get; set; }
+
+		List<string> GeneratedComments { get; }
+
+		string TypeName { get; }
+
+		int Order { get; }
+	}
+}

@@ -21,14 +21,14 @@ namespace SixtenLabs.Spawn
 			Members.AddRange(memberValues);
 		}
 
-    public void AddEnumMember(string memberSpecName, string memberValue = null, string comment = null)
+    public void AddEnumMember(string memberSpecName, string memberName, string memberValue = null, string comment = null)
     {
       if(string.IsNullOrEmpty(memberSpecName))
       {
         throw new ArgumentNullException("The member spec name must be defined");
       }
 
-			var enumMember = new EnumMemberDefinition() { SpecName = memberSpecName, Value = memberValue, Comment = comment };
+			var enumMember = new EnumMemberDefinition() { SpecName = memberSpecName, TranslatedName = memberName, Value = memberValue, Comment = comment };
 			Members.Add(enumMember);
     }
 
@@ -39,7 +39,5 @@ namespace SixtenLabs.Spawn
 		public string Expand { get; set; }
 		
 		public string Namespace { get; set; }
-
-		public BaseType BaseType { get; set; }
   }
 }

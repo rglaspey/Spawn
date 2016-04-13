@@ -8,11 +8,12 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class VulkanGenerator
 	{
-		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawnService spawn, IVulkanSpec rules)
+		public VulkanGenerator(IEnumerable<ICreator> creators, ITypeMapper typeMapper, ISpawnService spawn, ISpawnSpec<registry> spawnSpec)
 		{
 			Creators = creators;
+			TypeMapper = typeMapper;
 			Spawn = spawn;
-			Rules = rules;
+			SpawnSpec = spawnSpec;
 		}
 
 		private void SetupGeneratedComments()
@@ -29,20 +30,16 @@ namespace SixtenLabs.Spawn.Vulkan
 		public void Initialize()
 		{
 			Spawn.Initialize(@"C:\Users\pglas\Documents\GitHub\SixtenLabs\Spawn\Spawn.sln");
-			Rules.ProcessRegistry();
+			SpawnSpec.ProcessRegistry();
 			SetupGeneratedComments();
+			Console.WriteLine("Spawn Vulkan Generator Initialized, processing has begun.");
 		}
 
 		public void MapTypes()
 		{
-			var orderedCreators = Creators.OrderBy(x => x.Order);
+			var mappedTypeCount = TypeMapper.MapTypes();
 
-			foreach (var creator in orderedCreators)
-			{
-				Console.WriteLine($"Mapping {creator.TypeName} files.");
-				creator.MapTypes();
-				Console.WriteLine($"Mapped {creator.NumberCreated} {creator.TypeName} files.");
-			}
+			Console.WriteLine($"Mapped {mappedTypeCount} types.");
 		}
 
 		public void Rewrite()
@@ -52,8 +49,8 @@ namespace SixtenLabs.Spawn.Vulkan
 			foreach (var creator in orderedCreators)
 			{
 				Console.WriteLine($"Rewriting {creator.TypeName} files.");
-				creator.Rewrite();
-				Console.WriteLine($"Rewrote {creator.NumberCreated} {creator.TypeName} files.");
+				var count = creator.Rewrite();
+				Console.WriteLine($"Rewrote {count} {creator.TypeName} files.");
 			}
 		}
 
@@ -62,8 +59,8 @@ namespace SixtenLabs.Spawn.Vulkan
 			foreach (var creator in Creators)
 			{
 				Console.WriteLine($"Building {creator.TypeName} definition files.");
-				creator.Build();
-				Console.WriteLine($"Building {creator.NumberCreated} {creator.TypeName} definition files.");
+				var count = creator.Build();
+				Console.WriteLine($"Building {count} {creator.TypeName} definition files.");
 			}
 		}
 
@@ -75,9 +72,18 @@ namespace SixtenLabs.Spawn.Vulkan
 				creator.TargetNamespace = "SixtenLabs.Spawn.Vulkan.Target";
 				creator.GeneratedComments.AddRange(GeneratedComments);
 				Console.WriteLine($"Creating {creator.TypeName} files.");
-				creator.Create();
-				Console.WriteLine($"Created {creator.NumberCreated} {creator.TypeName} files.");
+				var count = creator.Create();
+				Console.WriteLine($"Created {count} {creator.TypeName} files.");
 			}
+		}
+
+		public void Start()
+		{
+			Initialize();
+			MapTypes();
+			Rewrite();
+			Build();
+			//Generate();
 		}
 
 		private IEnumerable<ICreator> Creators { get; }
@@ -86,8 +92,10 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		private ISpawnService Spawn { get; }
 
-		private IVulkanSpec Rules { get; }
+		private ISpawnSpec<registry> SpawnSpec { get; }
 
 		private List<string> GeneratedComments { get; } = new List<string>();
+
+		private ITypeMapper TypeMapper { get; }
 	}
 }

@@ -58,33 +58,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseCreator.cs" />
-    <Compile Include="CommandCreator.cs" />
+    <Compile Include="Creators\CommandCreator.cs" />
+    <Compile Include="VulkanTypeMapper.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="FeatureCreator.cs" />
-    <Compile Include="HandleCreator.cs" />
-    <Compile Include="ICreator.cs" />
-    <Compile Include="IVulkanSpec.cs" />
-    <Compile Include="ImportCreator.cs" />
+    <Compile Include="Creators\FeatureCreator.cs" />
+    <Compile Include="Creators\HandleCreator.cs" />
+    <Compile Include="Creators\ImportCreator.cs" />
     <Compile Include="Model\VulkanCommand.cs" />
-    <Compile Include="Model\VulkanEnum.cs" />
-    <Compile Include="Model\VulkanEnumValue.cs" />
     <Compile Include="Model\VulkanFeature.cs" />
     <Compile Include="Model\VulkanFeatureRequirement.cs" />
-    <Compile Include="Model\VulkanHandle.cs" />
     <Compile Include="Model\VulkanMember.cs" />
     <Compile Include="Model\VulkanParam.cs" />
-    <Compile Include="Model\VulkanStruct.cs" />
     <Compile Include="Model\VulkanType.cs" />
     <Compile Include="Model\VulkanTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnumCreator.cs" />
-    <Compile Include="PlatformTypeCreator.cs" />
-    <Compile Include="UnionCreator.cs" />
+    <Compile Include="Creators\EnumCreator.cs" />
+    <Compile Include="Spec\vk.cs">
+      <DependentUpon>vk.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Creators\UnionCreator.cs" />
     <Compile Include="VulkanGenerator.cs" />
     <Compile Include="VulkanSpec.cs" />
     <Compile Include="VulkanSettings.cs" />
-    <Compile Include="StructCreator.cs" />
+    <Compile Include="Creators\StructCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">
@@ -93,12 +89,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Spec\GenerateClassesFromXsd.txt" />
     <Content Include="Spec\vk.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Spec\vk.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -119,7 +119,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definitions\AttributeDefinition.cs" />
+    <Compile Include="Definitions\FieldDefinition.cs" />
     <Compile Include="Definitions\HandleDefinition.cs" />
+    <Compile Include="Definitions\ImportDefinition.cs" />
     <Compile Include="Definitions\Modifiers.cs" />
     <Compile Include="Definitions\BaseType.cs" />
     <Compile Include="Definitions\BaseTypeDefinition.cs" />
@@ -129,29 +132,45 @@
     <Compile Include="Definitions\ModifierDefinition.cs" />
     <Compile Include="Definitions\NamespaceDefinition.cs" />
     <Compile Include="Definitions\OutputDefinition.cs" />
+    <Compile Include="Definitions\ParameterDefinition.cs" />
+    <Compile Include="Definitions\SpecType.cs" />
     <Compile Include="Definitions\StructDefinition.cs" />
     <Compile Include="Definitions\TypeDefinition.cs" />
     <Compile Include="Definitions\TypeMemberDefinition.cs" />
+    <Compile Include="Definitions\UnionDefinition.cs" />
     <Compile Include="Definitions\UsingDirectiveDefinition.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Utility\DynamicToXmlSerializer.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />
     <Compile Include="Generators\CSharpGenerator.cs" />
     <Compile Include="Generators\ICodeGenerator.cs" />
     <Compile Include="ISpawn.cs" />
+    <Compile Include="Utility\BaseCreator.cs" />
+    <Compile Include="Utility\BaseTypeMapper.cs" />
+    <Compile Include="Utility\DynamicToXmlSerializer.cs" />
+    <Compile Include="Utility\FastExpando.cs" />
+    <Compile Include="Utility\ICreator.cs" />
+    <Compile Include="Utility\ISpawnSpec.cs" />
+    <Compile Include="Utility\ITypeMapper.cs" />
     <Compile Include="Utility\IXmlSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnService.cs" />
     <Compile Include="Extensions\TypeHelper.cs" />
     <Compile Include="Utility\IGeneratorSettings.cs" />
+    <Compile Include="Utility\SpawnSpec.cs" />
     <Compile Include="Utility\XmlFileLoader.cs" />
     <Compile Include="Utility\XmlLoadMethod.cs" />
     <Compile Include="Utility\GeneratorSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\ClassTemplate.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\EnumTemplate.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Templates\ImportTemplate.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Shared\FullComments.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -163,6 +182,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Shared\Usings.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\StructTemplate.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

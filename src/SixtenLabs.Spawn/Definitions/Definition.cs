@@ -13,13 +13,13 @@ namespace SixtenLabs.Spawn
     }
 
 		/// <summary>
-		/// Final name to use.
-		/// </summary>
-    public string Name { get; set; }
-
-		/// <summary>
-		/// Original Name found in the spec that is being parsed
+		/// The name used in the spec we are generating from.
 		/// </summary>
 		public string SpecName { get; set; }
-  }
+
+		/// <summary>
+		/// The translated name that will be used in the generated output.
+		/// </summary>
+		public string TranslatedName { get; set; }
+	}
 }
