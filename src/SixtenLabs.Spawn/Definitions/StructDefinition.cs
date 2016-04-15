@@ -12,9 +12,9 @@ namespace SixtenLabs.Spawn
 		{
 		}
 
-		public void AddField(string specName, string name, string specType)
+		public void AddField(string specName, string name, string specType, string @type)
 		{
-			var field = new FieldDefinition() { SpecName = specName, TranslatedName = name, SpecType = specType };
+			var field = new FieldDefinition() { SpecName = specName, TranslatedName = name, SpecType = specType, Type = @type };
 
 			Fields.Add(field);
 		}

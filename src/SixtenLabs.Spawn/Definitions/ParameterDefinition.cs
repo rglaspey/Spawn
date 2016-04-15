@@ -14,6 +14,8 @@
 
 		public bool IsArray { get; set; }
 
+		public string LengthPropertyName { get; set; }
+
 		public int ArrayCount { get; set; }
 
 		/// <summary>
@@ -23,7 +25,15 @@
 
 		public bool IsConst { get; set; }
 
+		/// <summary>
+		/// This is named for vulkan. figure out what this should be or if we should ignore it.
+		/// </summary>
 		public bool ExternSync { get; set; }
+
+		/// <summary>
+		/// This is named for vulkan. figure out what this should be or if we should ignore it.
+		/// </summary>
+		public string ExternSyncData { get; set; }
 
 		public string SpecType { get; set; }
 

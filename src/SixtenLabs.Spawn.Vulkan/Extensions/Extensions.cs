@@ -13,24 +13,6 @@ namespace SixtenLabs.Spawn.Vulkan
 			return char.ToLowerInvariant(word[0]) + word.Substring(1);
 		}
 
-		/// <summary>
-		/// Remove the leading p and uppercase the new first letter of the word.
-		/// Only do this is the second character is uppercase.
-		/// </summary>
-		/// <param name="parameter"></param>
-		/// <returns></returns>
-		public static string TranslateParameter(this string parameter)
-		{
-			var parameterName = parameter;
-
-			if(parameterName.StartsWith("p") && char.IsUpper(parameterName[1]))
-			{
-				parameterName = parameterName.Remove(0, 1).FirstLetterToLowercase();
-			}
-
-			return parameterName;
-		}
-
 		public static string TranslateVulkanName(this string vulkanName)
 		{
 			var name = vulkanName;

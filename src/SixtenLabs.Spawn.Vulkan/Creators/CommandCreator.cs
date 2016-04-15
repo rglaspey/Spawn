@@ -1,11 +1,5 @@
 ﻿using SixtenLabs.Spawn.Utility;
-using SixtenLabs.Spawn.Vulkan.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
@@ -19,6 +13,59 @@ namespace SixtenLabs.Spawn.Vulkan
 		public override int Rewrite()
 		{
 			return 0;
+		}
+
+		private void ProcessSuccessCodes(ImportDefinition importDefinition, string successCodes)
+		{
+			if (!string.IsNullOrEmpty(successCodes))
+			{
+				var codes = successCodes.Split(',');
+
+				foreach(var code in codes)
+				{
+					importDefinition.AddSuccessCodes(code);
+				}
+			}
+		}
+
+		private void ProcessErrorCodes(ImportDefinition importDefinition, string errorCodes)
+		{
+			if (!string.IsNullOrEmpty(errorCodes))
+			{
+				var codes = errorCodes.Split(',');
+
+				foreach (var code in codes)
+				{
+					importDefinition.AddErrorCodes(code);
+				}
+			}
+		}
+
+		private void ProcessValidity(ImportDefinition importDefinition, string[] validity)
+		{
+			if (validity != null)
+			{
+				foreach (var validEntry in validity)
+				{
+					importDefinition.Comments.Add(validEntry);
+				}
+			}
+		}
+
+		private void ProcessExternSync(ParameterDefinition parameterDefinition, string externSync)
+		{
+			if (!string.IsNullOrEmpty(externSync))
+			{
+				if (externSync == "true")
+				{
+					parameterDefinition.ExternSync = true;
+				}
+				else
+				{
+					// should we set the bool to true?
+					parameterDefinition.ExternSyncData = externSync;
+				}
+			}
 		}
 
 		private void ProcessParameterText(ParameterDefinition parameterDefinition, string[] text)
@@ -63,17 +110,13 @@ namespace SixtenLabs.Spawn.Vulkan
 				var parameterDefinition = new ParameterDefinition();
 
 				parameterDefinition.SpecName = registryParam.name;
-				parameterDefinition.TranslatedName = registryParam.name.TranslateParameter();
+				parameterDefinition.TranslatedName = registryParam.name;
 				parameterDefinition.SpecType = registryParam.type;
 				parameterDefinition.TranslatedSpecType = VulkanSpec.FindTypeDefinition(registryParam.type).TranslatedName;
+
 				parameterDefinition.IsOptional = registryParam.optional == "true" ? true : false;
-
-				// handle len property
-
-				// get validity comments if any
-
-				// This is wrong. should be text or parsed...
-				parameterDefinition.ExternSync = registryParam.externsync == "true" ? true : false;
+				parameterDefinition.LengthPropertyName = registryParam.len;
+				ProcessExternSync(parameterDefinition, registryParam.externsync);
 
 				ProcessParameterText(parameterDefinition, registryParam.Text);
 
@@ -85,7 +128,7 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			var registryCommands = VulkanSpec.SpecTree.commands;
 
-			foreach(var registryCommand in registryCommands)
+			foreach (var registryCommand in registryCommands)
 			{
 				var specName = registryCommand.proto.name;
 				var translatedName = specName.TranslateVulkanName();
@@ -99,10 +142,11 @@ namespace SixtenLabs.Spawn.Vulkan
 				importDefinition.TranslatedName = translatedName;
 				importDefinition.SpecDerivedType = specType;
 				importDefinition.DerivedType = translatedType;
- 
-				AddParameters(importDefinition, registryCommand.param);
 
-				// Add success codes and error codes
+				AddParameters(importDefinition, registryCommand.param);
+				ProcessValidity(importDefinition, registryCommand.validity);
+				ProcessSuccessCodes(importDefinition, registryCommand.successcodes);
+				ProcessErrorCodes(importDefinition, registryCommand.errorcodes);
 
 				VulkanSpec.AddSpecType(specName, translatedName);
 

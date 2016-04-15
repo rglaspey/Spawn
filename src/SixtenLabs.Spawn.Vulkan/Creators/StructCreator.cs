@@ -1,6 +1,5 @@
 ﻿using SixtenLabs.Spawn.Utility;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
@@ -11,57 +10,46 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 		}
 
-		//private StructDefinition ReadStruct(registryType structElement)
-		//{
-		//	var structDefinition = new StructDefinition();
-
-		//	var specName = structElement.name;
-		//	var name = specName.TranslateVulkanName();
-
-		//	structDefinition.SpecName = specName;
-		//	structDefinition.Name = name;
-
-		//	var structMembers = structElement.Items;
-
-		//	foreach (var structMember in structMembers)
-		//	{
-		//		//var memberSpecName = structMember.Element("name").Value;
-		//		//var memberName = memberSpecName.TranslateVulkanName();
-		//		//var memberSpecType = structMember.Element("type").Value;
-
-		//		//structDefinition.AddField(memberSpecName, memberName, memberSpecType);
-		//	}
-
-		//	return structDefinition;
-		//}
-
 		public override int Rewrite()
 		{
 			int count = 0;
-
-			//foreach (var structDefinition in Definitions)
-			//{
-			//	foreach (var field in structDefinition.Fields)
-			//	{
-			//		if (VulkanSpec.AllTypes.ContainsKey(field.SpecType))
-			//		{
-			//			field.Type = VulkanSpec.AllTypes[field.SpecType];
-			//		}
-			//		else
-			//		{
-			//			field.Type = "Heffalump";
-			//		}
-			//	}
-
-			//	count++;
-			//}
 
 			return count;
 		}
 
 		public override int Build()
 		{
-			return 0;
+			var registryStructs = VulkanSpec.SpecTree.types.Where(x => x.category == "struct");
+
+			foreach (var registryStruct in registryStructs)
+			{
+				var structDefinition = new StructDefinition();
+
+				structDefinition.SpecName = registryStruct.name;
+				structDefinition.TranslatedName = VulkanSpec.FindTypeDefinition(registryStruct.name).TranslatedName;
+
+				foreach(var item in registryStruct.Items)
+				{
+					if (item is registryTypeMember)
+					{
+						var member = item as registryTypeMember;
+						structDefinition.AddField(member.name, member.name, member.type, VulkanSpec.FindTypeDefinition(member.type).TranslatedName);
+					}
+					else if(item is registryTypeValidity)
+					{
+						var validity = item as registryTypeValidity;
+
+						foreach(var usage in validity.usage)
+						{
+							structDefinition.Comments.Add(usage);
+						}
+					}
+				}
+
+				Definitions.Add(structDefinition);
+			}
+
+			return Definitions.Count;
 		}
 
 		public override int Create()
@@ -88,7 +76,7 @@ namespace SixtenLabs.Spawn.Vulkan
 				}
 
 				output.TypeDefinitions.Add(structDefinition);
-				
+
 				Generator.GenerateCodeFile(output);
 				count++;
 			}

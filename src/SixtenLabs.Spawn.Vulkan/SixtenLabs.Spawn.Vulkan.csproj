@@ -64,13 +64,6 @@
     <Compile Include="Creators\FeatureCreator.cs" />
     <Compile Include="Creators\HandleCreator.cs" />
     <Compile Include="Creators\ImportCreator.cs" />
-    <Compile Include="Model\VulkanCommand.cs" />
-    <Compile Include="Model\VulkanFeature.cs" />
-    <Compile Include="Model\VulkanFeatureRequirement.cs" />
-    <Compile Include="Model\VulkanMember.cs" />
-    <Compile Include="Model\VulkanParam.cs" />
-    <Compile Include="Model\VulkanType.cs" />
-    <Compile Include="Model\VulkanTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Creators\EnumCreator.cs" />
     <Compile Include="Spec\vk.cs">
