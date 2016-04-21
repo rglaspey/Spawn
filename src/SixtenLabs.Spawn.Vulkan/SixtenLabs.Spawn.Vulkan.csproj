@@ -48,6 +48,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,7 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Creators\CommandCreator.cs" />
-    <Compile Include="VulkanTypeMapper.cs" />
+    <Compile Include="Creators\ConstantsCreator.cs" />
+    <Compile Include="Creators\FunctionPointerCreator.cs" />
+    <Compile Include="Mappers\EnumMapper.cs" />
+    <Compile Include="Mappers\SpecTypeMapper.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Creators\FeatureCreator.cs" />
     <Compile Include="Creators\HandleCreator.cs" />
@@ -90,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Spec\vk.xsd">
       <SubType>Designer</SubType>
     </None>

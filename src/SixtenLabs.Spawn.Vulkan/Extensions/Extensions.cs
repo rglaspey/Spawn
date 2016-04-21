@@ -28,12 +28,7 @@ namespace SixtenLabs.Spawn.Vulkan
 			
 			if (name.Contains("FlagBits"))
 			{
-				name = name.Replace("FlagBits", string.Empty);
-			}
-
-			if (name.Contains("Flags"))
-			{
-				name = name.Replace("Flags", string.Empty);
+				name = name.Replace("FlagBits", "Flags");
 			}
 
 			if (name.Contains("_"))

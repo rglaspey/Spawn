@@ -16,9 +16,37 @@ namespace SixtenLabs.Spawn.Utility
 			FileLoader.LoadRegistry();
 		}
 
+		public string GetTranslatedName(string specName)
+		{
+			var definition = FindTypeDefinition(specName);
+
+			if (definition == null)
+			{
+				throw new InvalidOperationException($"Not allowed to not have a type mapping for: {specName}");
+			}
+			else
+			{
+				return definition.TranslatedName;
+			}
+		}
+
 		public SpecTypeDefinition FindTypeDefinition(string specName)
 		{
 			return AllSpecTypeDefinitions.Where(x => x.SpecName == specName).FirstOrDefault();
+		}
+
+		public void AddSpecTypeDefinition(SpecTypeDefinition specTypeDefinition)
+		{
+			var alreadyExists = AllSpecTypeDefinitions.Contains(specTypeDefinition);
+
+			if (!alreadyExists)
+			{
+				AllSpecTypeDefinitions.Add(specTypeDefinition);
+			}
+			else
+			{
+				throw new InvalidOperationException();
+			}
 		}
 
 		public void AddSpecType(string specName, string translatedName)

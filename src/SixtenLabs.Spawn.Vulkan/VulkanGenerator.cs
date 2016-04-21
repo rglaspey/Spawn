@@ -1,4 +1,5 @@
-﻿using SixtenLabs.Spawn.Utility;
+﻿using AutoMapper;
+using SixtenLabs.Spawn.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,12 @@ namespace SixtenLabs.Spawn.Vulkan
 {
 	public class VulkanGenerator
 	{
-		public VulkanGenerator(IEnumerable<ICreator> creators, ITypeMapper typeMapper, ISpawnService spawn, ISpawnSpec<registry> spawnSpec)
+		public VulkanGenerator(IEnumerable<ICreator> creators, ISpawnService spawn, ISpawnSpec<registry> spawnSpec, IMapper mapper)
 		{
 			Creators = creators;
-			TypeMapper = typeMapper;
 			Spawn = spawn;
 			SpawnSpec = spawnSpec;
+			Mapper = mapper;
 		}
 
 		private void SetupGeneratedComments()
@@ -37,9 +38,19 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void MapTypes()
 		{
-			var mappedTypeCount = TypeMapper.MapTypes();
+			foreach (var regType in SpawnSpec.SpecTree.types)
+			{
+				var specTypeDefinition = Mapper.Map<registryType, SpecTypeDefinition>(regType);
+				SpawnSpec.AddSpecTypeDefinition(specTypeDefinition);
+			}
 
-			Console.WriteLine($"Mapped {mappedTypeCount} types.");
+			foreach (var enumValueType in SpawnSpec.SpecTree.enums.Where(x => x.name != "API Constants").SelectMany(x => x.@enum))
+			{
+				var specTypeDefinition = Mapper.Map<registryEnumsEnum, SpecTypeDefinition>(enumValueType);
+				SpawnSpec.AddSpecTypeDefinition(specTypeDefinition);
+			}
+
+			Console.WriteLine($"Mapped {SpawnSpec.SpecTypeCount} types.");
 		}
 
 		public void Rewrite()
@@ -59,7 +70,7 @@ namespace SixtenLabs.Spawn.Vulkan
 			foreach (var creator in Creators)
 			{
 				Console.WriteLine($"Building {creator.TypeName} definition files.");
-				var count = creator.Build();
+				var count = creator.Build(Mapper);
 				Console.WriteLine($"Building {count} {creator.TypeName} definition files.");
 			}
 		}
@@ -81,9 +92,9 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			Initialize();
 			MapTypes();
-			Rewrite();
 			Build();
-			//Generate();
+			Rewrite();
+			Generate();
 		}
 
 		private IEnumerable<ICreator> Creators { get; }
@@ -96,6 +107,6 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		private List<string> GeneratedComments { get; } = new List<string>();
 
-		private ITypeMapper TypeMapper { get; }
+		private IMapper Mapper { get; }
 	}
 }

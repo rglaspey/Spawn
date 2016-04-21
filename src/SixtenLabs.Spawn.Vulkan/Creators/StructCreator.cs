@@ -1,87 +1,125 @@
-﻿using SixtenLabs.Spawn.Utility;
+﻿using AutoMapper;
+using SixtenLabs.Spawn.Utility;
+using System;
 using System.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class StructCreator : BaseCreator<registry, StructDefinition>
-	{
-		public StructCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
-			: base(generator, spawnSpec, 40)
-		{
-		}
+	//public class StructCreator : BaseCreator<registry, StructDefinition>
+	//{
+	//	public StructCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
+	//		: base(generator, spawnSpec, 40)
+	//	{
+	//	}
 
-		public override int Rewrite()
-		{
-			int count = 0;
+	//	private void ProcessField(StructDefinition structDefinition, registryTypeMember registryField)
+	//	{
+	//		if (!string.IsNullOrEmpty(registryField.name))
+	//		{
+	//			structDefinition.AddField(registryField.name, registryField.name, registryField.type, VulkanSpec.FindTypeDefinition(registryField.type).TranslatedName);
 
-			return count;
-		}
+	//			//foreach (var symbol in text)
+	//			//{
+	//			//	if (symbol.TrimEnd() == "const")
+	//			//	{
+	//			//		fieldDefinition.IsConst = true;
+	//			//	}
+	//			//	else if (symbol.TrimEnd() == "*")
+	//			//	{
+	//			//		fieldDefinition.IsPointer = true;
+	//			//	}
+	//			//	else if (symbol.TrimEnd() == "**")
+	//			//	{
+	//			//		fieldDefinition.IsPointerToPointer = true;
+	//			//	}
+	//			//	else if (symbol.TrimEnd() == "struct")
+	//			//	{
+	//			//		fieldDefinition.IsStruct = true;
+	//			//	}
+	//			//	else if (symbol.StartsWith("[") && symbol.EndsWith("]"))
+	//			//	{
+	//			//		fieldDefinition.IsArray = true;
+	//			//		fieldDefinition.ArrayCount = Convert.ToInt32(symbol.Substring(1, symbol.Length - 2));
+	//			//	}
+	//			//	else
+	//			//	{
+	//			//		var blah = symbol;
+	//			//	}
+	//			//}
+	//		}
+	//	}
 
-		public override int Build()
-		{
-			var registryStructs = VulkanSpec.SpecTree.types.Where(x => x.category == "struct");
+	//	public override int Rewrite()
+	//	{
+	//		int count = 0;
 
-			foreach (var registryStruct in registryStructs)
-			{
-				var structDefinition = new StructDefinition();
+	//		return count;
+	//	}
 
-				structDefinition.SpecName = registryStruct.name;
-				structDefinition.TranslatedName = VulkanSpec.FindTypeDefinition(registryStruct.name).TranslatedName;
+	//	public override int Build(IMapper mapper)
+	//	{
+	//		var registryStructs = VulkanSpec.SpecTree.types.Where(x => x.category == "struct");
 
-				foreach(var item in registryStruct.Items)
-				{
-					if (item is registryTypeMember)
-					{
-						var member = item as registryTypeMember;
-						structDefinition.AddField(member.name, member.name, member.type, VulkanSpec.FindTypeDefinition(member.type).TranslatedName);
-					}
-					else if(item is registryTypeValidity)
-					{
-						var validity = item as registryTypeValidity;
+	//		foreach (var registryStruct in registryStructs)
+	//		{
+	//			var structDefinition = new StructDefinition();
 
-						foreach(var usage in validity.usage)
-						{
-							structDefinition.Comments.Add(usage);
-						}
-					}
-				}
+	//			structDefinition.SpecName = registryStruct.name;
+	//			structDefinition.TranslatedName = VulkanSpec.FindTypeDefinition(registryStruct.name).TranslatedName;
 
-				Definitions.Add(structDefinition);
-			}
+	//			foreach(var item in registryStruct.Items)
+	//			{
+	//				if (item is registryTypeMember)
+	//				{
+	//					ProcessField(structDefinition, item as registryTypeMember);
+	//				}
+	//				else if(item is registryTypeValidity)
+	//				{
+	//					var validity = item as registryTypeValidity;
 
-			return Definitions.Count;
-		}
+	//					foreach(var usage in validity.usage)
+	//					{
+	//						structDefinition.Comments.Add(usage);
+	//					}
+	//				}
+	//			}
 
-		public override int Create()
-		{
-			int count = 0;
+	//			Definitions.Add(structDefinition);
+	//		}
 
-			foreach (var structDefinition in Definitions)
-			{
-				var output = new OutputDefinition<StructDefinition>() { FileName = structDefinition.TranslatedName };
-				output.TargetSolution = TargetSolution;
-				output.AddNamespace(TargetNamespace);
-				output.TemplateName = "StructTemplate";
-				output.OutputDirectory = "Structs";
-				output.AddStandardUsingDirective("System");
+	//		return Definitions.Count;
+	//	}
 
-				foreach (var commentLine in GeneratedComments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
+	//	public override int Create()
+	//	{
+	//		int count = 0;
 
-				foreach (var commentLine in structDefinition.Comments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
+	//		foreach (var structDefinition in Definitions)
+	//		{
+	//			var output = new OutputDefinition<StructDefinition>() { FileName = structDefinition.TranslatedName };
+	//			output.TargetSolution = TargetSolution;
+	//			output.AddNamespace(TargetNamespace);
+	//			output.TemplateName = "StructTemplate";
+	//			output.OutputDirectory = "Structs";
+	//			output.AddStandardUsingDirective("System");
 
-				output.TypeDefinitions.Add(structDefinition);
+	//			foreach (var commentLine in GeneratedComments)
+	//			{
+	//				output.CommentLines.Add(commentLine);
+	//			}
 
-				Generator.GenerateCodeFile(output);
-				count++;
-			}
+	//			foreach (var commentLine in structDefinition.Comments)
+	//			{
+	//				output.CommentLines.Add(commentLine);
+	//			}
 
-			return count;
-		}
-	}
+	//			output.TypeDefinitions.Add(structDefinition);
+
+	//			Generator.GenerateCodeFile(output);
+	//			count++;
+	//		}
+
+	//		return count;
+	//	}
+	//}
 }

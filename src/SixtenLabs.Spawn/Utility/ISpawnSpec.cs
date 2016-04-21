@@ -8,6 +8,10 @@
 
 		SpecTypeDefinition FindTypeDefinition(string specName);
 
+		string GetTranslatedName(string specName);
+
+		void AddSpecTypeDefinition(SpecTypeDefinition specTypeDefinition);
+
 		void AddSpecType(string specName, string translatedName);
 
 		int SpecTypeCount { get; }

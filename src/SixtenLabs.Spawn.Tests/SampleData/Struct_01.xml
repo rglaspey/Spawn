@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <output>
-  <Usings />
+  <Usings>
+    <UsingsItem>
+      <IsStatic>false</IsStatic>
+      <UseAlias>false</UseAlias>
+      <TranslatedName>System</TranslatedName>
+    </UsingsItem>
+  </Usings>
   <Namespace>
-    <Name>SixtenLabs.Spawn.Vulkan.Target</Name>
+    <TranslatedName>SixtenLabs.Spawn.Vulkan.Target</TranslatedName>
   </Namespace>
   <TypeDefinitions>
     <TypeDefinitionsItem>
@@ -10,14 +16,14 @@
         <FieldsItem>
           <SpecType>int32_t</SpecType>
           <Type>int</Type>
-          <Name>x</Name>
           <SpecName>x</SpecName>
+          <TranslatedName>x</TranslatedName>
         </FieldsItem>
         <FieldsItem>
           <SpecType>int32_t</SpecType>
           <Type>int</Type>
-          <Name>y</Name>
           <SpecName>y</SpecName>
+          <TranslatedName>y</TranslatedName>
         </FieldsItem>
       </Fields>
       <ReturnedOnly>false</ReturnedOnly>
@@ -25,8 +31,9 @@
       <Comments />
       <Attributes />
       <ModifierDefinitions />
-      <Name>Offset2D</Name>
+      <HasDerivedType>false</HasDerivedType>
       <SpecName>VkOffset2D</SpecName>
+      <TranslatedName>Offset2D</TranslatedName>
     </TypeDefinitionsItem>
   </TypeDefinitions>
   <TargetSolution>SixtenLabs.Spawn.Vulkan.Target</TargetSolution>

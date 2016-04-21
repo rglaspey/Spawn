@@ -1,4 +1,5 @@
-﻿using SimpleInjector;
+﻿using AutoMapper;
+using SimpleInjector;
 using SixtenLabs.Spawn;
 using SixtenLabs.Spawn.Utility;
 using SixtenLabs.Spawn.Vulkan;
@@ -6,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SixtenLabs.Vulkan.Generator
 {
@@ -17,6 +16,24 @@ namespace SixtenLabs.Vulkan.Generator
 		{
 		}
 
+		private void RegisterAutomapper()
+		{
+			var profileTypeInstances = SimpleContainer.GetTypesToRegister(typeof(Profile), Assemblies).Select(t => (Profile)Activator.CreateInstance(t));
+
+			var config = new MapperConfiguration(cfg =>
+			{
+				foreach (var profile in profileTypeInstances)
+				{
+					cfg.AddProfile(profile);
+				}
+			});
+
+			SimpleContainer.RegisterSingleton<MapperConfiguration>(config);
+			SimpleContainer.Register<IMapper>(() => config.CreateMapper(SimpleContainer.GetInstance));
+
+			Mapper.AssertConfigurationIsValid();
+		}
+
 		private void Register()
 		{
 			SimpleContainer = new Container();
@@ -24,11 +41,10 @@ namespace SixtenLabs.Vulkan.Generator
 			SimpleContainer.RegisterSingleton<ISpawnService, SpawnService>();
 			SimpleContainer.RegisterSingleton<IGeneratorSettings, VulkanSettings>();
 			SimpleContainer.RegisterSingleton<XmlFileLoader<registry>>();
-			SimpleContainer.RegisterSingleton<VulkanGenerator>();
+			SimpleContainer.Register<VulkanGenerator>();
 			SimpleContainer.RegisterSingleton<ISpawnSpec<registry>, VulkanSpec>();
 			SimpleContainer.RegisterSingleton<ICodeGenerator, CSharpGenerator>();
 			SimpleContainer.RegisterSingleton<IXmlSerializer, DynamicToXmlSerializer>();
-			SimpleContainer.RegisterSingleton<ITypeMapper, VulkanTypeMapper>();
 
 			var creatorTypes = SimpleContainer.GetTypesToRegister(typeof(ICreator), Assemblies);
 
@@ -36,6 +52,8 @@ namespace SixtenLabs.Vulkan.Generator
 			{
 				SimpleContainer.RegisterSingleton(creatorType, creatorType);
 			}
+			
+			RegisterAutomapper();
 
 			SimpleContainer.RegisterCollection<ICreator>(Assemblies);
 		}

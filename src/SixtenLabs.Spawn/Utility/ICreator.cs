@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 
 namespace SixtenLabs.Spawn.Utility
 {
@@ -12,7 +13,7 @@ namespace SixtenLabs.Spawn.Utility
 		/// <summary>
 		/// Build the definition files
 		/// </summary>
-		int Build();
+		int Build(IMapper mapper);
 
 		/// <summary>
 		/// Create Code files for all the definition files.

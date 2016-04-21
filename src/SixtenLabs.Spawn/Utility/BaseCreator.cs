@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 
 namespace SixtenLabs.Spawn.Utility
 {
@@ -13,7 +14,7 @@ namespace SixtenLabs.Spawn.Utility
 
 		public abstract int Rewrite();
 
-		public abstract int Build();
+		public abstract int Build(IMapper mapper);
 
 		public abstract int Create();
 

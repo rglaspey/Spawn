@@ -49,6 +49,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeAnalysis.Common.1.2.1\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
       <Private>True</Private>
@@ -120,8 +124,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definitions\AttributeDefinition.cs" />
+    <Compile Include="Definitions\ConstantDefinition.cs" />
+    <Compile Include="Definitions\ClassDefinition.cs" />
+    <Compile Include="Definitions\DelegateDefinition.cs" />
     <Compile Include="Definitions\FieldDefinition.cs" />
-    <Compile Include="Definitions\HandleDefinition.cs" />
     <Compile Include="Definitions\ImportDefinition.cs" />
     <Compile Include="Definitions\Modifiers.cs" />
     <Compile Include="Definitions\BaseType.cs" />
@@ -145,12 +151,10 @@
     <Compile Include="Generators\ICodeGenerator.cs" />
     <Compile Include="ISpawn.cs" />
     <Compile Include="Utility\BaseCreator.cs" />
-    <Compile Include="Utility\BaseTypeMapper.cs" />
     <Compile Include="Utility\DynamicToXmlSerializer.cs" />
     <Compile Include="Utility\FastExpando.cs" />
     <Compile Include="Utility\ICreator.cs" />
     <Compile Include="Utility\ISpawnSpec.cs" />
-    <Compile Include="Utility\ITypeMapper.cs" />
     <Compile Include="Utility\IXmlSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnService.cs" />
@@ -163,6 +167,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\ClassTemplate.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Templates\DelegateTemplate.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\EnumTemplate.xslt">
