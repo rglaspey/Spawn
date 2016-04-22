@@ -6,7 +6,7 @@ namespace SixtenLabs.Spawn
 	/// <summary>
 	/// Use this class to define an output.
 	/// </summary>
-	public class OutputDefinition<T> where T : TypeDefinition
+	public class OutputDefinition<T> where T : Definition
 	{
 		public OutputDefinition()
 		{

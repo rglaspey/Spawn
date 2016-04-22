@@ -10,7 +10,7 @@ namespace SixtenLabs.Spawn
 	/// a distinct type that consists of a set of named constants called the enumerator list.
 	/// 
 	/// </summary>
-	public class EnumDefinition : TypeDefinition
+	public class EnumDefinition : Definition
   {
 		public EnumDefinition()
 		{
@@ -34,10 +34,8 @@ namespace SixtenLabs.Spawn
 
 		public List<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
 
-    public bool HasFlags { get; set; }
+		public List<string> Comments { get; set; } = new List<string>();
 
-		public string Expand { get; set; }
-		
-		public string Namespace { get; set; }
+		public bool HasFlags { get; set; }
   }
 }

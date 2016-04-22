@@ -110,7 +110,7 @@ namespace SixtenLabs.Spawn
 		//	return output;
 		//}
 
-		public abstract void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition) where T : TypeDefinition;
+		public abstract void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition) where T : Definition;
 
 		protected ISpawnService Spawn { get; }
 

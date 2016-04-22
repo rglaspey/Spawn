@@ -8,114 +8,115 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	//public class ConstantsCreator : BaseCreator<registry, ClassDefinition>
-	//{
-	//	public ConstantsCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
-	//		: base(generator, spawnSpec, 9)
-	//	{
-	//	}
+	public class ConstantsCreator : BaseCreator<registry, ClassDefinition>
+	{
+		public ConstantsCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
+			: base(generator, spawnSpec, 9)
+		{
+		}
 
-	//	public override int Rewrite()
-	//	{
-	//		return 0;
-	//	}
+		private void ProcessValue(FieldDefinition constantDefinition)
+		{
+			if (!string.IsNullOrEmpty(constantDefinition.SpecValue))
+			{
+				if (constantDefinition.SpecValue.Contains("f"))
+				{
+					constantDefinition.SpecType = "float";
+					constantDefinition.TranslatedType = "float";
+					constantDefinition.TranslatedValue = constantDefinition.SpecValue;
+				}
+				else if (constantDefinition.SpecValue.Contains("(~0U)"))
+				{
+					constantDefinition.SpecType = "uint";
+					constantDefinition.TranslatedType = "uint";
+					constantDefinition.TranslatedValue = "uint.MaxValue";
+				}
+				else if (constantDefinition.SpecValue.Contains("(~0ULL)"))
+				{
+					constantDefinition.SpecType = "ulong";
+					constantDefinition.TranslatedType = "ulong";
+					constantDefinition.TranslatedValue = "ulong.MaxValue";
+				}
+				else
+				{
+					constantDefinition.SpecType = "uint";
+					constantDefinition.TranslatedType = "uint";
+					constantDefinition.TranslatedValue = constantDefinition.SpecValue;
+				}
+			}
+		}
 
-	//	private void ProcessValue(ConstantDefinition constantDefinition, string value)
-	//	{
-	//		if(!string.IsNullOrEmpty(value))
-	//		{
-	//			if(value.Contains("f"))
-	//			{
-	//				constantDefinition.SpecType = "float";
-	//				constantDefinition.TranslatedType = "float";
-	//				constantDefinition.Value = value;
-	//			}
-	//			else if (value.Contains("(~0U)"))
-	//			{
-	//				constantDefinition.SpecType = "uint";
-	//				constantDefinition.TranslatedType = "uint";
-	//				constantDefinition.Value = "uint.MaxValue";
-	//			}
-	//			else if (value.Contains("(~0ULL)"))
-	//			{
-	//				constantDefinition.SpecType = "ulong";
-	//				constantDefinition.TranslatedType = "ulong";
-	//				constantDefinition.Value = "ulong.MaxValue";
-	//			}
-	//			else
-	//			{
-	//				constantDefinition.SpecType = "uint";
-	//				constantDefinition.TranslatedType = "uint";
-	//				constantDefinition.Value = value;
-	//			}
-	//		}
-	//	}
+		public override int Build(IMapper mapper)
+		{
+			var registryConstants = VulkanSpec.SpecTree.enums.Where(x => x.name == "API Constants");
 
-	//	public override int Build(IMapper mapper)
-	//	{
-	//		var registryConstants = VulkanSpec.SpecTree.enums.Where(x => x.name == "API Constants");
+			foreach (var registryConstant in registryConstants)
+			{
+				var classDefinition = mapper.Map<registryEnums, ClassDefinition>(registryConstant);
 
-	//		foreach (var registryConstant in registryConstants)
-	//		{
-	//			var classDefinition = new ClassDefinition();
+				classDefinition.AddModifier(Modifiers.Public, 0);
+				classDefinition.AddModifier(Modifiers.Const, 1);
+				classDefinition.SpecName = registryConstant.name;
 
-	//			classDefinition.AddModifier(Modifiers.Public, 0);
-	//			classDefinition.AddModifier(Modifiers.Const, 1);
-	//			classDefinition.SpecName = registryConstant.name;
-	//			classDefinition.TranslatedName = "ApiConstants";
+				// This is hardcoded for this single enum exception.
+				classDefinition.TranslatedName = "ApiConstants";
 
-	//			foreach(var constant in registryConstant.@enum.AsEnumerable())
-	//			{
-	//				var constantDefinition = new ConstantDefinition();
+				Definitions.Add(classDefinition);
+			}
 
-	//				constantDefinition.Modifier = new ModifierDefinition() { Modifier = Modifiers.Public };
-	//				constantDefinition.SpecName = constant.name;
-	//				constantDefinition.TranslatedName = constant.name.TranslateVulkanName();
+			return Definitions.Count;
+		}
 
-	//				ProcessValue(constantDefinition, constant.value);
+		public override int Rewrite()
+		{
+			int count = 0;
 
-	//				VulkanSpec.AddSpecType(constantDefinition.SpecName, constantDefinition.TranslatedName);
+			foreach(var classDefinition in Definitions)
+			{
+				foreach(var fieldDefinition in classDefinition.Fields)
+				{
+					fieldDefinition.TranslatedName = VulkanSpec.GetTranslatedName(fieldDefinition.SpecName);
+					fieldDefinition.Modifiers.Add(new ModifierDefinition() { Modifier = Modifiers.Public, Order = 0 });
+					fieldDefinition.Modifiers.Add(new ModifierDefinition() { Modifier = Modifiers.Const, Order = 1 });
+					ProcessValue(fieldDefinition);
+				}
 
-	//				classDefinition.Constants.Add(constantDefinition);
-	//			}
+				count++;
+			}
 
+			return count;
+		}
 
-	//			Definitions.Add(classDefinition);
-	//		}
+		public override int Create()
+		{
+			int count = 0;
 
-	//		return Definitions.Count;
-	//	}
+			foreach (var classDefintion in Definitions)
+			{
+				var output = new OutputDefinition<ClassDefinition>() { FileName = classDefintion.TranslatedName };
+				output.TargetSolution = TargetSolution;
+				output.AddNamespace(TargetNamespace);
+				output.TemplateName = "ClassTemplate";
+				output.OutputDirectory = "Constants";
 
-	//	public override int Create()
-	//	{
-	//		int count = 0;
+				foreach (var commentLine in GeneratedComments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
 
-	//		foreach (var classDefintion in Definitions)
-	//		{
-	//			var output = new OutputDefinition<ClassDefinition>() { FileName = classDefintion.TranslatedName };
-	//			output.TargetSolution = TargetSolution;
-	//			output.AddNamespace(TargetNamespace);
-	//			output.TemplateName = "ClassTemplate";
-	//			output.OutputDirectory = "Constants";
+				foreach (var commentLine in classDefintion.Comments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
 
-	//			foreach (var commentLine in GeneratedComments)
-	//			{
-	//				output.CommentLines.Add(commentLine);
-	//			}
+				output.TypeDefinitions.Add(classDefintion);
+				output.AddStandardUsingDirective("System");
 
-	//			foreach (var commentLine in classDefintion.Comments)
-	//			{
-	//				output.CommentLines.Add(commentLine);
-	//			}
+				Generator.GenerateCodeFile(output);
+				count++;
+			}
 
-	//			output.TypeDefinitions.Add(classDefintion);
-	//			output.AddStandardUsingDirective("System");
-
-	//			Generator.GenerateCodeFile(output);
-	//			count++;
-	//		}
-
-	//		return count;
-	//	}
-	//}
+			return count;
+		}
+	}
 }

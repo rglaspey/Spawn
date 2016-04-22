@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ApiConstants.cs" />
     <Compile Include="Enums\AccessFlags.cs" />
     <Compile Include="Enums\AttachmentDescriptionFlags.cs" />
     <Compile Include="Enums\AttachmentLoadOp.cs" />
@@ -131,6 +132,37 @@
     <Compile Include="Enums\SurfaceTransformFlagsKhr.cs" />
     <Compile Include="Enums\SystemAllocationScope.cs" />
     <Compile Include="Enums\VertexInputRate.cs" />
+    <Compile Include="Handles\Buffer.cs" />
+    <Compile Include="Handles\BufferView.cs" />
+    <Compile Include="Handles\CommandBuffer.cs" />
+    <Compile Include="Handles\CommandPool.cs" />
+    <Compile Include="Handles\DebugReportCallbackExt.cs" />
+    <Compile Include="Handles\DescriptorPool.cs" />
+    <Compile Include="Handles\DescriptorSet.cs" />
+    <Compile Include="Handles\DescriptorSetLayout.cs" />
+    <Compile Include="Handles\Device.cs" />
+    <Compile Include="Handles\DeviceMemory.cs" />
+    <Compile Include="Handles\DisplayKhr.cs" />
+    <Compile Include="Handles\DisplayModeKhr.cs" />
+    <Compile Include="Handles\Event.cs" />
+    <Compile Include="Handles\Fence.cs" />
+    <Compile Include="Handles\Framebuffer.cs" />
+    <Compile Include="Handles\Image.cs" />
+    <Compile Include="Handles\ImageView.cs" />
+    <Compile Include="Handles\Instance.cs" />
+    <Compile Include="Handles\PhysicalDevice.cs" />
+    <Compile Include="Handles\Pipeline.cs" />
+    <Compile Include="Handles\PipelineCache.cs" />
+    <Compile Include="Handles\PipelineLayout.cs" />
+    <Compile Include="Handles\QueryPool.cs" />
+    <Compile Include="Handles\Queue.cs" />
+    <Compile Include="Handles\RenderPass.cs" />
+    <Compile Include="Handles\Sampler.cs" />
+    <Compile Include="Handles\Semaphore.cs" />
+    <Compile Include="Handles\ShaderModule.cs" />
+    <Compile Include="Handles\SurfaceKhr.cs" />
+    <Compile Include="Handles\SwapchainKhr.cs" />
+    <Compile Include="Interop\NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

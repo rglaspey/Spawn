@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.CodeAnalysis.CSharp;
-
-namespace SixtenLabs.Spawn
+﻿namespace SixtenLabs.Spawn
 {
 	/// <summary>
 	/// Base definition. Holds all common functionality for concrete definitions

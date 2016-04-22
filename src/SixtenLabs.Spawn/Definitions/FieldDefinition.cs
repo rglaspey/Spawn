@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SixtenLabs.Spawn
 {
@@ -14,6 +10,14 @@ namespace SixtenLabs.Spawn
 
 		public string SpecType { get; set; }
 
-		public string Type { get; set; }
+		public string TranslatedType { get; set; }
+
+		public string SpecValue { get; set; }
+
+		public string TranslatedValue { get; set; }
+
+		public List<CommentLineDefinition> Comments { get; } = new List<CommentLineDefinition>();
+
+		public List<ModifierDefinition> Modifiers { get; } = new List<ModifierDefinition>();
 	}
 }

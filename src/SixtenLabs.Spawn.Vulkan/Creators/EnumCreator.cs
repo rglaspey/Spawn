@@ -4,6 +4,9 @@ using AutoMapper;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
+	/// <summary>
+	/// TODO : handle extensions. Handle Not real enums (or are they handled from typemapper already, I think so)
+	/// </summary>
 	public class EnumCreator : BaseCreator<registry, EnumDefinition>
 	{
 		public EnumCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
@@ -26,6 +29,8 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public override int Rewrite()
 		{
+			int count = 0;
+
 			foreach (var enumDefintion in Definitions)
 			{
 				enumDefintion.TranslatedName = VulkanSpec.GetTranslatedName(enumDefintion.SpecName);
@@ -34,9 +39,11 @@ namespace SixtenLabs.Spawn.Vulkan
 				{
 					valueDefinition.TranslatedName = VulkanSpec.GetTranslatedName(valueDefinition.SpecName);
 				}
+
+				count++;
 			}
 
-			return 0;
+			return count;
 		}
 
 		public override int Create()

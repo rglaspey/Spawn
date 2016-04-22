@@ -42,5 +42,7 @@ namespace SixtenLabs.Spawn.Utility
 		public List<string> GeneratedComments { get; } = new List<string>();
 
 		protected IList<U> Definitions { get; } = new List<U>();
+
+		public bool Off { get; set; }
 	}
 }

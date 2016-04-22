@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
+	/// <summary>
+	/// TODO : Handle extensions...
+	/// </summary>
 	public class SpecTypeMapper : Profile
 	{
 		protected override void Configure()
@@ -16,6 +19,28 @@ namespace SixtenLabs.Spawn.Vulkan
 			CreateMap<registryEnumsEnum, SpecTypeDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(src => MapName(src)))
 				.ForMember(dest => dest.TranslatedName, opt => opt.MapFrom(src => MapTranslatedName(src)));
+
+			CreateMap<registryCommand, SpecTypeDefinition>()
+				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(src => MapName(src)))
+				.ForMember(dest => dest.TranslatedName, opt => opt.MapFrom(src => MapTranslatedName(src)));
+		}
+
+		private string MapName(registryCommand rc)
+		{
+			string name = null;
+
+			name = rc.proto.name;
+
+			return name;
+		}
+
+		private string MapTranslatedName(registryCommand rc)
+		{
+			string name = null;
+
+			name = rc.proto.name.TranslateVulkanName();
+
+			return name;
 		}
 
 		private string MapName(registryEnumsEnum ree)
@@ -86,19 +111,11 @@ namespace SixtenLabs.Spawn.Vulkan
 			{
 				name = (rt.Items[1] as string).TranslateVulkanName();
 			}
-			else if (rt.category == "enum")
-			{
-				name = rt.name.TranslateVulkanName();
-			}
 			else if (rt.category == "funcpointer")
 			{
 				name = (rt.Items[0] as string).TranslateVulkanName();
 			}
-			else if (rt.category == "struct")
-			{
-				name = rt.name.TranslateVulkanName();
-			}
-			else if (rt.category == "union")
+			else if (rt.category == "enum" || rt.category == "struct" || rt.category == "union")
 			{
 				name = rt.name.TranslateVulkanName();
 			}

@@ -29,5 +29,7 @@ namespace SixtenLabs.Spawn.Utility
 		string TypeName { get; }
 
 		int Order { get; }
+
+		bool Off { get; set; }
 	}
 }

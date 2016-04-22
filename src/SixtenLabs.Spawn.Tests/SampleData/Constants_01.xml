@@ -12,173 +12,294 @@
   </Namespace>
   <TypeDefinitions>
     <TypeDefinitionsItem>
-      <Constants>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+      <Fields>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>256</Value>
+          <SpecValue>256</SpecValue>
+          <TranslatedValue>256</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_MAX_PHYSICAL_DEVICE_NAME_SIZE</SpecName>
           <TranslatedName>MaxPhysicalDeviceNameSize</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>16</Value>
+          <SpecValue>16</SpecValue>
+          <TranslatedValue>16</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_UUID_SIZE</SpecName>
           <TranslatedName>UuidSize</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>256</Value>
+          <SpecValue>256</SpecValue>
+          <TranslatedValue>256</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_MAX_EXTENSION_NAME_SIZE</SpecName>
           <TranslatedName>MaxExtensionNameSize</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>256</Value>
+          <SpecValue>256</SpecValue>
+          <TranslatedValue>256</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_MAX_DESCRIPTION_SIZE</SpecName>
           <TranslatedName>MaxDescriptionSize</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>32</Value>
+          <SpecValue>32</SpecValue>
+          <TranslatedValue>32</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_MAX_MEMORY_TYPES</SpecName>
           <TranslatedName>MaxMemoryTypes</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>16</Value>
+          <SpecValue>16</SpecValue>
+          <TranslatedValue>16</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_MAX_MEMORY_HEAPS</SpecName>
           <TranslatedName>MaxMemoryHeaps</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>float</SpecType>
           <TranslatedType>float</TranslatedType>
-          <Value>1000.0f</Value>
+          <SpecValue>1000.0f</SpecValue>
+          <TranslatedValue>1000.0f</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_LOD_CLAMP_NONE</SpecName>
           <TranslatedName>LodClampNone</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>int.MaxValue</Value>
+          <SpecValue>(~0U)</SpecValue>
+          <TranslatedValue>uint.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_REMAINING_MIP_LEVELS</SpecName>
           <TranslatedName>RemainingMipLevels</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>int.MaxValue</Value>
+          <SpecValue>(~0U)</SpecValue>
+          <TranslatedValue>uint.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_REMAINING_ARRAY_LAYERS</SpecName>
           <TranslatedName>RemainingArrayLayers</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>ulong</SpecType>
           <TranslatedType>ulong</TranslatedType>
-          <Value>ulong.MaxValue</Value>
+          <SpecValue>(~0ULL)</SpecValue>
+          <TranslatedValue>ulong.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_WHOLE_SIZE</SpecName>
           <TranslatedName>WholeSize</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>int.MaxValue</Value>
+          <SpecValue>(~0U)</SpecValue>
+          <TranslatedValue>uint.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_ATTACHMENT_UNUSED</SpecName>
           <TranslatedName>AttachmentUnused</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>1</Value>
+          <SpecValue>1</SpecValue>
+          <TranslatedValue>1</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_TRUE</SpecName>
           <TranslatedName>TRUE</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>0</Value>
+          <SpecValue>0</SpecValue>
+          <TranslatedValue>0</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_FALSE</SpecName>
           <TranslatedName>FALSE</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>int.MaxValue</Value>
+          <SpecValue>(~0U)</SpecValue>
+          <TranslatedValue>uint.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_QUEUE_FAMILY_IGNORED</SpecName>
           <TranslatedName>QueueFamilyIgnored</TranslatedName>
-        </ConstantsItem>
-        <ConstantsItem>
-          <Modifier>
-            <Modifier>Public</Modifier>
-            <Order>0</Order>
-          </Modifier>
+        </FieldsItem>
+        <FieldsItem>
           <SpecType>uint</SpecType>
           <TranslatedType>uint</TranslatedType>
-          <Value>int.MaxValue</Value>
+          <SpecValue>(~0U)</SpecValue>
+          <TranslatedValue>uint.MaxValue</TranslatedValue>
+          <Comments />
+          <Modifiers>
+            <ModifiersItem>
+              <Modifier>Public</Modifier>
+              <Order>0</Order>
+            </ModifiersItem>
+            <ModifiersItem>
+              <Modifier>Const</Modifier>
+              <Order>1</Order>
+            </ModifiersItem>
+          </Modifiers>
           <SpecName>VK_SUBPASS_EXTERNAL</SpecName>
           <TranslatedName>SubpassExternal</TranslatedName>
-        </ConstantsItem>
-      </Constants>
+        </FieldsItem>
+      </Fields>
+      <Methods />
       <Comments />
       <Attributes />
       <ModifierDefinitions>
@@ -197,7 +318,7 @@
     </TypeDefinitionsItem>
   </TypeDefinitions>
   <TargetSolution>SixtenLabs.Spawn.Vulkan.Target</TargetSolution>
-  <FileName>ApiConstants.cs</FileName>
+  <FileName>ApiConstants</FileName>
   <TemplateName>ClassTemplate</TemplateName>
   <CommentLines>
     <CommentLinesItem>*** Do Not Edit ***</CommentLinesItem>

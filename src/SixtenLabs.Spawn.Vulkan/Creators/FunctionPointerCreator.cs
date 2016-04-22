@@ -8,83 +8,79 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	//public class FunctionPointerCreator : BaseCreator<registry, DelegateDefinition>
-	//{
-	//	public FunctionPointerCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
-	//		: base(generator, spawnSpec, 9)
-	//	{
-	//	}
+	public class FunctionPointerCreator : BaseCreator<registry, DelegateDefinition>
+	{
+		public FunctionPointerCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
+			: base(generator, spawnSpec, 9)
+		{
+			Off = true;
+		}
 
-	//	private void ProcessParameters(DelegateDefinition delegateDefinition, registryType registryType)
-	//	{
-	//		foreach(var item in registryType.Items)
-	//		{
+		public override int Rewrite()
+		{
+			int count = 0;
 
-	//		}
-	//	}
+			foreach(var delegateDefinition in Definitions)
+			{
+				delegateDefinition.TranslatedName = VulkanSpec.GetTranslatedName(delegateDefinition.SpecName);
+				delegateDefinition.TranslatedReturnType = VulkanSpec.GetTranslatedName(delegateDefinition.SpecReturnType);
 
-	//	public override int Rewrite()
-	//	{
-	//		return 0;
-	//	}
+				foreach (var parameterDefinition in delegateDefinition.Parameters)
+				{
+					parameterDefinition.TranslatedName =parameterDefinition.SpecName;
+					parameterDefinition.TranslatedReturnType = VulkanSpec.GetTranslatedName(parameterDefinition.SpecReturnType);
+				}
 
-	//	public override int Build(IMapper mapper)
-	//	{
-	//		var registryFunctionPointers = VulkanSpec.SpecTree.types.Where(x => x.category == "funcpointer");
+				count++;
+			}
 
-	//		foreach (var registryFunctionPointer in registryFunctionPointers)
-	//		{
-	//			var delegateDefinition = new DelegateDefinition();
+			return count;
+		}
 
-	//			var specName = registryFunctionPointer.Items[0] as string;
-	//			var translatedName = VulkanSpec.FindTypeDefinition(specName).TranslatedName;
+		public override int Build(IMapper mapper)
+		{
+			var registryFunctionPointers = VulkanSpec.SpecTree.types.Where(x => x.category == "funcpointer");
 
-	//			//delegateDefinition.AddModifier(Modifiers.Public, 0);
-	//			//delegateDefinition.AddModifier(Modifiers.Partial, 1);
-	//			delegateDefinition.SpecName = specName;
-	//			delegateDefinition.TranslatedName = translatedName;
+			foreach (var registryFunctionPointer in registryFunctionPointers)
+			{
+				var delegateDefinition = mapper.Map<registryType, DelegateDefinition>(registryFunctionPointer);
 
-	//			var specType = registryFunctionPointer.Items[1] as string;
-	//			var translatedType = VulkanSpec.FindTypeDefinition(specType).TranslatedName;
+				Definitions.Add(delegateDefinition);
+			}
 
-	//			ProcessParameters(delegateDefinition, registryFunctionPointer);
+			return Definitions.Count;
+		}
 
-	//			Definitions.Add(delegateDefinition);
-	//		}
+		public override int Create()
+		{
+			int count = 0;
 
-	//		return Definitions.Count;
-	//	}
+			foreach (var classDefintion in Definitions)
+			{
+				var output = new OutputDefinition<DelegateDefinition>() { FileName = classDefintion.TranslatedName };
+				output.TargetSolution = TargetSolution;
+				output.AddNamespace(TargetNamespace);
+				output.TemplateName = "DelegateTemplate";
+				output.OutputDirectory = "Delegates";
 
-	//	public override int Create()
-	//	{
-	//		int count = 0;
+				foreach (var commentLine in GeneratedComments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
 
-	//		foreach (var classDefintion in Definitions)
-	//		{
-	//			var output = new OutputDefinition<DelegateDefinition>() { FileName = classDefintion.TranslatedName };
-	//			output.TargetSolution = TargetSolution;
-	//			output.AddNamespace(TargetNamespace);
-	//			output.TemplateName = "DelegateTemplate";
-	//			output.OutputDirectory = "Delegates";
+				foreach (var commentLine in classDefintion.Comments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
 
-	//			foreach (var commentLine in GeneratedComments)
-	//			{
-	//				output.CommentLines.Add(commentLine);
-	//			}
+				output.TypeDefinitions.Add(classDefintion);
+				output.AddStandardUsingDirective("System");
 
-	//			foreach (var commentLine in classDefintion.Comments)
-	//			{
-	//				output.CommentLines.Add(commentLine);
-	//			}
+				Generator.GenerateCodeFile(output);
+				count++;
+			}
 
-	//			output.TypeDefinitions.Add(classDefintion);
-	//			output.AddStandardUsingDirective("System");
-
-	//			Generator.GenerateCodeFile(output);
-	//			count++;
-	//		}
-
-	//		return count;
-	//	}
-	//}
+			return count;
+		}
+	}
 }

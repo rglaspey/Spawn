@@ -3,8 +3,6 @@ using FluentAssertions;
 using NSubstitute;
 
 using AutoMapper;
-using System.Xml.Linq;
-using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using SixtenLabs.Spawn.Utility;

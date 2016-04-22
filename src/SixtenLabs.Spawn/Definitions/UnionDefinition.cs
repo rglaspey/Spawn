@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn
 {
-	public class UnionDefinition : TypeDefinition
+	public class UnionDefinition : Definition
 	{
 		public UnionDefinition()
 		{

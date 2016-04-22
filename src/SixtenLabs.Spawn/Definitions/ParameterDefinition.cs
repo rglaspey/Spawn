@@ -35,8 +35,8 @@
 		/// </summary>
 		public string ExternSyncData { get; set; }
 
-		public string SpecType { get; set; }
+		public string SpecReturnType { get; set; }
 
-		public string TranslatedSpecType { get; set; }
+		public string TranslatedReturnType { get; set; }
 	}
 }

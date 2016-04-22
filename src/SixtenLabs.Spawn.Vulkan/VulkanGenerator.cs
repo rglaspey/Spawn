@@ -44,9 +44,15 @@ namespace SixtenLabs.Spawn.Vulkan
 				SpawnSpec.AddSpecTypeDefinition(specTypeDefinition);
 			}
 
-			foreach (var enumValueType in SpawnSpec.SpecTree.enums.Where(x => x.name != "API Constants").SelectMany(x => x.@enum))
+			foreach (var enumValueType in SpawnSpec.SpecTree.enums.SelectMany(x => x.@enum))
 			{
 				var specTypeDefinition = Mapper.Map<registryEnumsEnum, SpecTypeDefinition>(enumValueType);
+				SpawnSpec.AddSpecTypeDefinition(specTypeDefinition);
+			}
+
+			foreach (var regCommand in SpawnSpec.SpecTree.commands)
+			{
+				var specTypeDefinition = Mapper.Map<registryCommand, SpecTypeDefinition>(regCommand);
 				SpawnSpec.AddSpecTypeDefinition(specTypeDefinition);
 			}
 
@@ -55,7 +61,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void Rewrite()
 		{
-			var orderedCreators = Creators.OrderBy(x => x.Order);
+			var orderedCreators = Creators.Where(x => !x.Off).OrderBy(x => x.Order);
 
 			foreach (var creator in orderedCreators)
 			{
@@ -67,7 +73,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void Build()
 		{
-			foreach (var creator in Creators)
+			foreach (var creator in Creators.Where(x => !x.Off).OrderBy(x => x.Order))
 			{
 				Console.WriteLine($"Building {creator.TypeName} definition files.");
 				var count = creator.Build(Mapper);
@@ -77,7 +83,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 		public void Generate()
 		{
-			foreach (var creator in Creators)
+			foreach (var creator in Creators.Where(x => !x.Off))
 			{
 				creator.TargetSolution = "SixtenLabs.Spawn.Vulkan.Target";
 				creator.TargetNamespace = "SixtenLabs.Spawn.Vulkan.Target";
