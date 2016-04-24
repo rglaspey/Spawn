@@ -9,7 +9,11 @@ using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn
 {
-	public class DynamicToXmlSerializer : IXmlSerializer
+	/// <summary>
+	/// This will serialize objects and dynamic objects into 
+	/// xml with a specific pattern for use with Spawn XSLT templates.
+	/// </summary>
+	public class SpawnXmlSerializer : IXmlSerializer
 	{
 		private const string DefaultElementName = "object";
 

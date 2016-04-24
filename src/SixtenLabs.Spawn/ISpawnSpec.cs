@@ -12,8 +12,6 @@
 
 		void AddSpecTypeDefinition(SpecTypeDefinition specTypeDefinition);
 
-		void AddSpecType(string specName, string translatedName);
-
 		int SpecTypeCount { get; }
 	}
 }

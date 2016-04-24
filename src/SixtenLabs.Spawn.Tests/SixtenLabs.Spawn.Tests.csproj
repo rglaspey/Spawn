@@ -143,16 +143,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XmlToObjectParser.cs" />
-    <Compile Include="Extensions\SyntaxExtensions.Class.Tests.cs" />
-    <Compile Include="Extensions\SyntaxExtensions.Common.Tests.cs" />
-    <Compile Include="Extensions\SyntaxExtensions.Enum.Tests.cs" />
-    <Compile Include="Extensions\SyntaxExtensions.TypeMember.Tests.cs" />
-    <Compile Include="Model\SerializationTest.cs" />
-    <Compile Include="OutputStringHelper.cs" />
+    <Compile Include="Model\TestClassOne.cs" />
+    <Compile Include="Model\TestClassTwo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VulkanSpecTests.cs" />
-    <Compile Include="XmlToFastExpandoTests.cs" />
+    <Compile Include="SpawnXmlSerializerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -173,6 +167,7 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

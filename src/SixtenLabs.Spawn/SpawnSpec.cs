@@ -49,22 +49,6 @@ namespace SixtenLabs.Spawn.Utility
 			}
 		}
 
-		public void AddSpecType(string specName, string translatedName)
-		{
-			var specType = new SpecTypeDefinition() { SpecName = specName, TranslatedName = translatedName };
-
-			var alreadyExists = AllSpecTypeDefinitions.Contains(specType);
-
-			if (!alreadyExists)
-			{
-				AllSpecTypeDefinitions.Add(specType);
-			}
-			else
-			{
-				throw new InvalidOperationException();
-			}
-		}
-
 		private XmlFileLoader<T> FileLoader { get; set; }
 
 		public T SpecTree
