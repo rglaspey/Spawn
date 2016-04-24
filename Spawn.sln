@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GlfwSample", "GlfwSample", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Vulkan.Tests", "src\SixtenLabs.Spawn.Vulkan.Tests\SixtenLabs.Spawn.Vulkan.Tests.csproj", "{47F03C72-9F34-4F56-A466-B4CE7F4E8AC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Generator.CSharp", "src\SixtenLabs.Spawn.Generator.CSharp\SixtenLabs.Spawn.Generator.CSharp.csproj", "{1E4DB220-AEB6-4922-9505-16B824100B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Generator.CSharp.Tests", "src\SixtenLabs.Spawn.Generator.CSharp.Tests\SixtenLabs.Spawn.Generator.CSharp.Tests.csproj", "{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,22 @@ Global
 		{47F03C72-9F34-4F56-A466-B4CE7F4E8AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47F03C72-9F34-4F56-A466-B4CE7F4E8AC3}.Release|x64.ActiveCfg = Release|Any CPU
 		{47F03C72-9F34-4F56-A466-B4CE7F4E8AC3}.Release|x64.Build.0 = Release|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|x64.Build.0 = Debug|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|x64.ActiveCfg = Release|Any CPU
+		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|x64.Build.0 = Release|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

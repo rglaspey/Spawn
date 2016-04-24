@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SixtenLabs.Spawn</RootNamespace>
     <AssemblyName>SixtenLabs.Spawn</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -123,28 +123,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Definitions\AttributeDefinition.cs" />
-    <Compile Include="Definitions\CommentDefinition.cs" />
-    <Compile Include="Definitions\ClassDefinition.cs" />
-    <Compile Include="Definitions\DelegateDefinition.cs" />
-    <Compile Include="Definitions\FieldDefinition.cs" />
-    <Compile Include="Definitions\MethodDefinition.cs" />
-    <Compile Include="Definitions\Modifiers.cs" />
-    <Compile Include="Definitions\Definition.cs" />
-    <Compile Include="Definitions\EnumDefinition.cs" />
-    <Compile Include="Definitions\EnumMemberDefinition.cs" />
-    <Compile Include="Definitions\ModifierDefinition.cs" />
-    <Compile Include="Definitions\NamespaceDefinition.cs" />
-    <Compile Include="Definitions\OutputDefinition.cs" />
-    <Compile Include="Definitions\ParameterDefinition.cs" />
-    <Compile Include="Definitions\SpecTypeDefinition.cs" />
-    <Compile Include="Definitions\StructDefinition.cs" />
-    <Compile Include="Definitions\UnionDefinition.cs" />
-    <Compile Include="Definitions\UsingDirectiveDefinition.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />
-    <Compile Include="Generators\CSharpGenerator.cs" />
     <Compile Include="Generators\ICodeGenerator.cs" />
+    <Compile Include="Generators\IDefinition.cs" />
+    <Compile Include="Generators\IOutputDefinition.cs" />
+    <Compile Include="Generators\SpecTypeDefinition.cs" />
     <Compile Include="ISpawn.cs" />
     <Compile Include="Utility\BaseCreator.cs" />
     <Compile Include="Utility\DynamicToXmlSerializer.cs" />
@@ -160,41 +144,6 @@
     <Compile Include="Utility\XmlFileLoader.cs" />
     <Compile Include="Utility\XmlLoadMethod.cs" />
     <Compile Include="Utility\GeneratorSettings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\ClassTemplate.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Templates\DelegateTemplate.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\EnumTemplate.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Templates\ImportTemplate.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Shared\Attributes.xslt" />
-    <Content Include="Templates\Shared\Fields.xslt" />
-    <Content Include="Templates\Shared\FullComments.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Shared\Methods.xslt" />
-    <Content Include="Templates\Shared\NamespaceEnd.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Shared\NamespaceStart.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Shared\Properties.xslt" />
-    <Content Include="Templates\Shared\Usings.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\StructTemplate.xslt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

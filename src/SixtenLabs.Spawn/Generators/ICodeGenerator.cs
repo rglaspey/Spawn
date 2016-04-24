@@ -2,6 +2,6 @@
 {
 	public interface ICodeGenerator
 	{
-		void GenerateCodeFile<T>(OutputDefinition<T> outputDefinition) where T : Definition;
+		void GenerateCodeFile<T>(IOutputDefinition<T> outputDefinition) where T : IDefinition;
 	}
 }

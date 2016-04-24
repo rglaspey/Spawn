@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{47F03C72-9F34-4F56-A466-B4CE7F4E8AC3}</ProjectGuid>
+    <ProjectGuid>{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SixtenLabs.Spawn.Vulkan.Tests</RootNamespace>
-    <AssemblyName>SixtenLabs.Spawn.Vulkan.Tests</AssemblyName>
+    <RootNamespace>SixtenLabs.Spawn.Generator.CSharp.Tests</RootNamespace>
+    <AssemblyName>SixtenLabs.Spawn.Generator.CSharp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FluentAssertions, Version=4.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.4.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -72,38 +68,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConstantMapperTests.cs" />
-    <Compile Include="EnumMapperTests.cs" />
-    <Compile Include="FunctionPointerMapperTests.cs" />
-    <Compile Include="HandleMapperTests.cs" />
-    <Compile Include="InteropMapperTests.cs" />
+    <Compile Include="CSharpGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecTypeMapperTests.cs" />
-    <Compile Include="StructMapperTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SixtenLabs.Spawn.Generator.CSharp\SixtenLabs.Spawn.Generator.CSharp.csproj">
-      <Project>{1e4db220-aeb6-4922-9505-16b824100b04}</Project>
-      <Name>SixtenLabs.Spawn.Generator.CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SixtenLabs.Spawn.Vulkan\SixtenLabs.Spawn.Vulkan.csproj">
-      <Project>{c3dbe3a8-451e-47ea-85f5-f14b503cf609}</Project>
-      <Name>SixtenLabs.Spawn.Vulkan</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">
-      <Project>{d3447c4f-bdc3-4de0-8905-18e0f6be7fc2}</Project>
-      <Name>SixtenLabs.Spawn</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="SampleData\Constants_01.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\Delegate_01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\Enum_01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\Enum_02.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\Struct_01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Spec\vk.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Definitions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -89,6 +89,10 @@
     <Compile Include="Creators\StructCreator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SixtenLabs.Spawn.Generator.CSharp\SixtenLabs.Spawn.Generator.CSharp.csproj">
+      <Project>{1e4db220-aeb6-4922-9505-16b824100b04}</Project>
+      <Name>SixtenLabs.Spawn.Generator.CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">
       <Project>{d3447c4f-bdc3-4de0-8905-18e0f6be7fc2}</Project>
       <Name>SixtenLabs.Spawn</Name>

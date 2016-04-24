@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SixtenLabs.Spawn.Tests</RootNamespace>
     <AssemblyName>SixtenLabs.Spawn.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -143,29 +143,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Definitions\AttributeDefinitionTests.cs" />
-    <Compile Include="Definitions\BodyDefinitionTests.cs" />
-    <Compile Include="Definitions\ClassDefinitionTests.cs" />
-    <Compile Include="Definitions\CodeLineDefinitionTests.cs" />
-    <Compile Include="Definitions\DelegateDefinitionTests.cs" />
-    <Compile Include="Definitions\EnumDefinitionTests.cs" />
-    <Compile Include="Definitions\FieldDefinitionTests.cs" />
-    <Compile Include="Definitions\InterfaceDefinitionTests.cs" />
-    <Compile Include="Definitions\MethodDefinitionTests.cs" />
-    <Compile Include="Definitions\ModifierDefinitionTests.cs" />
-    <Compile Include="Definitions\NamespaceDefinitionTests.cs" />
-    <Compile Include="Definitions\OutputDefinitionTests.cs" />
-    <Compile Include="Definitions\ParameterDefinitionTests.cs" />
-    <Compile Include="Definitions\PropertyDefinitionTests.cs" />
-    <Compile Include="Definitions\RegionDefinitionTests.cs" />
-    <Compile Include="Definitions\StructDefinitionTests.cs" />
-    <Compile Include="Definitions\UsingDirectiveDefinitionTests.cs" />
     <Compile Include="XmlToObjectParser.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Class.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Common.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.Enum.Tests.cs" />
     <Compile Include="Extensions\SyntaxExtensions.TypeMember.Tests.cs" />
-    <Compile Include="Generators\CSharpGeneratorTests.cs" />
     <Compile Include="Model\SerializationTest.cs" />
     <Compile Include="OutputStringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,22 +159,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SampleData\Constants_01.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="SampleData\Delegate_01.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\Enum_01.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\Enum_02.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\Struct_01.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Spec\vk.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
