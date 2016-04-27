@@ -14,9 +14,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			foreach (var enumMember in enumDefinition.Members)
 			{
 				var enumDeclaration = SF.EnumMemberDeclaration(enumMember.TranslatedName);
-
 				enumDeclaration = enumDeclaration.WithEqualsValue(SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, SF.Literal(SF.TriviaList(), enumMember.Value, 0, SF.TriviaList()))));
-
 				enumMembers.Add(enumDeclaration);
 			}
 

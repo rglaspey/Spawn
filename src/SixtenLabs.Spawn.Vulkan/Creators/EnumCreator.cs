@@ -13,7 +13,6 @@ namespace SixtenLabs.Spawn.Vulkan
 		public EnumCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
 			: base(generator, spawnSpec, 10)
 		{
-			Off = true;
 		}
 
 		public override int Build(IMapper mapper)
@@ -58,6 +57,8 @@ namespace SixtenLabs.Spawn.Vulkan
 				output.TargetSolution = TargetSolution;
 				output.AddNamespace(TargetNamespace);
 				output.OutputDirectory = "Enums";
+
+				enumDefinition.AddModifier(SyntaxKindDto.PublicKeyword);
 
 				foreach (var commentLine in GeneratedComments)
 				{
