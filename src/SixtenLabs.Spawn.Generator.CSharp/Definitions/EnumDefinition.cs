@@ -1,41 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.CodeAnalysis.CSharp;
 
-namespace SixtenLabs.Spawn
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	/// <summary>
 	/// Define an enum to Generate.
 	/// 
-	/// The enum keyword is used to declare an enumeration, 
-	/// a distinct type that consists of a set of named constants called the enumerator list.
+	/// The enum keyword is used to declare an enumeration, a distinct type that consists of a set of named constants called the enumerator list.
 	/// 
 	/// </summary>
-	public class EnumDefinition : BaseDefinition
+	public class EnumDefinition : TypeDefinition
   {
-		public EnumDefinition()
-		{
-		}
-
-		public void AddEnumMembers(IEnumerable<EnumMemberDefinition> memberValues)
-		{
-			Members.AddRange(memberValues);
-		}
-
-    public void AddEnumMember(string memberSpecName, string memberName, string memberValue = null, string comment = null)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="baseType"></param>
+		/// <param name="hasFlags"></param>
+    public EnumDefinition()
     {
-      if(string.IsNullOrEmpty(memberSpecName))
-      {
-        throw new ArgumentNullException("The member spec name must be defined");
-      }
-
-			var enumMember = new EnumMemberDefinition() { SpecName = memberSpecName, TranslatedName = memberName, Value = memberValue, Comment = comment };
-			Members.Add(enumMember);
     }
 
-		public List<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
+    public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
+    {
+      if(string.IsNullOrEmpty(memberName))
+      {
+        throw new ArgumentNullException("The member name must be defined");
+      }
 
-		public List<string> Comments { get; set; } = new List<string>();
+			var enumMember = new EnumMemberDefinition() { SpecName = memberName, Value = memberValue, Comment = comment };
+      Members.Add(enumMember);
+    }
 
-		public bool HasFlags { get; set; }
+    public IList<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
+
+    public bool HasFlags { get; set; }
+
+    public SyntaxKindDto BaseType { get; set; }
   }
 }

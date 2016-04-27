@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SixtenLabs.Spawn
+﻿namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	/// <summary>
 	/// Define a namespace
@@ -21,7 +15,7 @@ namespace SixtenLabs.Spawn
 	///    delegate
 	/// 
 	/// </summary>
-	public class NamespaceDefinition : BaseDefinition
+	public class NamespaceDefinition : Definition
 	{
 		/// <summary>
 		/// Use this constructor to create a namespace definition

@@ -1,4 +1,8 @@
-﻿namespace SixtenLabs.Spawn
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	public class CSharpGenerator : CodeGenerator
 	{
@@ -8,17 +12,44 @@
 		}
 
 		/// <summary>
+		/// Generate a single output with a class
+		/// </summary>
+		/// <param name="outputDefinition"></param>
+		/// <param name="classDefinition"></param>
+		/// <returns></returns>
+		public string GenerateClass(OutputDefinition outputDefinition, ClassDefinition classDefinition)
+		{
+			var code = SF.CompilationUnit()
+
+				.AddUsingDirectives(outputDefinition.Usings)
+				.AddClass(outputDefinition, classDefinition)
+				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
+				.NormalizeWhitespace();
+
+			var contents = code.GetFormattedCode();
+			AddToProject(outputDefinition, contents);
+
+			return contents;
+		}
+
+		/// <summary>
 		/// Generate a single output with an enum
 		/// </summary>
 		/// <param name="outputDefinition"></param>
 		/// <param name="enumDefinition"></param>
 		/// <returns></returns>
-		public override void GenerateCodeFile<T>(IOutputDefinition<T> outputDefinition)
+		public string GenerateEnum(OutputDefinition outputDefinition, EnumDefinition enumDefinition)
 		{
-			var xml = SerializeData(outputDefinition, "output");
-			var contents = TransformXmlFromTemplate(outputDefinition.TemplateName, xml);
+			var code = SF.CompilationUnit()
+				.AddUsingDirectives(outputDefinition.Usings)
+				.AddEnum(outputDefinition, enumDefinition)
+				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
+				.NormalizeWhitespace();
 
-			Spawn.AddDocumentToProject(outputDefinition.TargetSolution, outputDefinition.FileName, contents, new string[] { outputDefinition.OutputDirectory });
+			var contents = code.GetFormattedCode();
+			AddToProject(outputDefinition, contents);
+
+			return contents;
 		}
 	}
 }

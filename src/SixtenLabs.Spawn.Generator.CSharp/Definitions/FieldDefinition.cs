@@ -1,23 +1,18 @@
-﻿using System.Collections.Generic;
-
-namespace SixtenLabs.Spawn
+﻿namespace SixtenLabs.Spawn.Generator.CSharp
 {
-	public class FieldDefinition : BaseDefinition
+	/// <summary>
+	/// internal static ActiveShaderProgram glActiveShaderProgram;
+	/// </summary>
+	public class FieldDefinition : TypeMemberDefinition
 	{
 		public FieldDefinition()
 		{
 		}
 
-		public string SpecType { get; set; }
-
-		public string TranslatedType { get; set; }
-
-		public string SpecValue { get; set; }
-
-		public string TranslatedValue { get; set; }
-
-		public List<CommentLineDefinition> Comments { get; } = new List<CommentLineDefinition>();
-
-		public List<ModifierDefinition> Modifiers { get; } = new List<ModifierDefinition>();
+		/// <summary>
+		/// The default value of the field. 
+		/// Null by default
+		/// </summary>
+		public LiteralDefinition DefaultValue { get; set; }
 	}
 }

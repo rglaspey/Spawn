@@ -6,6 +6,7 @@ using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
 using SixtenLabs.Spawn.Utility;
+using SixtenLabs.Spawn.Generator.CSharp;
 
 namespace SixtenLabs.Spawn.Vulkan.Tests
 {

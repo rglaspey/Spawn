@@ -1,5 +1,6 @@
 ﻿using SixtenLabs.Spawn.Utility;
 using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
 
 namespace SixtenLabs.Spawn.Vulkan.Creators
 {
@@ -30,10 +31,10 @@ namespace SixtenLabs.Spawn.Vulkan.Creators
 			foreach (var methodDefinition in Definitions)
 			{
 				methodDefinition.TranslatedName = VulkanSpec.GetTranslatedName(methodDefinition.SpecName);
-				methodDefinition.AddModifier(Modifiers.Internal, 0);
-				methodDefinition.AddModifier(Modifiers.Static, 1);
-				methodDefinition.AddModifier(Modifiers.Unsafe, 2);
-				methodDefinition.AddModifier(Modifiers.Extern, 3);
+				methodDefinition.AddModifier(SyntaxKindDto.InternalKeyword);
+				methodDefinition.AddModifier(SyntaxKindDto.StaticKeyword);
+				methodDefinition.AddModifier(SyntaxKindDto.UnsafeKeyword);
+				methodDefinition.AddModifier(SyntaxKindDto.ExternKeyword);
 
 				count++;
 			}
@@ -45,32 +46,30 @@ namespace SixtenLabs.Spawn.Vulkan.Creators
 		{
 			int count = 0;
 
-			var output = new OutputDefinition<ClassDefinition>() { FileName = "NativeMethods" };
-			output.TargetSolution = TargetSolution;
-			output.AddNamespace(TargetNamespace);
-			output.TemplateName = "ClassTemplate";
-			output.OutputDirectory = "Interop";
+			//var output = new OutputDefinition() { FileName = "NativeMethods" };
+			//output.TargetSolution = TargetSolution;
+			//output.AddNamespace(TargetNamespace);
+			//output.TemplateName = "ClassTemplate";
+			//output.OutputDirectory = "Interop";
 
-			foreach (var commentLine in GeneratedComments)
-			{
-				output.CommentLines.Add(commentLine);
-			}
+			//foreach (var commentLine in GeneratedComments)
+			//{
+			//	output.CommentLines.Add(commentLine);
+			//}
 
-			var classDefinition = new ClassDefinition();
-			classDefinition.TranslatedName = "NativeMethods";
-			classDefinition.AddModifier(Modifiers.Internal, 0);
-			classDefinition.AddModifier(Modifiers.Static, 1);
-			classDefinition.Fields.Add(new FieldDefinition() { TranslatedName = "VulkanLibrary", TranslatedType = "string", TranslatedValue = "vulkan" });
+			//var classDefinition = new ClassDefinition() { SpecName = "NativeMethods" };
+			//classDefinition.TranslatedName = "NativeMethods";
+			//classDefinition.AddModifier(SyntaxKindDto.InternalKeyword);
+			//classDefinition.AddModifier(SyntaxKindDto.StaticKeyword);
+			//classDefinition.Fields.Add(new FieldDefinition() { TranslatedName = "VulkanLibrary", TranslatedType = "string", TranslatedValue = "vulkan" });
 
-			classDefinition.Methods.AddRange(Definitions);
+			////classDefinition.Methods.AddRange(Definitions);
 
-			output.TypeDefinitions.Add(classDefinition);
+			//output.AddStandardUsingDirective("System");
+			//output.AddStandardUsingDirective("System.Runtime.InteropServices");
 
-			output.AddStandardUsingDirective("System");
-			output.AddStandardUsingDirective("System.Runtime.InteropServices");
-
-			Generator.GenerateCodeFile(output);
-			count++;
+			//(Generator as CSharpGenerator).GenerateClass(output, classDefinition);
+			//count++;
 
 			return count;
 		}

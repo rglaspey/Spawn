@@ -1,12 +1,64 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SixtenLabs.Spawn
+using Microsoft.CodeAnalysis.CSharp;
+
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
-	public class ClassDefinition : BaseDefinition
-	{
-		public void AddModifier(Modifiers modifier, int order)
+	/// <summary>
+	/// Define a class to generate.
+	///  
+	/// Can Contain
+	///   constructors
+	///   destructors
+	///   constants
+	///   fields
+	///   methods
+	///   properties
+	///   indexers
+	///   operators
+	///   events
+	///   delegates
+	///   classes
+	///   interfaces
+	///   structs
+	///   
+	/// </summary>
+  public class ClassDefinition : TypeDefinition
+  {
+    public ClassDefinition()
+    {
+    }
+
+		public void AddField(string name, string returnType = "string", string defaultValue = null)
 		{
-			Modifiers.Add(new ModifierDefinition() { Modifier = modifier, Order = order });
+      LiteralDefinition literalDefinition = null;
+
+      if(defaultValue != null)
+      {
+        literalDefinition = new LiteralDefinition() { Value = defaultValue, LiteralType = defaultValue.GetType() };
+      }
+
+			var fieldDefinition = new FieldDefinition() { SpecName = name, SpecReturnType = returnType, DefaultValue = literalDefinition };
+			Fields.Add(fieldDefinition);
+		}
+
+		public PropertyDefinition AddProperty(string name, string returnType = "string", string defaultValue = null)
+		{
+			LiteralDefinition literalDefinition = null;
+
+			if (defaultValue != null)
+			{
+				literalDefinition = new LiteralDefinition() { Value = defaultValue, LiteralType = defaultValue.GetType() };
+			}
+
+			var definition = new PropertyDefinition() { SpecName = name, SpecReturnType = returnType, DefaultValue = literalDefinition };
+			Properties.Add(definition);
+
+			return definition;
 		}
 
 		public string SpecDerivedType { get; set; }
@@ -15,10 +67,6 @@ namespace SixtenLabs.Spawn
 
 		public IList<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
 
-		public List<MethodDefinition> Methods { get; } = new List<MethodDefinition>();
-
-		public List<ModifierDefinition> Modifiers { get; } = new List<ModifierDefinition>();
-
-		public List<string> Comments { get; set; } = new List<string>();
-	}
+		public IList<PropertyDefinition> Properties { get; } = new List<PropertyDefinition>();
+  }
 }

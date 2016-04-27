@@ -6,6 +6,7 @@ using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
 using SixtenLabs.Spawn.Utility;
+using SixtenLabs.Spawn.Generator.CSharp;
 
 namespace SixtenLabs.Spawn.Vulkan.Tests
 {
@@ -66,7 +67,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkOffset2D");
-			map.Fields.Should().HaveCount(2);
+			map.FieldDefinitions.Should().HaveCount(2);
 		}
 
 		[Fact]
@@ -79,7 +80,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkPhysicalDeviceProperties");
-			map.Fields.Should().HaveCount(9);
+			map.FieldDefinitions.Should().HaveCount(9);
 		}
 
 		[Fact]
@@ -92,7 +93,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkViewport");
-			map.Fields.Should().HaveCount(6);
+			map.FieldDefinitions.Should().HaveCount(6);
 		}
 
 		private IMapper AMapper { get; }

@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -14,7 +16,7 @@ namespace SixtenLabs.Spawn
 
 		public string SerializeData(dynamic data, string elementName)
 		{
-			string xmlData = null; 
+			string xmlData = null;
 
 			using (var stream = new MemoryStream())
 			{
@@ -30,31 +32,10 @@ namespace SixtenLabs.Spawn
 			return xmlData;
 		}
 		
-		protected string TransformXmlFromTemplate(string templateName, string xmlData)
+		protected void AddToProject(IOutputDefinition outputDefinition, string contents)
 		{
-			var transformer = new XslCompiledTransform(true);
-			var argumentList = new XsltArgumentList();
-
-			transformer.Load($"Templates/{templateName}.xslt");
-
-			string result;
-
-			using (StringReader sr = new StringReader(xmlData))
-			{
-				using (var xr = XmlReader.Create(sr))
-				{
-					using (StringWriter sw = new StringWriter())
-					{
-						transformer.Transform(xr, argumentList, sw);
-						result = sw.ToString();
-					}
-				}
-			}
-
-			return result;
+			Spawn.AddDocumentToProject(outputDefinition.TargetSolution, outputDefinition.FileName, contents, new[] { outputDefinition.OutputDirectory });
 		}
-
-		public abstract void GenerateCodeFile<T>(IOutputDefinition<T> outputDefinition) where T : IDefinition;
 
 		protected ISpawnService Spawn { get; }
 

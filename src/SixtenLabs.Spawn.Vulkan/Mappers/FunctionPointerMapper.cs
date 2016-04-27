@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using System;
+using SixtenLabs.Spawn.Generator.CSharp;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
@@ -26,15 +25,15 @@ namespace SixtenLabs.Spawn.Vulkan
 
 			for(int i = 1; i < items.Length; i++)
 			{
-				var parameterDefinition = new ParameterDefinition();
-
 				var specNameRaw = text[i + 1];
 				var specNameRawPrevious = text[i];
 
-				parameterDefinition.SpecName = specNameRaw.Replace(" ", "").Replace(",\n", "").Replace("*", "").Replace(");", "").Replace("const", "");
-				parameterDefinition.SpecReturnType = (string)items[i];
-				parameterDefinition.IsPointer = specNameRaw.StartsWith("*");
-				parameterDefinition.IsConst = specNameRawPrevious.Contains("const");
+				var specName = specNameRaw.Replace(" ", "").Replace(",\n", "").Replace("*", "").Replace(");", "").Replace("const", "");
+
+				var parameterDefinition = new ParameterDefinition() { SpecName = specName, SpecReturnType = (string)items[i] };
+
+				//parameterDefinition.IsPointer = specNameRaw.StartsWith("*");
+				//parameterDefinition.IsConst = specNameRawPrevious.Contains("const");
 
 				parameters.Add(parameterDefinition);
 			}

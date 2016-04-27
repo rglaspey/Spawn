@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using System;
+using SixtenLabs.Spawn.Generator.CSharp;
 
 namespace SixtenLabs.Spawn.Vulkan
 {

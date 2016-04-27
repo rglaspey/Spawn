@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
 using SixtenLabs.Spawn.Utility;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
@@ -55,30 +52,30 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			int count = 0;
 
-			foreach (var classDefintion in Definitions)
-			{
-				var output = new OutputDefinition<DelegateDefinition>() { FileName = classDefintion.TranslatedName };
-				output.TargetSolution = TargetSolution;
-				output.AddNamespace(TargetNamespace);
-				output.TemplateName = "DelegateTemplate";
-				output.OutputDirectory = "Delegates";
+			//foreach (var classDefintion in Definitions)
+			//{
+			//	var output = new OutputDefinition() { FileName = classDefintion.TranslatedName };
+			//	output.TargetSolution = TargetSolution;
+			//	output.AddNamespace(TargetNamespace);
+			//	output.TemplateName = "DelegateTemplate";
+			//	output.OutputDirectory = "Delegates";
 
-				foreach (var commentLine in GeneratedComments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
+			//	foreach (var commentLine in GeneratedComments)
+			//	{
+			//		output.CommentLines.Add(commentLine);
+			//	}
 
-				foreach (var commentLine in classDefintion.Comments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
+			//	foreach (var commentLine in classDefintion.Comments)
+			//	{
+			//		output.CommentLines.Add(commentLine);
+			//	}
 
-				output.TypeDefinitions.Add(classDefintion);
-				output.AddStandardUsingDirective("System");
+			//	output.TypeDefinitions.Add(classDefintion);
+			//	output.AddStandardUsingDirective("System");
 
-				Generator.GenerateCodeFile(output);
-				count++;
-			}
+			//	(Generator as CSharpGenerator).GenerateClass(output, classDefinition);
+			//	count++;
+			//}
 
 			return count;
 		}

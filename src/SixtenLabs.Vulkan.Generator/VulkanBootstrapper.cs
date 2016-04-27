@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SimpleInjector;
 using SixtenLabs.Spawn;
+using SixtenLabs.Spawn.Generator.CSharp;
 using SixtenLabs.Spawn.Utility;
 using SixtenLabs.Spawn.Vulkan;
 using System;

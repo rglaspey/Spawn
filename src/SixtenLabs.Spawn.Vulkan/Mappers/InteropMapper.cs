@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,15 @@ namespace SixtenLabs.Spawn.Vulkan
 			CreateMap<registryCommand, MethodDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.proto.name))
 				.ForMember(dest => dest.SpecReturnType, opt => opt.MapFrom(m => m.proto.type))
-				.ForMember(dest => dest.Comments, opt => opt.MapFrom(m => GetComments(m)))
+				//.ForMember(dest => dest.Comments, opt => opt.MapFrom(m => GetComments(m)))
 				.ForMember(dest => dest.Parameters, opt => opt.MapFrom(m => m.param));
 
 			CreateMap<registryCommandParam, ParameterDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
-				.ForMember(dest => dest.ExternSync, opt => opt.MapFrom(m => m.externsync == "true"))
-				.ForMember(dest => dest.IsOptional, opt => opt.MapFrom(m => m.optional == "true"))
-				.ForMember(dest => dest.IsPointer, opt => opt.MapFrom(m => IsPointer(m.Text)))
-				.ForMember(dest => dest.IsConst, opt => opt.MapFrom(m => IsConst(m.Text)))
+				//.ForMember(dest => dest.ExternSync, opt => opt.MapFrom(m => m.externsync == "true"))
+				//.ForMember(dest => dest.IsOptional, opt => opt.MapFrom(m => m.optional == "true"))
+				//.ForMember(dest => dest.IsPointer, opt => opt.MapFrom(m => IsPointer(m.Text)))
+				//.ForMember(dest => dest.IsConst, opt => opt.MapFrom(m => IsConst(m.Text)))
 				.ForMember(dest => dest.SpecReturnType, opt => opt.MapFrom(m => m.type));
 		}
 

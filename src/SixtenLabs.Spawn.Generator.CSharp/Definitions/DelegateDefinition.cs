@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SixtenLabs.Spawn
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
-	public class DelegateDefinition : BaseDefinition
+	/// <summary>
+	/// The declaration of a delegate type is similar to a method signature. It has a return value and any number of parameters of any type:
+	/// 
+	/// A delegate is a reference type that can be used to encapsulate a named or an anonymous method. 
+	/// Delegates are similar to function pointers in C++; however, delegates are type-safe and secure. 
+	/// For applications of delegates, see Delegates and Generic Delegates.
+	/// </summary>
+	public class DelegateDefinition : TypeMemberDefinition
 	{
-		public string SpecReturnType { get; set; }
-
-		public string TranslatedReturnType { get; set; }
-
-		public IList<ParameterDefinition> Parameters { get; } = new List<ParameterDefinition>();
-
-		public List<string> Comments { get; set; } = new List<string>();
+		public DelegateDefinition()
+		{
+		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
 using SixtenLabs.Spawn.Utility;
 using System.Linq;
 
@@ -43,12 +44,11 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			int count = 0;
 
-			foreach (var classDefintion in Definitions)
+			foreach (var classDefinition in Definitions)
 			{
-				var output = new OutputDefinition<ClassDefinition>() { FileName = classDefintion.TranslatedName };
+				var output = new OutputDefinition() { FileName = classDefinition.TranslatedName };
 				output.TargetSolution = TargetSolution;
 				output.AddNamespace(TargetNamespace);
-				output.TemplateName = "ClassTemplate";
 				output.OutputDirectory = "Handles";
 
 				foreach (var commentLine in GeneratedComments)
@@ -56,15 +56,14 @@ namespace SixtenLabs.Spawn.Vulkan
 					output.CommentLines.Add(commentLine);
 				}
 
-				foreach (var commentLine in classDefintion.Comments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
+				//foreach (var commentLine in classDefintion.Comments)
+				//{
+				//	output.CommentLines.Add(commentLine);
+				//}
 
-				output.TypeDefinitions.Add(classDefintion);
 				output.AddStandardUsingDirective("System");
 
-				Generator.GenerateCodeFile(output);
+				(Generator as CSharpGenerator).GenerateClass(output, classDefinition);
 				count++;
 			}
 

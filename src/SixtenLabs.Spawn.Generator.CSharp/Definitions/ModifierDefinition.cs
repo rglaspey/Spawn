@@ -1,4 +1,6 @@
-﻿namespace SixtenLabs.Spawn
+﻿using Microsoft.CodeAnalysis.CSharp;
+
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	/// <summary>
 	/// Modifiers are used to modify declarations of types and type members
@@ -28,7 +30,7 @@
 	///   volatile
 	/// 
 	/// </summary>
-	public class ModifierDefinition : BaseDefinition
+	public class ModifierDefinition : Definition
 	{
 		/// <summary>
 		/// Use this constructor to create a modifier definition
@@ -37,9 +39,7 @@
 		public ModifierDefinition()
     {
 		}
-		
-		public Modifiers Modifier { get; set; }
 
-		public int Order { get; set; }
+		public SyntaxKindDto Modifier { get; set; }
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SixtenLabs.Spawn
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	/// <summary>
 	/// Define a Using Directive.
@@ -17,8 +17,13 @@ namespace SixtenLabs.Spawn
 	///   using Project = PC.MyCompany.Project;
 	/// 
 	/// </summary>
-	public class UsingDirectiveDefinition : BaseDefinition
+	public class UsingDirectiveDefinition : Definition
 	{
+		/// <summary>
+		/// Use this constructor to create a standard or static using directive definition
+		/// </summary>
+		/// <param name="dllName">The name of the dll to create a using directive for</param>
+		/// <param name="isStatic">Should this be a static using directive</param>
 		public UsingDirectiveDefinition()
     {
 		}

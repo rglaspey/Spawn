@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using System;
+using SixtenLabs.Spawn.Generator.CSharp;
 using System.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
@@ -14,7 +14,7 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			CreateMap<registryType, StructDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
-				.ForMember(dest => dest.Fields, opt => opt.MapFrom(m => m.Items.Where(x => x.GetType() == typeof(registryTypeMember))));
+				.ForMember(dest => dest.FieldDefinitions, opt => opt.MapFrom(m => m.Items.Where(x => x.GetType() == typeof(registryTypeMember))));
 
 			CreateMap<registryTypeMember, FieldDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using SixtenLabs.Spawn.Utility;
 using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
@@ -12,6 +13,7 @@ namespace SixtenLabs.Spawn.Vulkan
 		public EnumCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
 			: base(generator, spawnSpec, 10)
 		{
+			Off = true;
 		}
 
 		public override int Build(IMapper mapper)
@@ -31,11 +33,11 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			int count = 0;
 
-			foreach (var enumDefintion in Definitions)
+			foreach (var enumDefinition in Definitions)
 			{
-				enumDefintion.TranslatedName = VulkanSpec.GetTranslatedName(enumDefintion.SpecName);
+				enumDefinition.TranslatedName = VulkanSpec.GetTranslatedName(enumDefinition.SpecName);
 
-				foreach (var valueDefinition in enumDefintion.Members)
+				foreach (var valueDefinition in enumDefinition.Members)
 				{
 					valueDefinition.TranslatedName = VulkanSpec.GetTranslatedName(valueDefinition.SpecName);
 				}
@@ -52,10 +54,9 @@ namespace SixtenLabs.Spawn.Vulkan
 
 			foreach (var enumDefinition in Definitions)
 			{
-				var output = new OutputDefinition<EnumDefinition>() { FileName = enumDefinition.TranslatedName };
+				var output = new OutputDefinition() { FileName = enumDefinition.TranslatedName };
 				output.TargetSolution = TargetSolution;
 				output.AddNamespace(TargetNamespace);
-				output.TemplateName = "EnumTemplate";
 				output.OutputDirectory = "Enums";
 
 				foreach (var commentLine in GeneratedComments)
@@ -63,19 +64,17 @@ namespace SixtenLabs.Spawn.Vulkan
 					output.CommentLines.Add(commentLine);
 				}
 
-				foreach (var commentLine in enumDefinition.Comments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
-
-				output.TypeDefinitions.Add(enumDefinition);
+				//foreach (var commentLine in enumDefinition.Comments)
+				//{
+				//	output.CommentLines.Add(commentLine);
+				//}
 
 				if (enumDefinition.HasFlags)
 				{
 					output.AddStandardUsingDirective("System");
 				}
 
-				Generator.GenerateCodeFile(output);
+				(Generator as CSharpGenerator).GenerateEnum(output, enumDefinition);
 				count++;
 			}
 

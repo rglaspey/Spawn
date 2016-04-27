@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SixtenLabs.Spawn
 {
-	public interface IOutputDefinition<T> where T : IDefinition
+	public interface IOutputDefinition
 	{
-		string TemplateName { get; set; }
-
 		string TargetSolution { get; set; }
 
 		string FileName { get; set; }
