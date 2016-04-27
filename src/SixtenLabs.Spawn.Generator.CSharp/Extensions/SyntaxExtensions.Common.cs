@@ -13,6 +13,74 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 	public static partial class SyntaxExtensions
 	{
 		/// <summary>
+		/// CompilationUnit()
+		/// 
+		///.WithEndOfFileToken(
+		///		Token(
+		///				TriviaList(
+		///						Trivia(
+		///								DocumentationCommentTrivia(
+		///										SyntaxKind.SingleLineDocumentationCommentTrivia,
+		///										SingletonList<XmlNodeSyntax>(
+		///												XmlText()
+		///                        .WithTextTokens(
+		///														TokenList(
+		///																new []{
+		///																		XmlTextLiteral(
+		///																				TriviaList(
+		///																						DocumentationCommentExterior("///")),
+		///                                        " Summary",
+		///                                        " Summary",
+		///																				TriviaList()),
+		///																		XmlTextNewLine(
+		///																				TriviaList(),
+		///                                        "\n",
+		///                                        "\n",
+		///																				TriviaList()),
+		///																		XmlTextLiteral(
+		///																				TriviaList(
+		///																						DocumentationCommentExterior("///")),
+		///                                        " aaaaaa",
+		///                                        " aaaaaa",
+		///																				TriviaList()),
+		///																		XmlTextNewLine(
+		///																				TriviaList(),
+		///                                        "\n",
+		///                                        "\n",
+		///																				TriviaList()),
+		///																		XmlTextLiteral(
+		///																				TriviaList(
+		///																						DocumentationCommentExterior("///")),
+		///                                        " Summary",
+		///                                        " Summary",
+		///																				TriviaList())})))))),
+		///        SyntaxKind.EndOfFileToken,
+		///				TriviaList()))
+		/// .NormalizeWhitespace()
+		/// 
+		/// </summary>
+		/// <param name="commentDefinition"></param>
+		/// <returns></returns>
+		public static SyntaxTriviaList GetComments(this CommentDefinition commentDefinition)
+		{
+			SyntaxTriviaList triviaList = SF.TriviaList();
+
+			if (commentDefinition.HasComments)
+			{
+				triviaList.Add(SF.SyntaxTrivia(SyntaxKind.DocumentationCommentExteriorTrivia, "Summary"));
+
+				foreach (var comment in commentDefinition.CommentLines)
+				{
+					triviaList = SF.ParseLeadingTrivia(comment);
+				}
+
+				triviaList.Add(SF.SyntaxTrivia(SyntaxKind.DocumentationCommentExteriorTrivia, "Summary"));
+			}
+
+			return triviaList;
+		}
+
+		/// <summary>
 		/// Currently support statements defined completely by the user.
 		/// 
 		/// TODO : Explore support all the different statement syntaxes (a lot of work not sure it brings any value at this point).
@@ -56,7 +124,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 				{
 					expression = SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, SF.Literal(intValue));
 				}
-				else if(literalDefinition.Value.StartsWith("int."))
+				else if (literalDefinition.Value.StartsWith("int."))
 				{
 					var tokenint = SF.Token(SyntaxKind.IntKeyword);
 					var indentifier = SF.IdentifierName(literalDefinition.Value.Replace("int.", ""));

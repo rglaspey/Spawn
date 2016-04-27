@@ -22,17 +22,6 @@ namespace SixtenLabs.Spawn.Generator.CSharp
     {
     }
 
-    public void AddEnumMember(string memberName, string memberValue = null, string comment = null)
-    {
-      if(string.IsNullOrEmpty(memberName))
-      {
-        throw new ArgumentNullException("The member name must be defined");
-      }
-
-			var enumMember = new EnumMemberDefinition() { SpecName = memberName, Value = memberValue, Comment = comment };
-      Members.Add(enumMember);
-    }
-
     public IList<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
 
     public bool HasFlags { get; set; }

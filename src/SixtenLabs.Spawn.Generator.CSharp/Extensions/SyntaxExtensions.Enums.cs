@@ -2,6 +2,8 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using System.Collections.Generic;
+using Microsoft.CodeAnalysis;
+using System.Linq;
 
 namespace SixtenLabs.Spawn.Generator.CSharp
 {
@@ -14,7 +16,13 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			foreach (var enumMember in enumDefinition.Members)
 			{
 				var enumDeclaration = SF.EnumMemberDeclaration(enumMember.TranslatedName);
-				enumDeclaration = enumDeclaration.WithEqualsValue(SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, SF.Literal(SF.TriviaList(), enumMember.Value, 0, SF.TriviaList()))));
+
+				var leadingTrivia = enumMember.Comments.HasComments ? SF.ParseLeadingTrivia(enumMember.Comments.CommentLines.FirstOrDefault()) : SF.TriviaList();
+				var literal = SF.Literal(leadingTrivia, enumMember.Value, 0, SF.TriviaList());
+				var equalsValueClause = SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, literal));
+
+				enumDeclaration = enumDeclaration.WithEqualsValue(equalsValueClause);
+
 				enumMembers.Add(enumDeclaration);
 			}
 

@@ -102,6 +102,7 @@
     <Compile Include="Definitions\BaseTypeDefinition.cs" />
     <Compile Include="Definitions\BlockDefinition.cs" />
     <Compile Include="Definitions\ClassDefinition.cs" />
+    <Compile Include="Definitions\CommentDefinition.cs" />
     <Compile Include="Definitions\ConstantDefinition.cs" />
     <Compile Include="Definitions\ConstructorDefinition.cs" />
     <Compile Include="Definitions\Definition.cs" />

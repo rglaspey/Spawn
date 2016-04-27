@@ -15,8 +15,20 @@ namespace SixtenLabs.Spawn.Vulkan
 
 			CreateMap<registryEnumsEnum, EnumMemberDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
-				.ForMember(dest => dest.Comment, opt => opt.MapFrom(m => m.comment))
+				.ForMember(dest => dest.Comments, opt => opt.MapFrom(m => AddComment(m.comment)))
 				.ForMember(dest => dest.Value, opt => opt.MapFrom(m => m.bitposSpecified ? Convert.ToString(m.bitpos) : m.value));
+		}
+
+		private CommentDefinition AddComment(string comment)
+		{
+			var commentDefinition = new CommentDefinition();
+
+			if (!string.IsNullOrEmpty(comment))
+			{
+				commentDefinition.CommentLines.Add(comment);
+			}
+
+			return commentDefinition;
 		}
 	}
 }
