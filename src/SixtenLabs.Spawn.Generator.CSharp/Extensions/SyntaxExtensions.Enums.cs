@@ -17,11 +17,11 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			{
 				var enumDeclaration = SF.EnumMemberDeclaration(enumMember.TranslatedName);
 
-				var leadingTrivia = enumMember.Comments.HasComments ? SF.ParseLeadingTrivia(enumMember.Comments.CommentLines.FirstOrDefault()) : SF.TriviaList();
-				var literal = SF.Literal(leadingTrivia, enumMember.Value, 0, SF.TriviaList());
+				var leadingTrivia = enumMember.Comments.HasComments ? enumMember.Comments.GetComments() : SF.TriviaList();
+				var literal = SF.Literal(SF.TriviaList(), enumMember.Value, 0, SF.TriviaList());
 				var equalsValueClause = SF.EqualsValueClause(SF.LiteralExpression(SyntaxKind.NumericLiteralExpression, literal));
 
-				enumDeclaration = enumDeclaration.WithEqualsValue(equalsValueClause);
+				enumDeclaration = enumDeclaration.WithLeadingTrivia(leadingTrivia).WithEqualsValue(equalsValueClause);
 
 				enumMembers.Add(enumDeclaration);
 			}

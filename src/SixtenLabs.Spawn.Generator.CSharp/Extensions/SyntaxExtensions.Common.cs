@@ -12,72 +12,72 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	public static partial class SyntaxExtensions
 	{
-		/// <summary>
-		/// CompilationUnit()
-		/// 
-		///.WithEndOfFileToken(
-		///		Token(
-		///				TriviaList(
-		///						Trivia(
-		///								DocumentationCommentTrivia(
-		///										SyntaxKind.SingleLineDocumentationCommentTrivia,
-		///										SingletonList<XmlNodeSyntax>(
-		///												XmlText()
-		///                        .WithTextTokens(
-		///														TokenList(
-		///																new []{
-		///																		XmlTextLiteral(
-		///																				TriviaList(
-		///																						DocumentationCommentExterior("///")),
-		///                                        " Summary",
-		///                                        " Summary",
-		///																				TriviaList()),
-		///																		XmlTextNewLine(
-		///																				TriviaList(),
-		///                                        "\n",
-		///                                        "\n",
-		///																				TriviaList()),
-		///																		XmlTextLiteral(
-		///																				TriviaList(
-		///																						DocumentationCommentExterior("///")),
-		///                                        " aaaaaa",
-		///                                        " aaaaaa",
-		///																				TriviaList()),
-		///																		XmlTextNewLine(
-		///																				TriviaList(),
-		///                                        "\n",
-		///                                        "\n",
-		///																				TriviaList()),
-		///																		XmlTextLiteral(
-		///																				TriviaList(
-		///																						DocumentationCommentExterior("///")),
-		///                                        " Summary",
-		///                                        " Summary",
-		///																				TriviaList())})))))),
-		///        SyntaxKind.EndOfFileToken,
-		///				TriviaList()))
-		/// .NormalizeWhitespace()
-		/// 
-		/// </summary>
-		/// <param name="commentDefinition"></param>
-		/// <returns></returns>
-		public static SyntaxTriviaList GetComments(this CommentDefinition commentDefinition)
+		private static SyntaxToken CreateSyntaxTokenNewLine()
 		{
-			SyntaxTriviaList triviaList = SF.TriviaList();
+			var newLineToken = SF.XmlTextNewLine(SF.TriviaList(), Environment.NewLine, Environment.NewLine, SF.TriviaList());
 
-			if (commentDefinition.HasComments)
+			return newLineToken;
+		}
+
+		private static SyntaxToken CreateSyntaxTokenDocumentationCommentExterior(string comment)
+		{
+			var commentToken = SF.XmlTextLiteral(SF.TriviaList(SF.DocumentationCommentExterior("///")), $" {comment}", $" {comment}", SF.TriviaList());
+
+			return commentToken;
+		}
+
+		private static XmlElementStartTagSyntax CreateXmlElementStartTag(string name)
+		{
+			var startTag = SF.XmlElementStartTag(SF.XmlName(SF.Identifier(name)));
+
+			return startTag;
+		}
+
+		private static XmlElementEndTagSyntax CreateXmlElementEndTag(string name)
+		{
+			var endTag = SF.XmlElementEndTag(SF.XmlName(SF.Identifier(name)));
+
+			return endTag;
+		}
+
+		private static SyntaxTokenList GetCommentTokens(IList<string> comments)
+		{
+			List<SyntaxToken> syntaxTokens = new List<SyntaxToken>();
+
+			foreach (var comment in comments)
 			{
-				triviaList.Add(SF.SyntaxTrivia(SyntaxKind.DocumentationCommentExteriorTrivia, "Summary"));
-
-				foreach (var comment in commentDefinition.CommentLines)
-				{
-					triviaList = SF.ParseLeadingTrivia(comment);
-				}
-
-				triviaList.Add(SF.SyntaxTrivia(SyntaxKind.DocumentationCommentExteriorTrivia, "Summary"));
+				syntaxTokens.Add(CreateSyntaxTokenNewLine());
+				syntaxTokens.Add(CreateSyntaxTokenDocumentationCommentExterior(comment));
+				syntaxTokens.Add(CreateSyntaxTokenNewLine());
 			}
 
-			return triviaList;
+			syntaxTokens.Add(CreateSyntaxTokenDocumentationCommentExterior(""));
+
+			return SF.TokenList(syntaxTokens);
+		}
+
+		/// <summary>
+		/// Comments are generating but all lines after the first are indented 8 spaces.
+		/// </summary>
+		/// <param name="comments"></param>
+		/// <returns></returns>
+		private static DocumentationCommentTriviaSyntax GetCommentTriviaSyntax(IList<string> comments)
+		{
+			var x = SF.DocumentationCommentTrivia(SyntaxKind.SingleLineDocumentationCommentTrivia,
+							SF.List(new XmlNodeSyntax[]
+							{
+								SF.XmlText()
+									.WithTextTokens(SF.TokenList(CreateSyntaxTokenDocumentationCommentExterior(""))),
+								SF.XmlElement(
+									CreateXmlElementStartTag("summary"), 
+									CreateXmlElementEndTag("summary"))
+									.WithContent(SF.SingletonList<XmlNodeSyntax>(SF.XmlText()
+									.WithTextTokens(GetCommentTokens(comments)))),
+								SF.XmlText()
+									.WithTextTokens(SF.TokenList(CreateSyntaxTokenNewLine()))
+							}));
+
+			return x;
 		}
 
 		/// <summary>
@@ -243,6 +243,19 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			{
 				return StandardUsing(usingDefinition.TranslatedName);
 			}
+		}
+
+		public static SyntaxTriviaList GetComments(this CommentDefinition commentDefinition)
+		{
+			SyntaxTriviaList triviaList = SF.TriviaList();
+
+			if (commentDefinition.HasComments)
+			{
+				var triv1 = GetCommentTriviaSyntax(commentDefinition.CommentLines);
+				triviaList = SF.TriviaList(SF.Trivia(triv1));
+			}
+
+			return triviaList;
 		}
 
 		/// <summary>
