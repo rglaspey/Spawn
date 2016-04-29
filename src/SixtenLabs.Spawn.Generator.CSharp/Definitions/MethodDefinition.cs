@@ -1,4 +1,6 @@
-﻿namespace SixtenLabs.Spawn.Generator.CSharp
+﻿using System.Collections.Generic;
+
+namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	public class MethodDefinition : TypeMemberDefinition
 	{
@@ -16,5 +18,7 @@
 
 			Block.AddStatement(code);
 		}
+
+		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
 	}
 }

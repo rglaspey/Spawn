@@ -116,5 +116,100 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 
 			return list;
 		}
+
+		public static ParameterSyntax AddParameter(ParameterDefinition definition)
+		{
+			var typeName = SF.IdentifierName(definition.TranslatedReturnType);
+
+			var token = SF.VerbatimIdentifier(SF.TriviaList(), definition.TranslatedName, "test", SF.TriviaList());
+
+			TypeSyntax typeSyntax = null;
+
+			if (definition.IsPointer)
+			{
+				// PointerType is hard code here. Need to determine the type from the definition and create appropriate type.
+				typeSyntax = SF.PointerType(SF.ParseTypeName(definition.TranslatedReturnType));
+			}
+			else
+			{
+				typeSyntax = SF.ParseTypeName(definition.TranslatedReturnType);
+			}
+
+			var parameter = SF.Parameter(token).WithType(typeSyntax);
+
+			return parameter;
+		}
+
+		private static ParameterListSyntax GetParameters(IList<ParameterDefinition> definitions)
+		{
+			var list = new List<ParameterSyntax>();
+
+			foreach (var parameter in definitions)
+			{
+				var parameterSyntax = AddParameter(parameter);
+				list.Add(parameterSyntax);
+			}
+
+			return SF.ParameterList(SF.SeparatedList(list));
+		}
+
+		public static AttributeSyntax AddAttribute(AttributeDefinition attributeDefinition)
+		{
+			var arguments = new List<AttributeArgumentSyntax>();
+
+			foreach (var arg in attributeDefinition.ArgumentList)
+			{
+				var argument = SF.AttributeArgument(SF.IdentifierName(arg));
+				arguments.Add(argument);
+			}
+
+			var attributeArgList = SF.AttributeArgumentList(SF.SeparatedList(arguments));
+
+			var declaration = SF.Attribute(SF.IdentifierName(attributeDefinition.TranslatedName), attributeArgList);
+
+			return declaration;
+		}
+
+		private static AttributeListSyntax GetAttributes(IList<AttributeDefinition> definitions)
+		{
+			var list = new List<AttributeSyntax>();
+
+			foreach (var attribute in definitions)
+			{
+				var attributeSyntax = AddAttribute(attribute);
+				list.Add(attributeSyntax);
+			}
+
+			return SF.AttributeList(SF.SeparatedList(list));
+		}
+
+		public static MethodDeclarationSyntax AddMethod(MethodDefinition methodDefinition)
+		{
+			var attributes = GetAttributes(methodDefinition.Attributes);
+			var modifiers = GetModifierTokens(methodDefinition.ModifierDefinitions);
+			var returnType = SF.ParseTypeName(methodDefinition.TranslatedReturnType);
+			var parameters = GetParameters(methodDefinition.Parameters);
+			
+			var declaration = SF.MethodDeclaration(returnType, SF.Identifier(methodDefinition.TranslatedName))
+				.WithAttributeLists(SF.SingletonList(attributes))
+				.WithModifiers(modifiers)
+				.WithParameterList(parameters)
+				.WithSemicolonToken(SF.Token(SyntaxKind.SemicolonToken));
+
+			return declaration;
+		}
+
+		public static IList<MethodDeclarationSyntax> AddMethods(IList<MethodDefinition> definitions)
+		{
+			var list = new List<MethodDeclarationSyntax>();
+
+			foreach (var method in definitions)
+			{
+				var methodSyntax = AddMethod(method);
+				list.Add(methodSyntax);
+			}
+
+			return list;
+		}
 	}
 }

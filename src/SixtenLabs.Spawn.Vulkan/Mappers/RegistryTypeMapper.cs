@@ -11,6 +11,7 @@ namespace SixtenLabs.Spawn.Vulkan
 			CreateMap<registryType, StructDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => MapSpecName(m)))
 				.ForMember(dest => dest.SpecDerivedType, opt => opt.MapFrom(m => m.parent))
+				.ForMember(dest => dest.Comments, opt => opt.MapFrom(m => MapComments(m.comment)))
 				.ForMember(dest => dest.Fields, opt => opt.MapFrom(m => m.Items.Where(x => x.GetType() == typeof(registryTypeMember))));
 
 			CreateMap<registryTypeMember, FieldDefinition>()
@@ -37,6 +38,18 @@ namespace SixtenLabs.Spawn.Vulkan
 			{
 				return null;
 			}
+		}
+
+		private CommentDefinition MapComments(string comment)
+		{
+			var commentDefinition = new CommentDefinition();
+
+			if (!string.IsNullOrEmpty(comment))
+			{
+				commentDefinition.CommentLines.Add(comment);
+			}
+
+			return commentDefinition;
 		}
 	}
 }

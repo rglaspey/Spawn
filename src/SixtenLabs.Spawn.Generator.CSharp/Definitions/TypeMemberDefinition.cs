@@ -43,7 +43,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 
 		public string TranslatedValue { get; set; }
 
-		public IList<ParameterDefinition> Parameters { get; } = new List<ParameterDefinition>();
+		public List<ParameterDefinition> Parameters { get; } = new List<ParameterDefinition>();
 
 		public BlockDefinition Block { get; private set; }
 	}

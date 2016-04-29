@@ -24,7 +24,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var config = new MapperConfiguration(cfg =>
 			{
-				cfg.AddProfile(new ConstantMapper());
+				cfg.AddProfile(new RegistryEnumMapper());
 			});
 
 			Mapper.AssertConfigurationIsValid();

@@ -11,5 +11,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 		protected TypeDefinition()
 		{
 		}
+
+		public CommentDefinition Comments { get; set; }
 	}
 }

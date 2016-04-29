@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class InteropMapper : Profile
+	public class RegistryCommandMapper : Profile
 	{
 		protected override void Configure()
 		{
@@ -20,7 +20,7 @@ namespace SixtenLabs.Spawn.Vulkan
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
 				//.ForMember(dest => dest.ExternSync, opt => opt.MapFrom(m => m.externsync == "true"))
 				//.ForMember(dest => dest.IsOptional, opt => opt.MapFrom(m => m.optional == "true"))
-				//.ForMember(dest => dest.IsPointer, opt => opt.MapFrom(m => IsPointer(m.Text)))
+				.ForMember(dest => dest.IsPointer, opt => opt.MapFrom(m => IsPointer(m.Text)))
 				//.ForMember(dest => dest.IsConst, opt => opt.MapFrom(m => IsConst(m.Text)))
 				.ForMember(dest => dest.SpecReturnType, opt => opt.MapFrom(m => m.type));
 		}

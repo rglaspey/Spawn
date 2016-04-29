@@ -74,12 +74,12 @@
   <ItemGroup>
     <Compile Include="ConstantMapperTests.cs" />
     <Compile Include="EnumMapperTests.cs" />
-    <Compile Include="FunctionPointerMapperTests.cs" />
     <Compile Include="HandleMapperTests.cs" />
     <Compile Include="InteropMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecTypeMapperTests.cs" />
     <Compile Include="StructMapperTests.cs" />
+    <Compile Include="UnionMapperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

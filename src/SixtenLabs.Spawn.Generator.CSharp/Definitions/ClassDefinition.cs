@@ -68,5 +68,9 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 		public IList<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
 
 		public IList<PropertyDefinition> Properties { get; } = new List<PropertyDefinition>();
-  }
+
+		public List<MethodDefinition> Methods { get; } = new List<MethodDefinition>();
+
+		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
+	}
 }

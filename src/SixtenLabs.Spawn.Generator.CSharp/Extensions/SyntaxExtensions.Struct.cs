@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace SixtenLabs.Spawn.Generator.CSharp
@@ -17,6 +18,12 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 
 			var nameSpaceDeclaration = AddNamespace(outputDefinition.Namespace);
 			var modifierTokens = GetModifierTokens(structDefinition.ModifierDefinitions);
+
+			if(structDefinition.Comments.HasComments)
+			{
+				var comments = structDefinition.Comments.GetComments();
+				modifierTokens.Insert(0, SF.Token(comments, SyntaxKind.XmlTextLiteralToken, SF.TriviaList()));
+			}
 
 			var structDeclaration = SF.StructDeclaration(structDefinition.TranslatedName)
 				.WithModifiers(modifierTokens)

@@ -10,11 +10,13 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			var memberList = SF.List<MemberDeclarationSyntax>();
 
 			var fields = AddFields(classDefinition.Fields);
+			var methods = AddMethods(classDefinition.Methods);
 			var properties = AddProperties(classDefinition.Properties);
 
 			memberList = memberList.AddRange(fields);
+			memberList = memberList.AddRange(methods);
 			memberList = memberList.AddRange(properties);
-
+			
 			var nameSpaceDeclaration = AddNamespace(outputDefinition.Namespace);
 			var modifierTokens = GetModifierTokens(classDefinition.ModifierDefinitions);
 

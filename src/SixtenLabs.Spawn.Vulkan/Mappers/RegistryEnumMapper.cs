@@ -1,11 +1,16 @@
 ﻿using AutoMapper;
 using SixtenLabs.Spawn.Generator.CSharp;
+using System;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class ConstantMapper : Profile
+	public class RegistryEnumMapper : Profile
 	{
-		protected override void Configure()
+		/// <summary>
+		/// There is one oddball defined enum that actually need to be mapped
+		/// as a static class with constant values.
+		/// </summary>
+		private void ConfigureApiConstantsMapping()
 		{
 			CreateMap<registryEnums, ClassDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
@@ -16,6 +21,25 @@ namespace SixtenLabs.Spawn.Vulkan
 				.ForMember(dest => dest.SpecReturnType, opt => opt.MapFrom(m => ProcessReturnType(m)))
 				.ForMember(dest => dest.TranslatedReturnType, opt => opt.MapFrom(m => ProcessReturnType(m)))
 				.ForMember(dest => dest.DefaultValue, opt => opt.MapFrom(m => ProcessFieldReturnValue(m)));
+		}
+
+		private void ConfigureEnumMapping()
+		{
+			CreateMap<registryEnums, EnumDefinition>()
+				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
+				.ForMember(dest => dest.HasFlags, opt => opt.MapFrom(m => m.type == "bitmask"))
+				.ForMember(dest => dest.Members, opt => opt.MapFrom(m => m.@enum));
+
+			CreateMap<registryEnumsEnum, EnumMemberDefinition>()
+				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
+				.ForMember(dest => dest.Comments, opt => opt.MapFrom(m => AddComment(m.comment)))
+				.ForMember(dest => dest.Value, opt => opt.MapFrom(m => m.bitposSpecified ? Convert.ToString(m.bitpos) : m.value));
+		}
+
+		protected override void Configure()
+		{
+			ConfigureEnumMapping();
+			ConfigureApiConstantsMapping();
 		}
 
 		private LiteralDefinition ProcessFieldReturnValue(registryEnumsEnum returnValue)
@@ -30,7 +54,7 @@ namespace SixtenLabs.Spawn.Vulkan
 				}
 				else if (returnValue.value.Contains("(~0U)"))
 				{
-					value = new LiteralDefinition() { Value = "uint.MaxValue", LiteralType = typeof(uint) }; 
+					value = new LiteralDefinition() { Value = "uint.MaxValue", LiteralType = typeof(uint) };
 				}
 				else if (returnValue.value.Contains("(~0ULL)"))
 				{
@@ -70,6 +94,18 @@ namespace SixtenLabs.Spawn.Vulkan
 			}
 
 			return type;
+		}
+
+		private CommentDefinition AddComment(string comment)
+		{
+			var commentDefinition = new CommentDefinition();
+
+			if (!string.IsNullOrEmpty(comment))
+			{
+				commentDefinition.CommentLines.Add(comment);
+			}
+
+			return commentDefinition;
 		}
 	}
 }

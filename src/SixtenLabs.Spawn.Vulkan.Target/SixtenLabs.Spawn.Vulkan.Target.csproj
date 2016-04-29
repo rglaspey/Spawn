@@ -37,6 +37,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -162,6 +163,7 @@
     <Compile Include="Handles\ShaderModule.cs" />
     <Compile Include="Handles\SurfaceKhr.cs" />
     <Compile Include="Handles\SwapchainKhr.cs" />
+    <Compile Include="Interop\NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\AllocationCallbacks.cs" />
     <Compile Include="Structs\AndroidSurfaceCreateInfoKhr.cs" />
@@ -291,11 +293,7 @@
     <Compile Include="Unions\ClearColorValue.cs" />
     <Compile Include="Unions\ClearValue.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handles\" />
-    <Folder Include="Interop\" />
-    <Folder Include="Structs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

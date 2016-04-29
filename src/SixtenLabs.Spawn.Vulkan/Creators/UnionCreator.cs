@@ -79,12 +79,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 				structDefinition.AddModifier(SyntaxKindDto.PublicKeyword);
 
-				foreach (var commentLine in GeneratedComments)
-				{
-					output.CommentLines.Add(commentLine);
-				}
-
-				//foreach (var commentLine in structDefinition.Comments)
+				//foreach (var commentLine in GeneratedComments)
 				//{
 				//	output.CommentLines.Add(commentLine);
 				//}

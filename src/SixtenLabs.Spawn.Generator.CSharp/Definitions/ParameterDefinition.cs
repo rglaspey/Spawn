@@ -5,5 +5,7 @@
 		public ParameterDefinition()
 		{
 		}
+
+		public bool IsPointer { get; set; }
 	}
 }
