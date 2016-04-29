@@ -1,4 +1,6 @@
-﻿using SixtenLabs.Spawn.Utility;
+﻿using AutoMapper;
+using SixtenLabs.Spawn.Generator.CSharp;
+using SixtenLabs.Spawn.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,65 +10,90 @@ using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	//public class UnionCreator : BaseCreator<UnionDefinition>
-	//{
-	//	public UnionCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
-	//		: base(generator, spawnSpec, 2)
-	//	{
-	//	}
+	public class UnionCreator : BaseCreator<registry, StructDefinition>
+	{
+		public UnionCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
+			: base(generator, spawnSpec, 40)
+		{
+			//Off = true;
+		}
 
-	//	private UnionDefinition ReadUnion(registryType structElement)
-	//	{
-	//		var structDefinition = new UnionDefinition();
+		public override int Rewrite()
+		{
+			int count = 0;
 
-	//		var specName = structElement.name;
-	//		var name = specName.TranslateVulkanName();
+			foreach (var structDefinition in Definitions)
+			{
+				structDefinition.TranslatedName = VulkanSpec.GetTranslatedName(structDefinition.SpecName);
 
-	//		structDefinition.SpecName = specName;
-	//		structDefinition.TranslatedName = name;
+				if (!string.IsNullOrEmpty(structDefinition.SpecReturnType))
+				{
+					structDefinition.TranslatedReturnType = VulkanSpec.GetTranslatedName(structDefinition.SpecReturnType);
+				}
 
-	//		var structMembers = structElement.Items;
+				foreach (var fieldDefinition in structDefinition.Fields)
+				{
+					if (fieldDefinition.SpecName.Contains("["))
+					{
+						fieldDefinition.TranslatedName = fieldDefinition.SpecName.Substring(0, fieldDefinition.SpecName.IndexOf("["));
+						fieldDefinition.TranslatedReturnType = $"{VulkanSpec.GetTranslatedName(fieldDefinition.SpecReturnType)}[]";
+					}
+					else
+					{
+						fieldDefinition.TranslatedReturnType = VulkanSpec.GetTranslatedName(fieldDefinition.SpecReturnType);
+					}
 
-	//		foreach (var structMember in structMembers)
-	//		{
-	//			//var memberSpecName = structMember.Element("name").Value;
-	//			//var memberName = specName.TranslateVulkanName();
-	//			//var specType = structMember.Element("type").Value;
+					fieldDefinition.AddModifier(SyntaxKindDto.PublicKeyword);
+				}
 
-	//			//structDefinition.AddField(specName, name, specType);
-	//		}
+				count++;
+			}
 
-	//		return structDefinition;
-	//	}
+			return count;
+		}
 
-	//	public override int MapTypes()
-	//	{
-	//		//var structTypes = VulkanSpec.SpecTree.types.Where(x => x.category != null && x.category == "union");
+		public override int Build(IMapper mapper)
+		{
+			var registryStructs = VulkanSpec.SpecTree.types.Where(x => x.category == "union");
 
-	//		//var unions = structTypes.Select(ReadUnion);
+			foreach (var registryEnum in registryStructs)
+			{
+				var structDefinition = mapper.Map<registryType, StructDefinition>(registryEnum);
+				Definitions.Add(structDefinition);
+			}
 
-	//		//foreach (var unionDefinition in unions)
-	//		//{
-	//		//	Definitions.Add(unionDefinition);
-	//		//	VulkanSpec.AllTypes.Add(unionDefinition.SpecName, unionDefinition.Name);
-	//		//}
+			return Definitions.Count;
+		}
 
-	//		return Definitions.Count;
-	//	}
+		public override int Create()
+		{
+			int count = 0;
 
-	//	public override int Rewrite()
-	//	{
-	//		return 0;
-	//	}
+			foreach (var structDefinition in Definitions)
+			{
+				var output = new OutputDefinition() { FileName = structDefinition.TranslatedName };
+				output.TargetSolution = TargetSolution;
+				output.AddNamespace(TargetNamespace);
+				output.OutputDirectory = "Unions";
+				output.AddStandardUsingDirective("System");
 
-	//	public override int Build()
-	//	{
-	//		return 0;
-	//	}
+				structDefinition.AddModifier(SyntaxKindDto.PublicKeyword);
 
-	//	public override int Create()
-	//	{
-	//		return 0;
-	//	}
-	//}
+				foreach (var commentLine in GeneratedComments)
+				{
+					output.CommentLines.Add(commentLine);
+				}
+
+				//foreach (var commentLine in structDefinition.Comments)
+				//{
+				//	output.CommentLines.Add(commentLine);
+				//}
+
+				(Generator as CSharpGenerator).GenerateStruct(output, structDefinition);
+				count++;
+			}
+
+			return count;
+		}
+	}
 }

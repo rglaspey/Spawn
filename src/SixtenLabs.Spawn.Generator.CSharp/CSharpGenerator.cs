@@ -33,6 +33,27 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 		}
 
 		/// <summary>
+		/// Generate a single output with a class
+		/// </summary>
+		/// <param name="outputDefinition"></param>
+		/// <param name="structDefinition"></param>
+		/// <returns></returns>
+		public string GenerateStruct(OutputDefinition outputDefinition, StructDefinition structDefinition)
+		{
+			var code = SF.CompilationUnit()
+
+				.AddUsingDirectives(outputDefinition.Usings)
+				.AddStruct(outputDefinition, structDefinition)
+				.WithEndOfFileToken(SF.Token(SyntaxKind.EndOfFileToken))
+				.NormalizeWhitespace();
+
+			var contents = code.GetFormattedCode();
+			AddToProject(outputDefinition, contents);
+
+			return contents;
+		}
+
+		/// <summary>
 		/// Generate a single output with an enum
 		/// </summary>
 		/// <param name="outputDefinition"></param>

@@ -12,7 +12,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 {
 	public static partial class SyntaxExtensions
 	{
-		private static SyntaxToken CreateSyntaxTokenNewLine()
+		private static SyntaxToken CreateSyntaxTokenXmlNewLine()
 		{
 			var newLineToken = SF.XmlTextNewLine(SF.TriviaList(), Environment.NewLine, Environment.NewLine, SF.TriviaList());
 
@@ -46,9 +46,9 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 
 			foreach (var comment in comments)
 			{
-				syntaxTokens.Add(CreateSyntaxTokenNewLine());
+				syntaxTokens.Add(CreateSyntaxTokenXmlNewLine());
 				syntaxTokens.Add(CreateSyntaxTokenDocumentationCommentExterior(comment));
-				syntaxTokens.Add(CreateSyntaxTokenNewLine());
+				syntaxTokens.Add(CreateSyntaxTokenXmlNewLine());
 			}
 
 			syntaxTokens.Add(CreateSyntaxTokenDocumentationCommentExterior(""));
@@ -74,7 +74,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 									.WithContent(SF.SingletonList<XmlNodeSyntax>(SF.XmlText()
 									.WithTextTokens(GetCommentTokens(comments)))),
 								SF.XmlText()
-									.WithTextTokens(SF.TokenList(CreateSyntaxTokenNewLine()))
+									.WithTextTokens(SF.TokenList(CreateSyntaxTokenXmlNewLine()))
 							}));
 
 			return x;

@@ -113,7 +113,8 @@ namespace SixtenLabs.Spawn.Vulkan
 			}
 			else if (rt.category == "funcpointer")
 			{
-				name = (rt.Items[0] as string).TranslateVulkanName();
+				//name = (rt.Items[0] as string).TranslateVulkanName();
+				name = "IntPtr";
 			}
 			else if (rt.category == "enum" || rt.category == "struct" || rt.category == "union")
 			{

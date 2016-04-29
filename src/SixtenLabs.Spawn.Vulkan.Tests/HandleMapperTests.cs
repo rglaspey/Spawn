@@ -22,7 +22,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var config = new MapperConfiguration(cfg =>
 			{
-				cfg.AddProfile(new HandleMapper());
+				cfg.AddProfile(new RegistryTypeMapper());
 			});
 
 			Mapper.AssertConfigurationIsValid();
@@ -46,11 +46,11 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			types.Should().HaveCount(30);
 
-			var maps = new List<ClassDefinition>();
+			var maps = new List<StructDefinition>();
 
 			foreach (var type in types)
 			{
-				var map = AMapper.Map<ClassDefinition>(type);
+				var map = AMapper.Map<StructDefinition>(type);
 				maps.Add(map);
 			}
 
@@ -64,11 +64,24 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var type = vk.types.Where(x => x.category == "handle" && (string)x.Items[1] == "VkInstance").FirstOrDefault();
 
-			var map = AMapper.Map<ClassDefinition>(type);
+			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkInstance");
 			map.SpecDerivedType.Should().BeNull();
 		}
+
+		//[Fact]
+		//public void MapVkInstanceHandle()
+		//{
+		//	var vk = SubjectUnderTest();
+
+		//	var type = vk.types.Where(x => x.category == "handle" && (string)x.Items[1] == "VkInstance").FirstOrDefault();
+
+		//	var map = AMapper.Map<StructDefinition>(type);
+
+		//	map.SpecName.Should().Be("VkInstance");
+		//	map.SpecDerivedType.Should().BeNull();
+		//}
 
 		[Fact]
 		public void MapVkCommandBufferHandle()
@@ -77,8 +90,8 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var type = vk.types.Where(x => x.category == "handle" && (string)x.Items[1] == "VkCommandBuffer").FirstOrDefault();
 
-			var map = AMapper.Map<ClassDefinition>(type);
-
+			var map = AMapper.Map<StructDefinition>(type);
+			 
 			map.SpecName.Should().Be("VkCommandBuffer");
 			map.SpecDerivedType.Should().Be("VkCommandPool");
 		}

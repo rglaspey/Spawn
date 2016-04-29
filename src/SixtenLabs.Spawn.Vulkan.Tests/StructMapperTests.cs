@@ -22,7 +22,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var config = new MapperConfiguration(cfg =>
 			{
-				cfg.AddProfile(new StructMapper());
+				cfg.AddProfile(new RegistryTypeMapper());
 			});
 
 			Mapper.AssertConfigurationIsValid();
@@ -67,7 +67,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkOffset2D");
-			map.FieldDefinitions.Should().HaveCount(2);
+			map.Fields.Should().HaveCount(2);
 		}
 
 		[Fact]
@@ -80,7 +80,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkPhysicalDeviceProperties");
-			map.FieldDefinitions.Should().HaveCount(9);
+			map.Fields.Should().HaveCount(9);
 		}
 
 		[Fact]
@@ -93,7 +93,12 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var map = AMapper.Map<StructDefinition>(type);
 
 			map.SpecName.Should().Be("VkViewport");
-			map.FieldDefinitions.Should().HaveCount(6);
+			map.SpecReturnType.Should().BeNull();
+			map.Fields.Should().HaveCount(6);
+
+			map.Fields[0].SpecName.Should().Be("x");
+			map.Fields[0].SpecReturnType.Should().Be("float");
+			map.Fields[0].TranslatedReturnType.Should().BeNull();
 		}
 
 		private IMapper AMapper { get; }

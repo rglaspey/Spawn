@@ -36,9 +36,13 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 			}
 
 			var fieldDefinition = new FieldDefinition() { SpecName = name, SpecReturnType = returnType, DefaultValue = literalDefinition };
-			FieldDefinitions.Add(fieldDefinition);
+			Fields.Add(fieldDefinition);
 		}
 
-		public List<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
+		public string SpecDerivedType { get; set; }
+
+		public string DerivedType { get; set; }
+
+		public List<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
 	}
 }

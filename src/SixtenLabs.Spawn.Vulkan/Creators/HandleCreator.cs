@@ -5,22 +5,22 @@ using System.Linq;
 
 namespace SixtenLabs.Spawn.Vulkan
 {
-	public class HandleCreator : BaseCreator<registry, ClassDefinition>
+	public class HandleCreator : BaseCreator<registry, StructDefinition>
 	{
 		public HandleCreator(ICodeGenerator generator, ISpawnSpec<registry> spawnSpec)
 			: base(generator, spawnSpec, 20)
 		{
-			Off = true;
+			//Off = true;
 		}
 
 		public override int Rewrite()
 		{
 			int count = 0;
 
-			foreach(var classDefinition in Definitions)
+			foreach(var structDefinition in Definitions)
 			{
-				classDefinition.TranslatedName = VulkanSpec.GetTranslatedName(classDefinition.SpecName);
-				classDefinition.DerivedType = VulkanSpec.GetTranslatedName(classDefinition.SpecName);
+				structDefinition.TranslatedName = VulkanSpec.GetTranslatedName(structDefinition.SpecName);
+				structDefinition.DerivedType = VulkanSpec.GetTranslatedName(structDefinition.SpecName);
 
 				count++;
 			}
@@ -34,8 +34,8 @@ namespace SixtenLabs.Spawn.Vulkan
 
 			foreach (var registryHandle in registryHandles)
 			{
-				var classDefinition = mapper.Map<registryType, ClassDefinition>(registryHandle);
-				Definitions.Add(classDefinition);
+				var structDefinition = mapper.Map<registryType, StructDefinition>(registryHandle);
+				Definitions.Add(structDefinition);
 			}
 
 			return Definitions.Count;
@@ -45,9 +45,9 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			int count = 0;
 
-			foreach (var classDefinition in Definitions)
+			foreach (var structDefinition in Definitions)
 			{
-				var output = new OutputDefinition() { FileName = classDefinition.TranslatedName };
+				var output = new OutputDefinition() { FileName = structDefinition.TranslatedName };
 				output.TargetSolution = TargetSolution;
 				output.AddNamespace(TargetNamespace);
 				output.OutputDirectory = "Handles";
@@ -57,6 +57,8 @@ namespace SixtenLabs.Spawn.Vulkan
 					output.CommentLines.Add(commentLine);
 				}
 
+				structDefinition.AddModifier(SyntaxKindDto.PublicKeyword);
+
 				//foreach (var commentLine in classDefintion.Comments)
 				//{
 				//	output.CommentLines.Add(commentLine);
@@ -64,7 +66,7 @@ namespace SixtenLabs.Spawn.Vulkan
 
 				output.AddStandardUsingDirective("System");
 
-				(Generator as CSharpGenerator).GenerateClass(output, classDefinition);
+				(Generator as CSharpGenerator).GenerateStruct(output, structDefinition);
 				count++;
 			}
 
