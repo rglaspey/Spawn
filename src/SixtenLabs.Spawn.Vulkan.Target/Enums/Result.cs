@@ -23,7 +23,7 @@
                 /// </summary>
         EventReset = 4,
         /// <summary>
-                /// A return array was too small for the resul
+                /// A return array was too small for the result
                 /// </summary>
         INCOMPLETE = 5,
         /// <summary>
@@ -35,11 +35,11 @@
                 /// </summary>
         ErrorOutOfDeviceMemory = -2,
         /// <summary>
-                /// The logical device has been lost. See <<devsandqueues-lost-device>>
+                /// Initialization of a object has failed
                 /// </summary>
         ErrorInitializationFailed = -3,
         /// <summary>
-                /// Initialization of a object has failed
+                /// The logical device has been lost. See <<devsandqueues-lost-device>>
                 /// </summary>
         ErrorDeviceLost = -4,
         /// <summary>

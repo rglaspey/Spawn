@@ -45,11 +45,11 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var types = vk.types;
 
-			types.Should().HaveCount(372);
+			types.Should().HaveCount(374);
 
 			var maps = GetMapsFromTypes(types);
 
-			maps.Should().HaveCount(372);
+			maps.Should().HaveCount(374);
 			var nullTranslatedNameMaps = maps.Where(x => x.TranslatedName == null);
 			nullTranslatedNameMaps.Count(x => x.TranslatedName == null).Should().Be(0);
 
@@ -134,11 +134,11 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var types = vk.types.Where(x => x.category == "enum");
 
-			types.Should().HaveCount(94);
+			types.Should().HaveCount(95);
 
 			var maps = GetMapsFromTypes(types);
 
-			maps.Should().HaveCount(94);
+			maps.Should().HaveCount(95);
 		}
 
 		[Fact]
@@ -162,11 +162,11 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var types = vk.types.Where(x => x.category == "struct");
 
-			types.Should().HaveCount(125);
+			types.Should().HaveCount(126);
 
 			var maps = GetMapsFromTypes(types);
 
-			maps.Should().HaveCount(125);
+			maps.Should().HaveCount(126);
 		}
 
 		[Fact]
@@ -217,11 +217,11 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			var vk = SubjectUnderTest();
 
 			var types = vk.enums.Where(x => x.name != "API Constants").SelectMany(x => x.@enum);
-			types.Should().HaveCount(621);
-
+			types.Should().HaveCount(623);
+		
 			var maps = GetMapsFromTypes(types);
 
-			maps.Should().HaveCount(621);
+			maps.Should().HaveCount(623);
 		}
 
 		private IList<SpecTypeDefinition> GetMapsFromTypes<T>(IEnumerable<T> types) where T : class

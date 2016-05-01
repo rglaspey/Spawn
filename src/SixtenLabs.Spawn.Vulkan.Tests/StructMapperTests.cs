@@ -44,7 +44,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var types = vk.types.Where(x => x.category == "struct");
 
-			types.Should().HaveCount(125);
+			types.Should().HaveCount(126);
 
 			var maps = new List<StructDefinition>();
 
@@ -54,7 +54,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 				maps.Add(map);
 			}
 
-			maps.Should().HaveCount(125);
+			maps.Should().HaveCount(126);
 		}
 
 		[Fact]

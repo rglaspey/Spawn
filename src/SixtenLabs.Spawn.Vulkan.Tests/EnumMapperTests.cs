@@ -44,7 +44,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 
 			var types = vk.enums.Where(x => x.name != "API Constants");
 
-			types.Should().HaveCount(73);
+			types.Should().HaveCount(74);
 
 			var maps = new List<EnumDefinition>();
 
@@ -54,7 +54,7 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 				maps.Add(map);
 			}
 
-			maps.Should().HaveCount(73);
+			maps.Should().HaveCount(74);
 		}
 
 		[Fact]

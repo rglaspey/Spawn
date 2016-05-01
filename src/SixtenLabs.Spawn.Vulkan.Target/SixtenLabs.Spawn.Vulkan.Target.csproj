@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +49,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,6 +121,7 @@
     <Compile Include="Enums\QueryResultFlags.cs" />
     <Compile Include="Enums\QueryType.cs" />
     <Compile Include="Enums\QueueFlags.cs" />
+    <Compile Include="Enums\RasterizationOrderAMD.cs" />
     <Compile Include="Enums\Result.cs" />
     <Compile Include="Enums\SampleCountFlags.cs" />
     <Compile Include="Enums\SamplerAddressMode.cs" />
@@ -250,6 +254,7 @@
     <Compile Include="Structs\PipelineLayoutCreateInfo.cs" />
     <Compile Include="Structs\PipelineMultisampleStateCreateInfo.cs" />
     <Compile Include="Structs\PipelineRasterizationStateCreateInfo.cs" />
+    <Compile Include="Structs\PipelineRasterizationStateRasterizationOrderAMD.cs" />
     <Compile Include="Structs\PipelineShaderStageCreateInfo.cs" />
     <Compile Include="Structs\PipelineTessellationStateCreateInfo.cs" />
     <Compile Include="Structs\PipelineVertexInputStateCreateInfo.cs" />
