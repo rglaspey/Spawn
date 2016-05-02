@@ -52,9 +52,9 @@ namespace SixtenLabs.Spawn.Vulkan
 		{
 			var registryStructs = VulkanSpec.SpecTree.types.Where(x => x.category == "struct");
 
-			foreach (var registryEnum in registryStructs)
+			foreach (var registryType in registryStructs)
 			{
-				var structDefinition = mapper.Map<registryType, StructDefinition>(registryEnum);
+				var structDefinition = mapper.Map<registryType, StructDefinition>(registryType);
 				Definitions.Add(structDefinition);
 			}
 

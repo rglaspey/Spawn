@@ -101,6 +101,40 @@ namespace SixtenLabs.Spawn.Vulkan.Tests
 			map.Fields[0].TranslatedReturnType.Should().BeNull();
 		}
 
+		[Fact]
+		public void MapVkImageBlit()
+		{
+			var vk = SubjectUnderTest();
+
+			var type = vk.types.Where(x => x.category == "struct" && x.name == "VkImageBlit").FirstOrDefault();
+
+			var map = AMapper.Map<StructDefinition>(type);
+
+			map.SpecName.Should().Be("VkImageBlit");
+			map.SpecReturnType.Should().BeNull();
+			map.Fields.Should().HaveCount(4);
+
+			map.Fields[0].SpecName.Should().Be("srcSubresource");
+			map.Fields[0].SpecReturnType.Should().Be("VkImageSubresourceLayers");
+			map.Fields[0].ReturnTypeIsArray.Should().BeFalse();
+			map.Fields[0].TranslatedReturnType.Should().BeNull();
+
+			map.Fields[1].SpecName.Should().Be("srcOffsets");
+			map.Fields[1].SpecReturnType.Should().Be("VkOffset3D");
+			map.Fields[1].ReturnTypeIsArray.Should().BeTrue();
+			map.Fields[1].TranslatedReturnType.Should().BeNull();
+
+			map.Fields[2].SpecName.Should().Be("dstSubresource");
+			map.Fields[2].SpecReturnType.Should().Be("VkImageSubresourceLayers");
+			map.Fields[2].ReturnTypeIsArray.Should().BeFalse();
+			map.Fields[2].TranslatedReturnType.Should().BeNull();
+
+			map.Fields[3].SpecName.Should().Be("dstOffsets");
+			map.Fields[3].SpecReturnType.Should().Be("VkOffset3D");
+			map.Fields[3].ReturnTypeIsArray.Should().BeTrue();
+			map.Fields[3].TranslatedReturnType.Should().BeNull();
+		}
+
 		private IMapper AMapper { get; }
 	}
 }

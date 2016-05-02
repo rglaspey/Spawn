@@ -23,7 +23,9 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 		public static FieldDeclarationSyntax AddField(FieldDefinition fieldDefinition)
 		{
 			var modifiers = GetModifierTokens(fieldDefinition.ModifierDefinitions);
-			var returnType = SF.VariableDeclaration(SF.IdentifierName(fieldDefinition.TranslatedReturnType));
+
+			var returnTypeString = fieldDefinition.ReturnTypeIsArray ? $"{fieldDefinition.TranslatedReturnType}[]" : fieldDefinition.TranslatedReturnType;
+			var returnType = SF.VariableDeclaration(SF.IdentifierName(returnTypeString));
 			var fieldName = SF.VariableDeclarator(SF.Identifier(fieldDefinition.TranslatedName));
 			var initializer = GetInitializer(fieldDefinition.DefaultValue);
 

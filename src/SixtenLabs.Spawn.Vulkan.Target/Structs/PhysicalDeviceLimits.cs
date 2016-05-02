@@ -56,9 +56,9 @@ namespace SixtenLabs.Spawn.Vulkan.Target
         public uint maxFragmentDualSrcAttachments;
         public uint maxFragmentCombinedOutputResources;
         public uint maxComputeSharedMemorySize;
-        public uint maxComputeWorkGroupCount;
+        public uint[] maxComputeWorkGroupCount;
         public uint maxComputeWorkGroupInvocations;
-        public uint maxComputeWorkGroupSize;
+        public uint[] maxComputeWorkGroupSize;
         public uint subPixelPrecisionBits;
         public uint subTexelPrecisionBits;
         public uint mipmapPrecisionBits;
@@ -67,8 +67,8 @@ namespace SixtenLabs.Spawn.Vulkan.Target
         public float maxSamplerLodBias;
         public float maxSamplerAnisotropy;
         public uint maxViewports;
-        public uint maxViewportDimensions;
-        public float viewportBoundsRange;
+        public uint[] maxViewportDimensions;
+        public float[] viewportBoundsRange;
         public uint viewportSubPixelBits;
         public UIntPtr minMemoryMapAlignment;
         public ulong minTexelBufferOffsetAlignment;
@@ -101,8 +101,8 @@ namespace SixtenLabs.Spawn.Vulkan.Target
         public uint maxCullDistances;
         public uint maxCombinedClipAndCullDistances;
         public uint discreteQueuePriorities;
-        public float pointSizeRange;
-        public float lineWidthRange;
+        public float[] pointSizeRange;
+        public float[] lineWidthRange;
         public float pointSizeGranularity;
         public float lineWidthGranularity;
         public uint strictLines;

@@ -11,6 +11,6 @@ namespace SixtenLabs.Spawn.Vulkan.Target
         public LogicOp logicOp;
         public uint attachmentCount;
         public PipelineColorBlendAttachmentState pAttachments;
-        public float blendConstants;
+        public float[] blendConstants;
     }
 }

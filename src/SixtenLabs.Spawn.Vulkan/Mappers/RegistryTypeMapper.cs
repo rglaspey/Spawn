@@ -17,6 +17,7 @@ namespace SixtenLabs.Spawn.Vulkan
 			CreateMap<registryTypeMember, FieldDefinition>()
 				.ForMember(dest => dest.SpecName, opt => opt.MapFrom(m => m.name))
 				.ForMember(dest => dest.SpecReturnType, opt => opt.MapFrom(m => m.type))
+				.ForMember(dest => dest.ReturnTypeIsArray, opt => opt.MapFrom(m => MapReturnTypeIsArray(m)))
 				.ForMember(dest => dest.SpecType, opt => opt.MapFrom(m => m.@type));
 		}
 
@@ -38,6 +39,11 @@ namespace SixtenLabs.Spawn.Vulkan
 			{
 				return null;
 			}
+		}
+
+		private bool MapReturnTypeIsArray(registryTypeMember rtm)
+		{
+			return rtm.Text != null && rtm.Text[0].StartsWith("[");
 		}
 
 		private CommentDefinition MapComments(string comment)

@@ -14,5 +14,7 @@
 		/// Null by default
 		/// </summary>
 		public LiteralDefinition DefaultValue { get; set; }
+
+		public bool ReturnTypeIsArray { get; set; }
 	}
 }

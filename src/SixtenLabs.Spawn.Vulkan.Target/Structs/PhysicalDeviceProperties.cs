@@ -9,8 +9,8 @@ namespace SixtenLabs.Spawn.Vulkan.Target
         public uint vendorID;
         public uint deviceID;
         public PhysicalDeviceType deviceType;
-        public char deviceName;
-        public byte pipelineCacheUUID;
+        public char[] deviceName;
+        public byte[] pipelineCacheUUID;
         public PhysicalDeviceLimits limits;
         public PhysicalDeviceSparseProperties sparseProperties;
     }
