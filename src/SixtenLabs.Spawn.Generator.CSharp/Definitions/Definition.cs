@@ -35,5 +35,13 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 				translatedName = value;
 			}
 		}
+
+		/// <summary>
+		/// Use this to capture any information your spec may need.
+		/// This would typically be used at the level where your processing
+		/// your data before asking the Csharp Generator to generate.
+		/// The CSharp generator does not use this field.
+		/// </summary>
+		public string Tag { get; set; }
   }
 }

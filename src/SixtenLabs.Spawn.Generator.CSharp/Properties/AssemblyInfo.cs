@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SixtenLabs.Spawn.Generator.CSharp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Spawn C# Generator")]
+[assembly: AssemblyDescription("C# Generator for Spawn")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SixtenLabs.Spawn.Generator.CSharp")]
+[assembly: AssemblyCompany("Sixten Labs")]
+[assembly: AssemblyProduct("Spawn C# Generator")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

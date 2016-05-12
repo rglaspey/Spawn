@@ -16,5 +16,7 @@
 		public LiteralDefinition DefaultValue { get; set; }
 
 		public bool ReturnTypeIsArray { get; set; }
+
+		public int ArraySize { get; set; }
 	}
 }

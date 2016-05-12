@@ -24,7 +24,7 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 		{
 			var modifiers = GetModifierTokens(fieldDefinition.ModifierDefinitions);
 
-			var returnTypeString = fieldDefinition.ReturnTypeIsArray ? $"{fieldDefinition.TranslatedReturnType}[]" : fieldDefinition.TranslatedReturnType;
+			var returnTypeString = fieldDefinition.TranslatedReturnType;
 			var returnType = SF.VariableDeclaration(SF.IdentifierName(returnTypeString));
 			var fieldName = SF.VariableDeclarator(SF.Identifier(fieldDefinition.TranslatedName));
 			var initializer = GetInitializer(fieldDefinition.DefaultValue);

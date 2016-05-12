@@ -64,7 +64,7 @@ namespace SixtenLabs.Spawn
 			var project = GetProject(targetProject);
 
 			var documentName = $"{newFileName}.cs";
-			var document = project.Documents.Where(x => x.Name == documentName).FirstOrDefault();
+			var document = project.Documents.Where(x => x.Name == documentName && x.FilePath.Contains(folders.First())).FirstOrDefault();
 
 			Document newDocument = null;
 

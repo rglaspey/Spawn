@@ -43,6 +43,8 @@ namespace SixtenLabs.Spawn.Generator.CSharp
 
 		public string DerivedType { get; set; }
 
+		public bool NeedsMarshalling { get; set; }
+
 		public List<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
 	}
 }

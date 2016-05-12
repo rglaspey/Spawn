@@ -1,5 +1,0 @@
-﻿
-Run the command below from VS developers command prompt in this directory.
-It will generate a file named gl.cs.
-
-xsd vk.xsd /c
