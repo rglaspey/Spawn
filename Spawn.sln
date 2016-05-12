@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn", "src\Six
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Tests", "src\SixtenLabs.Spawn.Tests\SixtenLabs.Spawn.Tests.csproj", "{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Generator.CSharp", "src\SixtenLabs.Spawn.Generator.CSharp\SixtenLabs.Spawn.Generator.CSharp.csproj", "{1E4DB220-AEB6-4922-9505-16B824100B04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.CSharp", "src\SixtenLabs.Spawn.CSharp\SixtenLabs.Spawn.CSharp.csproj", "{80068CB5-B253-44FC-9A09-D009B9E11061}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SixtenLabs.Spawn.Generator.CSharp.Tests", "src\SixtenLabs.Spawn.Generator.CSharp.Tests\SixtenLabs.Spawn.Generator.CSharp.Tests.csproj", "{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}"
 EndProject
@@ -35,14 +35,14 @@ Global
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|x64.ActiveCfg = Release|x64
 		{D0A22D84-2EB8-440F-852C-B0B1BAE8AE8A}.Release|x64.Build.0 = Release|x64
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|x64.ActiveCfg = Debug|x64
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Debug|x64.Build.0 = Debug|x64
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|x64.ActiveCfg = Release|x64
-		{1E4DB220-AEB6-4922-9505-16B824100B04}.Release|x64.Build.0 = Release|x64
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Debug|x64.Build.0 = Debug|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Release|x64.ActiveCfg = Release|Any CPU
+		{80068CB5-B253-44FC-9A09-D009B9E11061}.Release|x64.Build.0 = Release|Any CPU
 		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6C392E-1BA4-474D-82C2-3F3BB63E4084}.Debug|x64.ActiveCfg = Debug|x64
