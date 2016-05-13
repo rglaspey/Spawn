@@ -302,7 +302,12 @@ namespace SixtenLabs.Spawn.CSharp
 
 		public static NamespaceDeclarationSyntax AddNamespace(NamespaceDefinition @namespace)
 		{
-			return SF.NamespaceDeclaration(SF.IdentifierName(@namespace.SpecName));
+			if(@namespace == null)
+			{
+				return null;
+			}
+
+			return SF.NamespaceDeclaration(SF.IdentifierName(@namespace.TranslatedName));
 		}
 
 		public static string GetFormattedCode(this SyntaxNode code)

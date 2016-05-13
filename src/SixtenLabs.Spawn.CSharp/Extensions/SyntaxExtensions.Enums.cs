@@ -4,6 +4,7 @@ using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
 using System.Linq;
+using System;
 
 namespace SixtenLabs.Spawn.CSharp
 {
@@ -31,6 +32,11 @@ namespace SixtenLabs.Spawn.CSharp
 
 		public static CompilationUnitSyntax AddEnum(this CompilationUnitSyntax compilationUnit, OutputDefinition outputDefinition, EnumDefinition enumDefinition)
 		{
+			if(string.IsNullOrEmpty(enumDefinition.SpecName))
+			{
+				throw new ArgumentNullException("Enum must at least have a valid SpecName property set.");
+			}
+
 			var nameSpaceDeclaration = AddNamespace(outputDefinition.Namespace);
 
 			var members = ComposeEnumMembers(enumDefinition);
@@ -50,9 +56,16 @@ namespace SixtenLabs.Spawn.CSharp
 				enumDeclaration = enumDeclaration.WithAttributeLists(SF.SingletonList<AttributeListSyntax>(SF.AttributeList(SF.SingletonSeparatedList<AttributeSyntax>(SF.Attribute(SF.IdentifierName("Flags"))))));
 			}
 
-			nameSpaceDeclaration = nameSpaceDeclaration.AddMembers(enumDeclaration);
+			if (nameSpaceDeclaration != null)
+			{
+				nameSpaceDeclaration = nameSpaceDeclaration.AddMembers(enumDeclaration);
 
-			return compilationUnit.AddMembers(nameSpaceDeclaration);
+				return compilationUnit.AddMembers(nameSpaceDeclaration);
+			}
+			else
+			{
+				return compilationUnit.AddMembers(enumDeclaration);
+			}
 		}
 	}
 }

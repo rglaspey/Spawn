@@ -10,6 +10,7 @@
   <FrameworkUtilisationTypeForXUnit2>UseDynamicAnalysis</FrameworkUtilisationTypeForXUnit2>
   <NCrunchCacheStoragePath></NCrunchCacheStoragePath>
   <MetricsExclusionList>
+src\SixtenLabs.Spawn.CSharp.Tests\SixtenLabs.Spawn.CSharp.Tests.csproj
 src\SixtenLabs.Spawn.Generator.CSharp.Tests\SixtenLabs.Spawn.Generator.CSharp.Tests.csproj
 src\SixtenLabs.Spawn.Tests\SixtenLabs.Spawn.Tests.csproj
 src\SixtenLabs.Spawn.Vulkan.Tests\SixtenLabs.Spawn.Vulkan.Tests.csproj

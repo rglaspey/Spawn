@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
-using Microsoft.CodeAnalysis.CSharp;
-
-namespace SixtenLabs.Spawn.CSharp
+﻿namespace SixtenLabs.Spawn.CSharp
 {
 	/// <summary>
 	/// Base definition. Holds all common functionality for concrete definitions
 	/// </summary>
   public abstract class Definition
   {
-    public Definition()
-    {
-    }
-
+		/// <summary>
+		/// This name is typically the name used for this definition in the source data file.
+		/// This is required. This value will also be used for the Translated name if the translated name is not set.
+		/// </summary>
     public string SpecName { get; set; }
 
 		private string translatedName;
 
+		/// <summary>
+		/// This is the name that will be used by the generator for this definition.
+		/// So if this is a class definition this will be the generated class name.
+		/// If this is not set it will use the spec name.
+		/// </summary>
 		public string TranslatedName
 		{
 			get
