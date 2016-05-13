@@ -12,6 +12,6 @@ namespace SixtenLabs.Spawn.CSharp
 		{
 		}
 
-		public CommentDefinition Comments { get; set; }
+		public CommentDefinition Comments { get; set; } = new CommentDefinition();
 	}
 }

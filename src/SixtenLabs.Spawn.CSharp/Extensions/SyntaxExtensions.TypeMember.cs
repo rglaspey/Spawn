@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Microsoft.CodeAnalysis.CSharp;
+using System;
 
 namespace SixtenLabs.Spawn.CSharp
 {
@@ -22,6 +23,11 @@ namespace SixtenLabs.Spawn.CSharp
 
 		public static FieldDeclarationSyntax AddField(FieldDefinition fieldDefinition)
 		{
+			if(string.IsNullOrEmpty(fieldDefinition.TranslatedReturnType))
+			{
+				throw new ArgumentNullException("Field must have a return type.");
+			}
+
 			var modifiers = GetModifierTokens(fieldDefinition.ModifierDefinitions);
 
 			var returnTypeString = fieldDefinition.TranslatedReturnType;

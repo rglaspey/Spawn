@@ -19,7 +19,27 @@ namespace SixtenLabs.Spawn.CSharp
 		
 		public string SpecReturnType { get; set; }
 
-		public string TranslatedReturnType { get; set; }
+		private string translatedReturnType;
+
+		public string TranslatedReturnType
+		{
+			get
+			{
+				if(string.IsNullOrEmpty(translatedReturnType))
+				{
+					return SpecReturnType;
+				}
+				else
+				{
+					return translatedReturnType;
+				}
+			}
+
+			set
+			{
+				translatedReturnType = value;
+			}
+		}
 		
 		/// <summary>
 		/// Modifiers are used to modify declarations of types and type members

@@ -26,19 +26,6 @@ namespace SixtenLabs.Spawn.CSharp
     {
 		}
 
-		public void AddField(string name, string returnType = "string", string defaultValue = null)
-		{
-			LiteralDefinition literalDefinition = null;
-
-			if (defaultValue != null)
-			{
-				literalDefinition = new LiteralDefinition() { Value = defaultValue, LiteralType = defaultValue.GetType() };
-			}
-
-			var fieldDefinition = new FieldDefinition() { SpecName = name, SpecReturnType = returnType, DefaultValue = literalDefinition };
-			Fields.Add(fieldDefinition);
-		}
-
 		public string SpecDerivedType { get; set; }
 
 		public string DerivedType { get; set; }

@@ -3,6 +3,8 @@ using FluentAssertions;
 using NSubstitute;
 using System;
 
+using static System.Environment;
+
 namespace SixtenLabs.Spawn.CSharp.Tests
 {
 	public class GenerateEnumTests
@@ -38,7 +40,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual =  subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"enum FancyEnum{Environment.NewLine}{{{Environment.NewLine}}}");
+			actual.Should().Be($"enum FancyEnum{NewLine}{{{NewLine}}}");
 		}
 
 		[Fact]
@@ -51,7 +53,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"enum FancyEnum : uint{Environment.NewLine}{{{Environment.NewLine}}}");
+			actual.Should().Be($"enum FancyEnum : uint{NewLine}{{{NewLine}}}");
 		}
 
 		[Fact]
@@ -64,7 +66,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"[Flags]{Environment.NewLine}enum FancyEnum{Environment.NewLine}{{{Environment.NewLine}}}");
+			actual.Should().Be($"[Flags]{NewLine}enum FancyEnum{NewLine}{{{NewLine}}}");
 		}
 
 		[Fact]
@@ -79,7 +81,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"namespace SixtenLabs.EnumTest{Environment.NewLine}{{{Environment.NewLine}    enum FancyEnum{Environment.NewLine}    {{{Environment.NewLine}    }}{Environment.NewLine}}}");
+			actual.Should().Be($"namespace SixtenLabs.EnumTest{NewLine}{{{NewLine}    enum FancyEnum{NewLine}    {{{NewLine}    }}{NewLine}}}");
 		}
 
 		[Fact]
@@ -93,7 +95,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"public enum FancyEnum{Environment.NewLine}{{{Environment.NewLine}}}");
+			actual.Should().Be($"public enum FancyEnum{NewLine}{{{NewLine}}}");
 		}
 
 		[Fact]
@@ -107,7 +109,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"enum FancyEnum{Environment.NewLine}{{{Environment.NewLine}    None = 0{Environment.NewLine}}}");
+			actual.Should().Be($"enum FancyEnum{NewLine}{{{NewLine}    None = 0{NewLine}}}");
 		}
 
 		[Fact]
@@ -122,7 +124,7 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			var actual = subject.GenerateEnum(output, enumDef);
 
-			actual.Should().Be($"enum FancyEnum{Environment.NewLine}{{{Environment.NewLine}    None = 0,{Environment.NewLine}    One = 0x01{Environment.NewLine}}}");
+			actual.Should().Be($"enum FancyEnum{NewLine}{{{NewLine}    None = 0,{NewLine}    One = 0x01{NewLine}}}");
 		}
 
 		private IXmlSerializer MockSerializer { get; set; }

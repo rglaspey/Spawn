@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace SixtenLabs.Spawn.CSharp
@@ -8,6 +9,11 @@ namespace SixtenLabs.Spawn.CSharp
 	{
 		public static CompilationUnitSyntax AddStruct(this CompilationUnitSyntax compilationUnit, OutputDefinition outputDefinition, StructDefinition structDefinition)
 		{
+			if (string.IsNullOrEmpty(structDefinition.SpecName))
+			{
+				throw new ArgumentNullException("Struct must at least have a valid SpecName property set.");
+			}
+
 			var memberList = SF.List<MemberDeclarationSyntax>();
 
 			var fields = AddFields(structDefinition.Fields);
@@ -29,9 +35,17 @@ namespace SixtenLabs.Spawn.CSharp
 				.WithModifiers(modifierTokens)
 				.WithMembers(memberList);
 
-			nameSpaceDeclaration = nameSpaceDeclaration.AddMembers(structDeclaration);
+			if (nameSpaceDeclaration != null)
+			{
+				nameSpaceDeclaration = nameSpaceDeclaration.AddMembers(structDeclaration);
 
-			return compilationUnit.AddMembers(nameSpaceDeclaration);
+				return compilationUnit.AddMembers(nameSpaceDeclaration);
+			}
+			else
+			{
+				return compilationUnit.AddMembers(structDeclaration);
+			}
+
 		}
 	}
 }
