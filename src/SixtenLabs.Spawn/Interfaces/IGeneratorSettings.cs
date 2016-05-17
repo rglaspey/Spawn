@@ -1,4 +1,4 @@
-﻿namespace SixtenLabs.Spawn.Utility
+﻿namespace SixtenLabs.Spawn
 {
 	public interface IGeneratorSettings
 	{
@@ -10,7 +10,7 @@
 
 		string RootDirectory { get; set; }
 
-		string RootNameSpace { get; }
+		string RootNamespace { get; }
 
 		string TargetSolutionName { get; }
 

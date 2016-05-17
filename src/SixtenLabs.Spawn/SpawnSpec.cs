@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SixtenLabs.Spawn.Utility
+namespace SixtenLabs.Spawn
 {
 	public abstract class SpawnSpec<T> : ISpawnSpec<T> where T : class
 	{
@@ -45,12 +45,17 @@ namespace SixtenLabs.Spawn.Utility
 			}
 			else
 			{
-				throw new InvalidOperationException();
+				throw new InvalidOperationException($"SpecTypeDefinition for {specTypeDefinition.SpecName} already exists.");
 			}
 		}
 
 		private XmlFileLoader<T> FileLoader { get; set; }
 
+		/// <summary>
+		/// The spectree holds the class that comprise the objects that we are 
+		/// generating code for. This is typically created by hand or from an xml specification
+		/// and we use this property to query the Specification and setup the structure of the code to generate.
+		/// </summary>
 		public T SpecTree
 		{
 			get
@@ -60,7 +65,7 @@ namespace SixtenLabs.Spawn.Utility
 		}
 
 		/// <summary>
-		/// Mapping of all types we care about from the vk.xml
+		/// Mapping of all types we care about from the spec
 		/// Key = Spec type name
 		/// Value = Translated type name
 		/// </summary>

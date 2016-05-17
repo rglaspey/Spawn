@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 
-namespace SixtenLabs.Spawn.Utility
+namespace SixtenLabs.Spawn
 {
 	public interface ICreator
 	{

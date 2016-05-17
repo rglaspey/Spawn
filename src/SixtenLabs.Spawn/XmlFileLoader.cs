@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using System.Net;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace SixtenLabs.Spawn.Utility
+namespace SixtenLabs.Spawn
 {
 	/// <summary>
 	/// This class is responsible for loading the xml file
@@ -11,14 +10,15 @@ namespace SixtenLabs.Spawn.Utility
 	/// </summary>
 	public class XmlFileLoader<T> where T : class
 	{
-		public XmlFileLoader(IGeneratorSettings parseSettings)
+		public XmlFileLoader(IGeneratorSettings parseSettings, IWebClientFactory webClientFactory)
 		{
 			ParseSettings = parseSettings;
+			WebClientFactory = webClientFactory;
 		}
 
 		private void LoadFromUri()
 		{
-			string xml = new WebClient().DownloadString(ParseSettings.WebUri);
+			string xml = WebClientFactory.DownloadSpecFromUri(ParseSettings.WebUri);
 
 			var buffer = Encoding.UTF8.GetBytes(xml);
 			ParseFile(buffer);
@@ -53,6 +53,8 @@ namespace SixtenLabs.Spawn.Utility
 		}
 
 		private IGeneratorSettings ParseSettings { get; }
+
+		private IWebClientFactory WebClientFactory { get; }
 
 		public T Registry { get; set; }
 	}

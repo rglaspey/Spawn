@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SixtenLabs.Spawn.Utility
+namespace SixtenLabs.Spawn
 {
 	/// <summary>
 	/// The code generation is controlled from this settings class.
@@ -10,10 +10,11 @@ namespace SixtenLabs.Spawn.Utility
 		public GeneratorSettings(string targetSolutionName, string rootNamespace, string fileName, string webUri, string version, XmlLoadMethod loadMethod = XmlLoadMethod.FromUri)
 		{
 			TargetSolutionName = targetSolutionName;
-			RootNameSpace = rootNamespace;
+			RootNamespace = rootNamespace;
 			FileName = fileName;
 			WebUri = webUri;
 			LoadMethod = loadMethod;
+			VersionToGenerate = version;
 
 			SetRootDirectory();
 		}
@@ -41,7 +42,7 @@ namespace SixtenLabs.Spawn.Utility
 
 		public string RootDirectory { get; set; }
 
-		public string RootNameSpace { get; }
+		public string RootNamespace { get; }
 
 		public string TargetSolutionName { get; }
 

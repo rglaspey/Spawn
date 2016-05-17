@@ -11,10 +11,9 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 	{
 		private CSharpGenerator NewSubjectUnderTest()
 		{
-			MockSerializer = Substitute.For<IXmlSerializer>();
 			MockSpawnService = Substitute.For<ISpawnService>();
 
-			return new CSharpGenerator(MockSpawnService, MockSerializer);
+			return new CSharpGenerator(MockSpawnService);
 		}
 
 		[Fact]
@@ -84,8 +83,6 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			actual.Should().Be($"namespace SixtenLabs.StructTest{NewLine}{{{NewLine}    struct MyStruct{NewLine}    {{{NewLine}    }}{NewLine}}}");
 		}
-
-		private IXmlSerializer MockSerializer { get; set; }
 
 		private ISpawnService MockSpawnService { get; set; }
 	}

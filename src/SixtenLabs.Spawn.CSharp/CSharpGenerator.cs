@@ -6,8 +6,8 @@ namespace SixtenLabs.Spawn.CSharp
 {
 	public class CSharpGenerator : CodeGenerator
 	{
-		public CSharpGenerator(ISpawnService spawn, IXmlSerializer serializer)
-			: base(spawn, serializer)
+		public CSharpGenerator(ISpawnService spawn)
+			: base(spawn)
 		{
 		}
 

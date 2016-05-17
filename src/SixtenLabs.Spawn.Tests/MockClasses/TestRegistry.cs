@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SixtenLabs.Spawn.Tests.Model
+namespace SixtenLabs.Spawn.Tests
 {
-	public class TestClassTwo
+	public class TestRegistry
 	{
 		public string Name { get; set; }
-
-		public string Description { get; set; }
 	}
 }

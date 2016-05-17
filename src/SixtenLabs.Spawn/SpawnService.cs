@@ -19,11 +19,6 @@ namespace SixtenLabs.Spawn
 			var solution = Workspace.OpenSolutionAsync(SolutionPath).Result;
 		}
 
-		/// <summary>
-		/// TODO : Had to add dlls manually to generator to get this to work. add code to get it added automatically.
-		/// </summary>
-		/// <param name="projectName"></param>
-		/// <returns></returns>
 		private Project GetProject(string projectName)
 		{
 			var newSolution = Workspace.CurrentSolution;
@@ -43,8 +38,7 @@ namespace SixtenLabs.Spawn
 		}
 
 		/// <summary>
-		/// Before generating any code, intialize the workspace with 
-		/// the solution file.
+		/// Before generating any code, intialize the workspace with the solution file.
 		/// </summary>
 		/// <param name="solutionPath"></param>
 		public void Initialize(string solutionPath)

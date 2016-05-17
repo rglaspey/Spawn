@@ -11,10 +11,9 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 	{
 		private CSharpGenerator NewSubjectUnderTest()
 		{
-			MockSerializer = Substitute.For<IXmlSerializer>();
 			MockSpawnService = Substitute.For<ISpawnService>();
 
-			return new CSharpGenerator(MockSpawnService, MockSerializer);
+			return new CSharpGenerator(MockSpawnService);
 		}
 
 		[Fact]
@@ -126,8 +125,6 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 
 			actual.Should().Be($"enum FancyEnum{NewLine}{{{NewLine}    None = 0,{NewLine}    One = 0x01{NewLine}}}");
 		}
-
-		private IXmlSerializer MockSerializer { get; set; }
 
 		private ISpawnService MockSpawnService { get; set; }
 	}

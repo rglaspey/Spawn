@@ -1,4 +1,4 @@
-﻿namespace SixtenLabs.Spawn.Utility
+﻿namespace SixtenLabs.Spawn
 {
 	public enum XmlLoadMethod
 	{

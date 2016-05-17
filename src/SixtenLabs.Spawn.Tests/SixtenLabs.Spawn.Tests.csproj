@@ -49,6 +49,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.6.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.6.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -143,19 +147,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\TestClassOne.cs" />
-    <Compile Include="Model\TestClassTwo.cs" />
+    <Compile Include="BaseCreatorTests.cs" />
+    <Compile Include="Extensions\StringExtensionTests.cs" />
+    <Compile Include="GeneratorSettingsTest.cs" />
+    <Compile Include="MockClasses\TestCreator.cs" />
+    <Compile Include="MockClasses\TestGeneratorSettings.cs" />
+    <Compile Include="MockClasses\TestRegistry.cs" />
+    <Compile Include="MockClasses\TestSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpawnXmlSerializerTests.cs" />
+    <Compile Include="SpawnServiceTests.cs" />
+    <Compile Include="SpawnSpecTests.cs" />
+    <Compile Include="XmlFileLoaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Spec\vk.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SixtenLabs.Spawn\SixtenLabs.Spawn.csproj">
@@ -167,7 +173,11 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TestFiles\TestRegistryFile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 
-namespace SixtenLabs.Spawn.Utility
+namespace SixtenLabs.Spawn
 {
 	public abstract class BaseCreator<T, U> : ICreator where T : class
 	{
@@ -43,6 +43,9 @@ namespace SixtenLabs.Spawn.Utility
 
 		protected IList<U> Definitions { get; } = new List<U>();
 
+		/// <summary>
+		/// This is used to turn off or on a creator.
+		/// </summary>
 		public bool Off { get; set; }
 	}
 }
