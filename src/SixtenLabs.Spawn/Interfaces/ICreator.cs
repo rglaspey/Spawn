@@ -28,6 +28,12 @@ namespace SixtenLabs.Spawn
 
 		string TypeName { get; }
 
+		/// <summary>
+		/// The name of the creator, for displaying in the console 
+		/// while generating code.
+		/// </summary>
+		string Name { get; }
+
 		int Order { get; }
 
 		bool Off { get; set; }

@@ -6,7 +6,7 @@ namespace SixtenLabs.Spawn.Tests
 	public class TestCreator : BaseCreator<TestRegistry, string>
 	{
 		public TestCreator(ICodeGenerator generator, ISpawnSpec<TestRegistry> spawnSpec)
-			: base(generator, spawnSpec, 10)
+			: base(generator, spawnSpec, "Test Creator", 10)
 		{
 		}
 

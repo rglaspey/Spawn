@@ -5,11 +5,12 @@ namespace SixtenLabs.Spawn
 {
 	public abstract class BaseCreator<T, U> : ICreator where T : class
 	{
-		public BaseCreator(ICodeGenerator generator, ISpawnSpec<T> spawnSpec, int order)
+		public BaseCreator(ICodeGenerator generator, ISpawnSpec<T> spawnSpec, string name, int order)
 		{
 			Generator = generator;
 			VulkanSpec = spawnSpec;
 			Order = order;
+			Name = name;
 		}
 
 		public abstract int Rewrite();
@@ -31,6 +32,12 @@ namespace SixtenLabs.Spawn
 				return typeof(U).Name;
 			} 
 		}
+
+		/// <summary>
+		/// The name of the creator, for displaying in the console 
+		/// while generating code.
+		/// </summary>
+		public string Name { get; }
 
 		protected ISpawnSpec<T> VulkanSpec { get; }
 
