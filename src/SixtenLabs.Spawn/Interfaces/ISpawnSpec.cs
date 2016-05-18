@@ -10,6 +10,8 @@
 
 		string GetTranslatedName(string specName);
 
+		string GetTranslatedChildName(string specName, string childSpecName);
+
 		void AddSpecTypeDefinition(SpecTypeDefinition specTypeDefinition);
 
 		int SpecTypeCount { get; }

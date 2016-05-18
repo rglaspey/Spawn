@@ -37,6 +37,29 @@ namespace SixtenLabs.Spawn.Tests
 		}
 
 		[Fact]
+		public void GetTranslatedChildName_NoSpecTypeDefinitionExists_ThrowsException()
+		{
+			var subject = SubjectUnderTest();
+
+			Action act = () => subject.GetTranslatedChildName("Bob", "Timothy");
+
+			act.ShouldThrow<InvalidOperationException>($"Not allowed to not have a type mapping for: Bob");
+		}
+
+		[Fact]
+		public void GetTranslatedChildName_NoChildSpecTypeDefinitionExists_ThrowsException()
+		{
+			var subject = SubjectUnderTest();
+
+			var specTypeDef = new SpecTypeDefinition() { SpecName = "Robert", TranslatedName = "Bob" };
+			subject.AddSpecTypeDefinition(specTypeDef);
+
+			Action act = () => subject.GetTranslatedChildName("Robert", "Timothy");
+
+			act.ShouldThrow<InvalidOperationException>($"Not allowed to not have a type mapping for: Timothy");
+		}
+
+		[Fact]
 		public void AddSpecTypeDefinition_NewSpecDef_SpecTypeCountCorrect()
 		{
 			var subject = SubjectUnderTest();
@@ -72,6 +95,20 @@ namespace SixtenLabs.Spawn.Tests
 			var actual = subject.GetTranslatedName("Robert");
 
 			actual.Should().Be("Bob");
+		}
+
+		[Fact]
+		public void GetTranslatedChildName_SpecTypeExists_ReturnsTranslatedName()
+		{
+			var subject = SubjectUnderTest();
+
+			var specTypeDef = new SpecTypeDefinition() { SpecName = "Robert", TranslatedName = "Bob" };
+			specTypeDef.Children.Add(new SpecTypeDefinition() { SpecName = "Timothy", TranslatedName = "Tim" });
+			subject.AddSpecTypeDefinition(specTypeDef);
+
+			var actual = subject.GetTranslatedChildName("Robert", "Timothy");
+
+			actual.Should().Be("Tim");
 		}
 
 		[Fact]

@@ -30,6 +30,29 @@ namespace SixtenLabs.Spawn
 			}
 		}
 
+		public string GetTranslatedChildName(string specName, string childSpecName)
+		{
+			var definition = FindTypeDefinition(specName);
+
+			if (definition == null)
+			{
+				throw new InvalidOperationException($"Not allowed to not have a type mapping for: {specName}");
+			}
+			else
+			{
+				var childSpec = definition.Children.Where(x => x.SpecName == childSpecName).FirstOrDefault();
+
+				if(childSpec != null)
+				{
+					return childSpec.TranslatedName;
+				}
+				else
+				{
+					throw new InvalidOperationException($"Not allowed to not have a type mapping for: {childSpecName}");
+				}
+			}
+		}
+
 		public SpecTypeDefinition FindTypeDefinition(string specName)
 		{
 			return AllSpecTypeDefinitions.Where(x => x.SpecName == specName).FirstOrDefault();
