@@ -1,16 +1,17 @@
 ﻿using Xunit;
 using FluentAssertions;
 using NSubstitute;
+using AutoMapper;
 
 namespace SixtenLabs.Spawn.Tests
 {
 	public class XmlFileLoaderTests
 	{
-		private XmlFileLoader<TestRegistry> SubjectUnderTest()
+		private XmlFileLoader SubjectUnderTest()
 		{
 			MockWebClientFactory = Substitute.For<IWebClientFactory>();
 			MockGeneratorSettings = Substitute.For<IGeneratorSettings>();
-			return new XmlFileLoader<TestRegistry>(MockGeneratorSettings, MockWebClientFactory);
+			return new XmlFileLoader(MockGeneratorSettings, MockWebClientFactory);
 		}
 
 		[Fact]

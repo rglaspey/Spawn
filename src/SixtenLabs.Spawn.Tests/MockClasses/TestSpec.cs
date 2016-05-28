@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 
 namespace SixtenLabs.Spawn.Tests
 {
 	public class TestSpec : SpawnSpec<TestRegistry>
 	{
-		public TestSpec(XmlFileLoader<TestRegistry> xmlFileLoader)
-			: base(xmlFileLoader)
+		public TestSpec(XmlFileLoader xmlFileLoader, IMapper mapper)
+			: base(xmlFileLoader, mapper)
 		{
 		}
-
 	}
 }

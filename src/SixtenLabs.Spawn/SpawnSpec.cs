@@ -1,12 +1,14 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn
 {
 	public abstract class SpawnSpec<T> : ISpawnSpec<T> where T : class
 	{
-		public SpawnSpec(XmlFileLoader<T> xmlFileLoader)
+		public SpawnSpec(XmlFileLoader xmlFileLoader, IMapper mapper)
 		{
 			FileLoader = xmlFileLoader;
 		}
@@ -14,6 +16,8 @@ namespace SixtenLabs.Spawn
 		public void ProcessRegistry()
 		{
 			FileLoader.LoadRegistry();
+
+			SpecTree = Mapper.Map<T>(FileLoader.Registry);
 		}
 
 		public string GetTranslatedName(string specName)
@@ -72,20 +76,14 @@ namespace SixtenLabs.Spawn
 			}
 		}
 
-		private XmlFileLoader<T> FileLoader { get; set; }
+		private XmlFileLoader FileLoader { get; set; }
 
 		/// <summary>
 		/// The spectree holds the class that comprise the objects that we are 
 		/// generating code for. This is typically created by hand or from an xml specification
 		/// and we use this property to query the Specification and setup the structure of the code to generate.
 		/// </summary>
-		public T SpecTree
-		{
-			get
-			{
-				return FileLoader.Registry;
-			}
-		}
+		public T SpecTree { get; set; }
 
 		/// <summary>
 		/// Mapping of all types we care about from the spec
@@ -101,5 +99,7 @@ namespace SixtenLabs.Spawn
 				return AllSpecTypeDefinitions.Count;
 			}
 		}
+
+		private IMapper SpecMapper { get; }
 	}
 }

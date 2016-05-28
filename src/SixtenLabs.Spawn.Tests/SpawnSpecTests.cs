@@ -2,6 +2,7 @@
 using FluentAssertions;
 using NSubstitute;
 using System;
+using AutoMapper;
 
 namespace SixtenLabs.Spawn.Tests
 {
@@ -11,9 +12,10 @@ namespace SixtenLabs.Spawn.Tests
 		{
 			MockWebClientFactory = Substitute.For<WebClientFactory>();
 			MockGeneratorSettings = Substitute.For<IGeneratorSettings>();
-			MockFileLoader = Substitute.For<XmlFileLoader<TestRegistry>>(MockGeneratorSettings, MockWebClientFactory);
+			MockFileLoader = Substitute.For<XmlFileLoader>(MockGeneratorSettings, MockWebClientFactory);
+			MockMapper = Substitute.For<IMapper>();
 
-			return new TestSpec(MockFileLoader);
+			return new TestSpec(MockFileLoader, MockMapper);
 		}
 
 		[Fact]
@@ -126,8 +128,10 @@ namespace SixtenLabs.Spawn.Tests
 
 		private IGeneratorSettings MockGeneratorSettings { get; set; }
 
-		private XmlFileLoader<TestRegistry> MockFileLoader { get; set; }
+		private XmlFileLoader MockFileLoader { get; set; }
 
 		private IWebClientFactory MockWebClientFactory { get; set; }
+
+		private IMapper MockMapper { get; set; }
 	}
 }
