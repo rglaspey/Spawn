@@ -2,13 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace SixtenLabs.Spawn
 {
 	public abstract class SpawnSpec<T> : ISpawnSpec<T> where T : class
 	{
-		public SpawnSpec(XmlFileLoader xmlFileLoader, IMapper mapper)
+		public SpawnSpec(XmlFileLoader xmlFileLoader)
 		{
 			FileLoader = xmlFileLoader;
 		}
@@ -16,8 +15,11 @@ namespace SixtenLabs.Spawn
 		public void ProcessRegistry()
 		{
 			FileLoader.LoadRegistry();
+		}
 
-			SpecTree = Mapper.Map<T>(FileLoader.Registry);
+		public void CreateSpecTree(IMapper mapper)
+		{
+			SpecTree = mapper.Map<T>(FileLoader.Registry);
 		}
 
 		public string GetTranslatedName(string specName)
