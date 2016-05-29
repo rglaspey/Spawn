@@ -34,12 +34,18 @@ namespace SixtenLabs.Spawn.CSharp
 			var returnType = SF.VariableDeclaration(SF.IdentifierName(returnTypeString));
 			var fieldName = SF.VariableDeclarator(SF.Identifier(fieldDefinition.TranslatedName));
 			var initializer = GetInitializer(fieldDefinition.DefaultValue);
+			var attributes = GetAttributes(fieldDefinition.Attributes);
 
 			fieldName = fieldName.WithInitializer(initializer);
 
 			var fieldDeclaration = SF.FieldDeclaration(returnType
 				.AddVariables(fieldName))
 				.WithModifiers(modifiers);
+
+			if(fieldDefinition.Attributes.Count > 0)
+			{
+				fieldDeclaration = fieldDeclaration.WithAttributeLists(SF.SingletonList(attributes));
+			}
 
 			return fieldDeclaration;
 		}

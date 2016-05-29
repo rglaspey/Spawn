@@ -33,5 +33,7 @@ namespace SixtenLabs.Spawn.CSharp
 		public bool NeedsMarshalling { get; set; }
 
 		public List<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
+
+		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
 	}
 }

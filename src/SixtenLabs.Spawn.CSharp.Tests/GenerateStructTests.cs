@@ -84,6 +84,28 @@ namespace SixtenLabs.Spawn.CSharp.Tests
 			actual.Should().Be($"namespace SixtenLabs.StructTest{NewLine}{{{NewLine}    struct MyStruct{NewLine}    {{{NewLine}    }}{NewLine}}}");
 		}
 
+		[Fact]
+		public void GenerateStruct_AddAttribute_AddsAttribute()
+		{
+			var subject = NewSubjectUnderTest();
+
+			var output = new OutputDefinition();
+			var attribute = new AttributeDefinition() { SpecName = "StructLayout" };
+			attribute.ArgumentList.Add("LayoutKind.Explicit");
+			var structDef = new StructDefinition() { SpecName = "MyStruct" };
+			structDef.Attributes.Add(attribute);
+
+			var fieldDef = new FieldDefinition() { SpecName = "FieldName", SpecReturnType = "void" };
+			var fieldAttribute = new AttributeDefinition() { SpecName = "FieldOffset" };
+			fieldAttribute.ArgumentList.Add("0");
+			fieldDef.Attributes.Add(fieldAttribute);
+			structDef.Fields.Add(fieldDef);
+
+			var actual = subject.GenerateStruct(output, structDef);
+
+			actual.Should().Be($"[StructLayout(LayoutKind.Explicit)]{NewLine}struct MyStruct{NewLine}{{{NewLine}    [FieldOffset(0)]{NewLine}    void FieldName;{NewLine}}}");
+		}
+
 		private ISpawnService MockSpawnService { get; set; }
 	}
 }

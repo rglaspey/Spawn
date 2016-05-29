@@ -1,4 +1,6 @@
-﻿namespace SixtenLabs.Spawn.CSharp
+﻿using System.Collections.Generic;
+
+namespace SixtenLabs.Spawn.CSharp
 {
 	/// <summary>
 	/// internal static ActiveShaderProgram glActiveShaderProgram;
@@ -18,5 +20,7 @@
 		public bool ReturnTypeIsArray { get; set; }
 
 		public int ArraySize { get; set; }
+
+		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
 	}
 }

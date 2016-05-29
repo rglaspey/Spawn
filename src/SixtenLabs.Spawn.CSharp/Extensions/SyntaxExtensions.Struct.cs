@@ -24,6 +24,7 @@ namespace SixtenLabs.Spawn.CSharp
 
 			var nameSpaceDeclaration = AddNamespace(outputDefinition.Namespace);
 			var modifierTokens = GetModifierTokens(structDefinition.ModifierDefinitions);
+			var attributes = GetAttributes(structDefinition.Attributes);
 
 			if(structDefinition.Comments.HasComments)
 			{
@@ -34,6 +35,11 @@ namespace SixtenLabs.Spawn.CSharp
 			var structDeclaration = SF.StructDeclaration(structDefinition.TranslatedName)
 				.WithModifiers(modifierTokens)
 				.WithMembers(memberList);
+
+			if(structDefinition.Attributes.Count > 0)
+			{
+				structDeclaration = structDeclaration.WithAttributeLists(SF.SingletonList(attributes));
+			}
 
 			if (nameSpaceDeclaration != null)
 			{
