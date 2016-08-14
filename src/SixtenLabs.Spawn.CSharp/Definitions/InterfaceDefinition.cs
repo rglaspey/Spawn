@@ -12,6 +12,6 @@ namespace SixtenLabs.Spawn.CSharp
     {
 		}
 
-		public List<FieldDefinition> FieldDefinitions { get; } = new List<FieldDefinition>();
+		public List<FieldDefinition> FieldDefinitions { get; set; } = new List<FieldDefinition>();
 	}
 }

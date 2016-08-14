@@ -19,6 +19,6 @@ namespace SixtenLabs.Spawn.CSharp
 			Block.AddStatement(code);
 		}
 
-		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
+		public List<AttributeDefinition> Attributes { get; set; } = new List<AttributeDefinition>();
 	}
 }

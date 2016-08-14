@@ -8,6 +8,6 @@
 
 		public string Value { get; set; }
 
-		public CommentDefinition Comments { get; } = new CommentDefinition();
+		public CommentDefinition Comments { get; set; } = new CommentDefinition();
 	}
 }

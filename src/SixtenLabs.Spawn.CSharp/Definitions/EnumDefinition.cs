@@ -20,7 +20,7 @@ namespace SixtenLabs.Spawn.CSharp
     {
     }
 
-    public IList<EnumMemberDefinition> Members { get; } = new List<EnumMemberDefinition>();
+    public IList<EnumMemberDefinition> Members { get; set; } = new List<EnumMemberDefinition>();
 
     public bool HasFlags { get; set; }
 

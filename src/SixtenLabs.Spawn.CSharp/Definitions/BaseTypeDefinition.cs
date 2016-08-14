@@ -44,6 +44,6 @@ namespace SixtenLabs.Spawn.CSharp
 		/// <summary>
 		/// Modifiers are used to modify declarations of types and type members
 		/// </summary>
-		public List<ModifierDefinition> ModifierDefinitions { get; } = new List<ModifierDefinition>();
+		public List<ModifierDefinition> ModifierDefinitions { get; set; } = new List<ModifierDefinition>();
 	}
 }

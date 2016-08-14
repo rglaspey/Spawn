@@ -38,8 +38,8 @@ namespace SixtenLabs.Spawn.CSharp
 		/// </summary>
 		public LiteralDefinition DefaultValue { get; set; }
 
-		public AccessorDefinition Getter { get; private set; }
+		public AccessorDefinition Getter { get; set; }
 
-		public AccessorDefinition Setter { get; private set; }
+		public AccessorDefinition Setter { get; set; }
 	}
 }

@@ -8,6 +8,6 @@ namespace SixtenLabs.Spawn.CSharp
 		{
 		}
 
-		public IList<string> ArgumentList { get; } = new List<string>();
+		public IList<string> ArgumentList { get; set; } = new List<string>();
 	}
 }

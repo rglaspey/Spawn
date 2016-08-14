@@ -18,6 +18,6 @@ namespace SixtenLabs.Spawn.CSharp
 			Statements.Add(definition);
 		}
 
-		public IList<StatementDefinition> Statements { get; } = new List<StatementDefinition>();
+		public IList<StatementDefinition> Statements { get; set; } = new List<StatementDefinition>();
 	}
 }

@@ -65,12 +65,12 @@ namespace SixtenLabs.Spawn.CSharp
 
 		public string DerivedType { get; set; }
 
-		public IList<FieldDefinition> Fields { get; } = new List<FieldDefinition>();
+		public IList<FieldDefinition> Fields { get; set; } = new List<FieldDefinition>();
 
-		public IList<PropertyDefinition> Properties { get; } = new List<PropertyDefinition>();
+		public IList<PropertyDefinition> Properties { get; set; } = new List<PropertyDefinition>();
 
-		public List<MethodDefinition> Methods { get; } = new List<MethodDefinition>();
+		public List<MethodDefinition> Methods { get; set; } = new List<MethodDefinition>();
 
-		public List<AttributeDefinition> Attributes { get; } = new List<AttributeDefinition>();
+		public List<AttributeDefinition> Attributes { get; set; } = new List<AttributeDefinition>();
 	}
 }
